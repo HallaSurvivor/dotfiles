@@ -1,0 +1,16 @@
+-- HallaSurvivor GHCI --
+
+-- Set the prompt to be of the form [modules] λ>
+:set prompt "\ESC[3;35m%s \ESC[1;35mλ> \ESC[m"
+
+
+-- shamelessly taken from
+-- https://gist.github.com/cwvh/6657386
+-- (with slight modification)
+
+-- Defines :h and :doc which show
+-- hoogle info and documentation respectively
+
+let ghciEscape = \str -> "\"" ++ str ++ "\""
+:def! h   return . (":! hoogle --count=10 --color " ++) . ghciEscape
+:def! doc return . (":! hoogle --info "             ++) . ghciEscape

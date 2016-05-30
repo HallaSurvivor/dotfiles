@@ -1,0 +1,46 @@
+# Let's try to idiotproof public/private key files a bit...
+# just in case
+*.pem
+*.key
+*.der
+*.csr
+*.crt
+*.cert
+*.cer
+*.der
+*.p7b
+*.crl
+
+# All of irssi is generated automatically barring plugins.
+# If anybody wants to know my window layout, I almost exactly
+# followed the tutorial here:
+# 
+irssi/config
+irssi/default.theme
+irssi/saved_colors
+irssi/_windowlist
+
+# All my irssi plugins run automatically. 
+# There's no reason to commit them twice.
+irssi/scripts/autorun
+
+# Nobody wants to see all my undos for vim.
+vim/undodir
+
+# Nobody wants to see my vim dictionary for spelling
+vim/spell
+
+# Nobody needs my vim plugin folder. All my plugins are
+# visible at the top of my vimrc, and will automatically
+# be installed in their latest version by vundle.
+vim/bundle
+
+# Nobody needs to see the in use vimperator info
+vimperator/info
+
+# These are personal.
+# Anything interesting and unrelated
+# to my personal system is visible.
+bashrc_local
+bin/backup
+bin/duckdns

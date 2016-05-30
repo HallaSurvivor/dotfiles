@@ -1,0 +1,34 @@
+#!/bin/sh
+# Christopher Grossack, 2016
+#
+# A simple script to get the battery percent and time remaining for tmux
+#
+# Much of this code is shamelessly stolen from:
+# https://github.com/tmux-plugins/tmux-battery
+
+battery_discharging()
+{
+  local status="$(acpi -b | grep -oi 'discharging' | awk '{print tolower($0)}')"
+  [[ $status =~ (discharging) ]]
+}
+
+print_percent()
+{
+  acpi -b | grep -Eo "[0-9]+%"
+}
+
+print_remain()
+{
+  acpi -b | grep -Eo "[0-9]+:[0-9]+:[0-9]+"
+}
+
+final_print()
+{
+  if battery_discharging; then
+    echo "$(print_percent) :: $(print_remain)"
+  else
+    echo "$(print_percent) :: Charging"
+  fi
+}
+
+final_print
