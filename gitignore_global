@@ -1,0 +1,57 @@
+# Christopher Grossack's global gitignore.
+# Shamelessly taken from:
+# https://gist.github.com/octocat/9257657
+# (with modifications)
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.hi
+*.pyc
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# idiotproof the secure stuff #
+###############################
+*.pem
+*.key
+*.der
+*.csr
+*.crt
+*.cert
+*.cer
+*.der
+*.p7b
+*.crl
