@@ -40,10 +40,3 @@ vim/bundle
 
 # Nobody needs to see the in use vimperator info
 vimperator/info
-
-# These are personal.
-# Anything interesting and unrelated
-# to my personal system is visible.
-bashrc_local
-bin/backup
-bin/duckdns
