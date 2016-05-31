@@ -11,8 +11,8 @@
 *.p7b
 *.crl
 
-#anything tagged as .personal is personal and not meant to be uploaded.
-*.personal
+#anything tagged as .private is private and not meant to be uploaded.
+*.private
 
 # All of irssi is generated automatically barring plugins.
 # If anybody wants to know my window layout, I almost exactly
