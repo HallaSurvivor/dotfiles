@@ -4,6 +4,11 @@ then
   source .aliases
 fi
 
+if [ -e ".bashrc.private" ]
+then
+  source .bashrc.private
+fi
+
 ###############
 # Define Vars #
 ###############
