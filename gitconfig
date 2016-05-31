@@ -1,0 +1,67 @@
+# Christopher Grossack's .gitconfig
+
+# More personal settings are stored in gitconfig.private
+[include]
+  path = ~/dotfiles/gitconfig.private
+
+# Identification
+[user]
+  name  = Christopher Grossack
+  email = HallaSurvivor@gmail.com
+
+[github]
+  user = HallaSurvivor
+
+
+# Use gh, gist, and gl as shortcuts
+# for github, github gist, and gitlab.
+[url "https://github.com/"]
+  insteadOf = gh:
+
+[url "https://gist.github.com/"]
+  insteadOf = gist:
+
+[url "https://gitlab.com/"]
+  insteadOf = gl:
+
+
+[color]
+  # Use color whenever possible
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local   = yellow
+  remote  = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold # line info
+  old  = red          # deleted files
+  new  = green        # added files
+
+[color "status"]
+  added     = yellow
+  changed   = green
+  untracked = cyan
+
+[core]
+  # Things we universally don't want to commit,
+  excludesfile = ~/.gitignore_global
+
+  # Treat spaces before tabs and any trailing whitespace as an error
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+[apply]
+  # Automatically fix whitespace errors
+  whitespace = fix
+
+[commit]
+  # Sign any commits as being done by me.
+  gpgsign = true
+
+[merge]
+  # Include a summary of merge changes in the merge commit message
+  log = true
+
+
