@@ -103,3 +103,9 @@ function fs() {
 		du $arg .[^.]* ./*;
 	fi;
 }
+
+# Automatically symlink something in dotfiles.
+function dot 
+{
+  ln -s ~/dotfiles/"$1" ~/."$1";
+}
