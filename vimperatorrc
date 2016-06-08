@@ -88,9 +88,9 @@ ignorekeys add -except=;,:,d,H www.youtube.com/watch*
 
 "" Plugin Binds
 "tileview integration
-command Tc tileClose
-command Tex tileExpand
-command Tr tileRemove
+command tc tileClose
+command tex tileExpand
+command tr tileRemove
 
 "html5 video control
 abbreviate vc videocontrol
