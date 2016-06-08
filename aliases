@@ -13,6 +13,7 @@ alias dl="cd ~/Downloads/"
 alias la="ls -a" #show hidden files
 alias reload="source ~/.bashrc" #reload bashrc
 alias update="git add -u; git status" #update a git repo
+alias gs="git status"
 
 # Jokes
 alias clera="sl"
