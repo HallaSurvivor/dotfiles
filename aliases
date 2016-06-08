@@ -33,6 +33,17 @@ function mcd
   cd $1
 }
 
+#mv then cd immediately
+function vcd
+{
+  if (($# != 2)); then
+    echo "Usage: vcd <current path> <destination>"
+  else
+    mv $1 $2
+    cd $2
+  fi
+}
+
 #extract any file.
 #shamelessly taken from github.com/xvoland/Extract/blob/master/extract.sh
 function extract {
