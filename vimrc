@@ -19,36 +19,36 @@ Plugin 'VundleVim/Vundle.vim'
 
 "Plugins
 
-"General
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-surround'
-Plugin 'Shougo/neocomplete'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Yggdroot/indentLine'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tmhedberg/Simpylfold'
-Plugin 'godlygeek/tabular'
-Plugin 'simnalamburt/vim-mundo'
-Plugin 'tpope/vim-commentary'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'luochen1990/rainbow'
-Plugin 'vim-scripts/AfterColors.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Townk/vim-autoclose'
+"General layout, visuals, etc.
+Plugin 'jeffkreeftmeijer/vim-numbertoggle' "Relative line numbers in Normal mode only
+Plugin 'bling/vim-airline'      "Status bar that interacts with other plugins
+Plugin 'airblade/vim-gitgutter' "Show git status to the left of line numbers
+Plugin 'luochen1990/rainbow'    "Change color of parentheses based on nesting level
+Plugin 'Yggdroot/indentLine'    "Show vertical lines indicating the indentation level
+
+"General Programming
+Plugin 'scrooloose/syntastic'   "Check program syntax on saving file
+Plugin 'Shougo/neocomplete'     "Amazing autocomplete
+Plugin 'scrooloose/nerdtree'    "File browser inside vim
+Plugin 'simnalamburt/vim-mundo' "Undo tree for better undo history navigation
+Plugin 'tpope/vim-commentary'   "Quickly comment/uncomment lines of code
+Plugin 'tpope/vim-surround'     "Quickly surround text with quotes, braces, etc.
+Plugin 'godlygeek/tabular'      "Automatically align characters in lines of text
+Plugin 'Townk/vim-autoclose'    "Automatically close braces when typing [, (, etc.
 
 "Haskell
-Plugin 'eagletmt/neco-ghc'
-Plugin 'neovimhaskell/haskell-vim'
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'bitc/vim-hdevtools'
+Plugin 'eagletmt/neco-ghc'         "Better autocompletion (uses neocomplete)
+Plugin 'neovimhaskell/haskell-vim' "Better syntax highlighting, etc.
+Plugin 'eagletmt/ghcmod-vim'       "Display types of expression
+Plugin 'bitc/vim-hdevtools'        "Typecheck on file write (uses syntastic)
 
 "Python
-Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'michaeljsmith/vim-indent-object' "New vim motions based on indentation
+Plugin 'tmhedberg/Simpylfold'            "Fold python code properly
 
-"Vimperator syntax highlighting
-Plugin 'vimperator/vimperator.vim'
+"Misc
+Plugin 'Shougo/vimproc.vim'        "Asynchronous execution in vim, a dependency for other plugins
+Plugin 'vimperator/vimperator.vim' "Vimperator syntax highlighting
 
 call vundle#end()
 
@@ -67,11 +67,11 @@ let g:haskell_indent_guard = 2
 
 "neocomplete
 if has("lua")
-  let g:acp_enableAtStartup = 0 "Disable AutoComplPop
+  let g:acp_enableAtStartup = 0           "Disable AutoComplPop
   let g:neocomplete#enable_at_startup = 1 "Use neocomplete
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#max_list = 10 "Set maximum list length
-  let g:neocomplete#sources#syntax#min_keyword_length = 3 "Minimum syntax keyword length
+  let g:neocomplete#enable_smart_case = 1 "Show upper case completions if I'm typing in lower case
+  let g:neocomplete#max_list = 10         "Set maximum completion list length
+  let g:neocomplete#sources#syntax#min_keyword_length = 3 "Number of letters before starting completion
 else
   let g:acp_enableAtStartup = 0
   let g:neocomplete#enable_at_startup = 0
@@ -82,11 +82,10 @@ endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "indentLine
-let g:indentLine_color_term    = 239
-let g:indentLine_concealcursor = "in"
-let g:indentLine_conceallevel  = 1
-let g:indentLine_char          = "|"
-let g:indentLine_first_char    = "|"
+let g:indentLine_color_term    = 239   "indentline color
+let g:indentLine_concealcursor = "in"  "show even when inserting text
+let g:indentLine_char          = "|"   "use a | as the indicator
+let g:indentLine_first_char    = "|"   "use a | even if it's the first one
 
 "AutoClose
 let g:AutoClosePairs_del = "{}" "Don't close {} pairs. (see bind below)
@@ -217,14 +216,28 @@ nnoremap <leader>bq :bp <bar> bd #<cr>
 "========Settings========
 "========================
 
-"Colors/Encoding
-syntax enable
+"Colors
+
+"Use 256 colors, since we have them
 set term=xterm-256color
+
+"Use monokai colors based on programming syntax
+syntax enable
 set background=dark
 colorscheme monokai
-set encoding=utf-8
+
+"monokai's background doesn't quite match my terminal, here's a fix.
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
+
+"Make the comments brighter to be more visible.
+highlight Comment ctermfg=249
+
 
 "General
+
+"Use utf8
+set encoding=utf-8
 
 "By default, don't use system pasting
 "(<f2> still toggles this)
