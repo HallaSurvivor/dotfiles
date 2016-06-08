@@ -46,6 +46,13 @@ Plugin 'bitc/vim-hdevtools'        "Typecheck on file write (uses syntastic)
 Plugin 'michaeljsmith/vim-indent-object' "New vim motions based on indentation
 Plugin 'tmhedberg/Simpylfold'            "Fold python code properly
 
+"Writing Prose
+Plugin 'junegunn/goyo.vim'           "Center text and remove distractions such as airline
+Plugin 'plasticboy/vim-markdown'     "Better markdown syntax highlighting
+Plugin 'reedes/vim-pencil'           "Better controls inside vim for prose writing
+Plugin 'reedes/vim-wordy'            "Proofreading and suggestions
+Plugin 'reedes/vim-textobj-sentence' "Better sentence recognition in vim
+
 "Misc
 Plugin 'Shougo/vimproc.vim'        "Asynchronous execution in vim, a dependency for other plugins
 Plugin 'vimperator/vimperator.vim' "Vimperator syntax highlighting
@@ -111,6 +118,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 "Rainbow Parentheses
 let g:rainbow_active = 1
+
+"Markdown
+let g:vim_markdown_conceal = 0
 
 "Turn Plugins On
 filetype plugin on
@@ -211,6 +221,9 @@ nnoremap <silent> <leader>bm :bprev<cr>
 
 "close buffer and move to previous one
 nnoremap <leader>bq :bp <bar> bd #<cr> 
+
+"Toggle prose related plugins
+nnoremap <leader>p :TogglePencil<cr>:Goyo<cr>:source $MYVIMRC<cr>
 
 "========================
 "========Settings========
