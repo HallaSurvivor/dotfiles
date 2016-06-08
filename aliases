@@ -7,6 +7,7 @@
 
 # Conveniences
 alias cdp="cd ~/Documents/programming/"
+alias cdd="cd ~/dotfiles"
 alias ..="cd .."
 alias dl="cd ~/Downloads/"
 alias la="ls -a" #show hidden files
@@ -43,6 +44,24 @@ function vcd
   else
     mv $1 $2
     cd $2
+  fi
+}
+
+#mv to programming folder.
+function mvp
+{
+  programming=~/Documents/programming
+
+  if [[ -z $1 ]]; then
+    echo "Usage: mvp <file to move> [subdirectory]"
+  elif [[ -z $2 ]]; then
+    mv $1 $programming
+  else
+    if [[ -d "$programming/$2" ]]; then
+      mv $1 $programming/$2
+    else
+      mv $1 $programming
+    fi
   fi
 }
 
