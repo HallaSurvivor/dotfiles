@@ -1,12 +1,11 @@
-if [ -e ".functions" ]
-then
-  source .functions
-fi
-
-if [ -e ".bashrc.private" ]
-then
-  source .bashrc.private
-fi
+# Christopher Grossack's bashrc. 
+#
+# Additional files (functions and bashrc.private) are sourced
+# at the bottom of this file. This file is responsible for:
+# 
+# * Defining global vars
+# * Exporting the PS1 (terminal prompt)
+# * Defining the function to build $PATH
 
 ###############
 # Define Vars #
@@ -71,3 +70,18 @@ function _prompt_command() {
 }
 
 PROMPT_COMMAND=_prompt_command
+
+###########################
+# Source Additional Files #
+###########################
+
+if [ -e ".functions" ]
+then
+  source .functions
+fi
+
+if [ -e ".bashrc.private" ]
+then
+  source .bashrc.private
+fi
+
