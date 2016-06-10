@@ -6,23 +6,23 @@
 ###########
 
 # Conveniences
-alias cdp="cd ~/Documents/programming/"
-alias cdd="cd ~/dotfiles"
-alias ..="cd .."
-alias dl="cd ~/Downloads/"
-alias la="ls -a" #show hidden files
-alias reload="source ~/.bashrc" #reload bashrc
-alias update="git add -u; git status" #update a git repo
-alias gs="git status"
+function cdp { cd ~/Documents/programming/; }
+function cdd { cd ~/dotfiles; }
+function .. { cd ..; }
+function dl { cd ~/Downloads/; }
+function la { ls -a; } #show hidden files
+function reload { source ~/.bashrc; } #reload bashrc
+function update { git add -u; git status; } #update a git repo
+function gs { git status; }
 
 # Jokes
-alias clera="sl"
-alias lear="sl"
-alias clea="sl"
-alias starWars="telnet towel.blinkenlights.nl"
+function clera { sl; }
+function lear { sl; }
+function clea { sl; }
+function starWars { telnet towel.blinkenlights.nl; }
 
 #Interesting command to see top 10 called commands
-alias checkHistory="history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail | sort -nr"
+function checkHistory { history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail | sort -nr; }
 
 #############
 # Functions #
@@ -31,20 +31,20 @@ alias checkHistory="history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$
 #mkdir then cd immediately
 function mcd
 {
-  mkdir -p $1
-  cd $1
+  mkdir -p $1;
+  cd $1;
 }
 
 #mv then cd immediately
 function vcd
 {
   if (($# != 2)); then
-    echo "Usage: vcd <current path> <destination>"
+    echo "Usage: vcd <current path> <destination>";
   elif [[ -f $2 ]]; then
-    echo "Destination must be a directory, not a file."
+    echo "Destination must be a directory, not a file.";
   else
-    mv $1 $2
-    cd $2
+    mv $1 $2;
+    cd $2;
   fi
 }
 
@@ -54,14 +54,14 @@ function mvp
   programming=~/Documents/programming
 
   if [[ -z $1 ]]; then
-    echo "Usage: mvp <file to move> [subdirectory]"
+    echo "Usage: mvp <file to move> [subdirectory]";
   elif [[ -z $2 ]]; then
-    mv $1 $programming
+    mv $1 $programming;
   else
     if [[ -d "$programming/$2" ]]; then
-      mv $1 $programming/$2
+      mv $1 $programming/$2;
     else
-      mv $1 $programming
+      mv $1 $programming;
     fi
   fi
 }
@@ -138,7 +138,7 @@ function fs() {
 }
 
 # Automatically symlink something in dotfiles.
-function dot 
+function dot()
 {
   ln -s ~/dotfiles/"$1" ~/."$1";
 }

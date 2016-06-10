@@ -1,7 +1,6 @@
-if [ -e ".aliases" ]
+if [ -e ".functions" ]
 then
-  # Note aliases also contains functions
-  source .aliases
+  source .functions
 fi
 
 if [ -e ".bashrc.private" ]
