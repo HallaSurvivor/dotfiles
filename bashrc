@@ -23,6 +23,20 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+##############
+# Build PATH #
+##############
+
+#This function is shamelessly taken from:
+#http://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
+function _path_add()
+{
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="${PATH:+"$PATH:"}$1"
+  fi
+}
+
+# The path is actually updated in bashrc.private, since it isn't universal.
 
 #############
 # Build PS1 #
