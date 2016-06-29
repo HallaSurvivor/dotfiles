@@ -128,7 +128,13 @@ function TileviewIntegration()
                    "4vertgrid",   "4horizgrid", 
                    "allvertgrid", "allhorizgrid"];
 
-      context.completions = [[n, ''] for each (n in names)];
+      var completions = [];
+      for (var i=0; i < names.length; i++)
+      {
+        completions.push([names[i], '']);
+      }
+
+      context.completions = completions;
     };
 
     commands.addUserCommand(
