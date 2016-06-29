@@ -84,7 +84,7 @@ nnoremap <C-l> :tabmove!<space>+1<cr>
 map <leader>g :tabgroups switch 
 
 "Make youtube keyboard shortcuts work
-ignorekeys add -except=;,:,d,H www.youtube.com/watch*
+ignorekeys add -except=;,:,d,H,t,h www.youtube.com/watch*
 
 "Exit insert mode easily
 inoremap jk <C-[>
