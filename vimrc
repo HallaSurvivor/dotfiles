@@ -7,6 +7,20 @@
 "========Vundle and Plugins========
 "==================================
 
+"Ensure vundle is installed
+"Shamlessly taken from:
+"http://erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/
+
+let vundleInstalled=1
+let vundleReadme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundleReadme)
+  echo "Installing vundle..."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
+  let vundleInstalled=0
+endif
+
 "We're using vim, not vi. might as well act like it
 set nocompatible
 
@@ -56,6 +70,12 @@ Plugin 'reedes/vim-textobj-sentence' "Better sentence recognition in vim
 "Misc
 Plugin 'Shougo/vimproc.vim'        "Asynchronous execution in vim, a dependency for other plugins
 Plugin 'vimperator/vimperator.vim' "Vimperator syntax highlighting
+
+if vundleInstalled == 0
+  echo "Installing vim plugins..."
+  echo ""
+  :PluginInstall
+endif
 
 call vundle#end()
 
