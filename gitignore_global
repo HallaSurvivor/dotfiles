@@ -1,7 +1,11 @@
 # Christopher Grossack's global gitignore.
+#
 # Shamelessly taken from:
 # https://gist.github.com/octocat/9257657
 # (with modifications)
+#
+# See the rest of my dotfiles here:
+# https://github.com/HallaSurvivor/dotfiles
 
 # Compiled source #
 ###################

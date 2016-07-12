@@ -3,6 +3,9 @@
 #
 # I tend not to use aliases as functions are safer 
 # (aliases are nothing but string substitutions)
+#
+# See the rest of my dotfiles here:
+# https://github.com/HallaSurvivor/dotfiles
 
 ###########
 # Aliases #

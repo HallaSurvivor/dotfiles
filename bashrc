@@ -6,6 +6,9 @@
 # * Defining global vars
 # * Exporting the PS1 (terminal prompt)
 # * Defining the function to build $PATH
+#
+# See the rest of my dotfiles here:
+# https://github.com/HallaSurvivor/dotfiles
 
 ###############
 # Define Vars #

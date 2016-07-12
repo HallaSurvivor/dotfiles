@@ -1,4 +1,7 @@
 # Christopher Grossack's gitconfig
+#
+# See the rest of my dotfiles here:
+# https://github.com/HallaSurvivor/dotfiles
 
 # More personal settings are stored in gitconfig.private
 [include]

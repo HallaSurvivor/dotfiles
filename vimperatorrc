@@ -1,4 +1,7 @@
-"Christopher Grossack's .vimperatorrc"
+" Christopher Grossack's .vimperatorrc"
+"
+" See the rest of my dotfiles here:
+" https://github.com/HallaSurvivor/dotfiles
 
 "" General Changes
 "use the default Firefox title bar

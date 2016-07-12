@@ -4,6 +4,9 @@
 # This file is responsible for:
 # 
 # * Sourcing bashrc from login shells
+#
+# See the rest of my dotfiles here:
+# https://github.com/HallaSurvivor/dotfiles
 
 if [ -e ".bashrc" ]
 then
