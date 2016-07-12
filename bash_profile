@@ -9,3 +9,5 @@ if [ -e ".bashrc" ]
 then
   source .bashrc
 fi
+
+eval `dircolors ~/.dircolors`
