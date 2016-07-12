@@ -21,6 +21,7 @@
 # Nobody wants to see what irssi automatically assigns things
 irssi/saved_colors
 irssi/_windowlist
+irssi/config.autosave
 
 # All my irssi plugins run automatically. 
 # There's no reason to commit them twice.

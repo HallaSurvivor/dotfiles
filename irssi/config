@@ -82,7 +82,7 @@ statusbar = {
         window       = { };
         window_empty = { };
         usercount    = { };
-        barstart     = { priority = "100"; alignment = "right"; };
+        barend       = { priority = "100"; alignment = "right"; };
       };
 
     }
@@ -99,7 +99,7 @@ statusbar = {
         window       = { };
         window_empty = { };
         usercount    = { };
-        barstart     = { priority = "100"; alignment = "right"; };
+        barend       = { priority = "100"; alignment = "right"; };
       };
 
     }
