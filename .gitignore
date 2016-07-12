@@ -18,12 +18,7 @@
 # as well as potentially dangerous information.
 *.private
 
-# All of irssi is generated automatically barring plugins.
-#
-# That said, I use the hilight window from this tutorial here:
-# http://www.antonfagerberg.com/blog/my-perfect-irssi-setup/
-irssi/config
-irssi/default.theme
+# Nobody wants to see what irssi automatically assigns things
 irssi/saved_colors
 irssi/_windowlist
 
