@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
-# Christopher Grossack's readily visible aliases and functions
+# Christopher Grossack's functions
+#
+# I tend not to use aliases as functions are safer 
+# (aliases are nothing but string substitutions)
 
 ###########
 # Aliases #
 ###########
 
 # Conveniences
-function cdp { cd ~/Documents/programming/; }
+function cdp { cd ~/Documents/programming; }
 function cdd { cd ~/dotfiles; }
 function .. { cd ..; }
-function dl { cd ~/Downloads/; }
+function dl { cd ~/Downloads; }
 function la { ls -a; } #show hidden files
 function reload { source ~/.bashrc; } #reload bashrc
 function update { git add -u; git status; } #update a git repo

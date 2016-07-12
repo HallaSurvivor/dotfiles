@@ -1,4 +1,6 @@
-# Let's try to idiotproof public/private key files a bit...
+# The local gitignore for Christopher Grossack's dotfiles.
+
+# Let's idiotproof public/private key files again...
 # just in case
 *.pem
 *.key
@@ -11,13 +13,15 @@
 *.p7b
 *.crl
 
-#anything tagged as .private is private and not meant to be uploaded.
+# Anything tagged as .private is private and not meant to be uploaded.
+# This includes settings specific to one computer, such as the path
+# as well as potentially dangerous information.
 *.private
 
 # All of irssi is generated automatically barring plugins.
-# If anybody wants to know my window layout, I almost exactly
-# followed the tutorial here:
-# 
+#
+# That said, I use the hilight window from this tutorial here:
+# http://www.antonfagerberg.com/blog/my-perfect-irssi-setup/
 irssi/config
 irssi/default.theme
 irssi/saved_colors

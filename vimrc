@@ -1,4 +1,4 @@
-"Christopher Grossack's .vimrc
+"Christopher Grossack's vimrc
 "
 "See the rest of my dotfiles here:
 "https://github.com/HallaSurvivor/dotfiles
