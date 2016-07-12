@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Christopher Grossack's readily visible bash functions
+# Christopher Grossack's readily visible aliases and functions
 
 ###########
 # Aliases #
@@ -68,7 +68,8 @@ function mvp
 
 #extract any file.
 #shamelessly taken from github.com/xvoland/Extract/blob/master/extract.sh
-function extract {
+function extract 
+{
  if [ -z "$1" ]; then
     # display usage if no parameters given
     echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
@@ -124,7 +125,8 @@ function calc()
 # Determine filesize or directory size.
 # Again, shamelessly taken from:
 # https://github.com/mathiasbynens/dotfiles/blob/master/.functions
-function fs() {
+function fs() 
+{
 	if du -b /dev/null > /dev/null 2>&1; then
 		local arg=-sbh;
 	else
