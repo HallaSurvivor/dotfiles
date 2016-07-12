@@ -22,3 +22,5 @@ Here is the list of symlinks to make:
 + Symlink every file f into ~/.f
 + Exceptions are as follows:
   + redshift.conf goes in .confg
+
+I've also included the gnome terminal colorscheme/settings that I use, base16 monokai dark, and an installation script that works in gnome 3.8 and higher. If you'd like to install it, simply run gnomeTerminalSettings.sh
