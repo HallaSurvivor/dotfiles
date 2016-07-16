@@ -5,33 +5,37 @@
 
 servers = (
   {
-    address     = "chat.freenode.net";
-    chatnet     = "Freenode";
-    port        = "7000";
-    use_ssl     = "yes";
-    ssl_cert    = "~/.irssi/irssi.pem";
-    ssl_verify  = "yes";
-    ssl_capath  = "/etc/ssl/certs";
+    address = "chat.freenode.net";
+    chatnet = "Freenode";
+    port = "7000";
+    use_ssl = "yes";
+    ssl_cert = "~/.irssi/irssi.pem";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs";
     autoconnect = "yes";
   }
 );
 
 chatnets = {
   Freenode = {
-    type      = "IRC";
+    type = "IRC";
     max_kicks = "1";
-    max_msgs  = "4";
+    max_msgs = "4";
     max_whois = "1";
   };
 };
 
 channels = (
-  { name = "#irssi"             ; chatnet = "Freenode" ; autojoin = "No"  ; },
-  { name = "#suse"              ; chatnet = "Freenode" ; autojoin = "No"  ; },
-  { name = "#haskell"           ; chatnet = "freenode" ; autojoin = "yes" ; },
-  { name = "#haskell-beginners" ; chatnet = "freenode" ; autojoin = "yes" ; },
-  { name = "#lesswrong"         ; chatnet = "Freenode" ; autojoin = "yes" ; },
-  { name = "#bash"              ; chatnet = "freenode" ; autojoin = "yes" ; }
+  { name = "#irssi"; chatnet = "Freenode"; autojoin = "No"; },
+  { name = "#suse"; chatnet = "Freenode"; autojoin = "No"; },
+  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
+  {
+    name = "#haskell-beginners";
+    chatnet = "freenode";
+    autojoin = "yes";
+  },
+  { name = "#lesswrong"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#bash"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = { };
@@ -42,21 +46,21 @@ statusbar = {
   items = {
 
     barstart = "{sbstart}";
-    barend   = "{sbend}";
+    barend = "{sbend}";
 
     topicbarstart = "{topicsbstart}";
-    topicbarend   = "{topicsbend}";
+    topicbarend = "{topicsbend}";
 
     time = "{sb $Z}";
     user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
 
-    window       = "{sb $winref:$tag/$itemname{sbmode $M}}";
+    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
     window_empty = "{sb $winref{sbservertag $tag}}";
 
-    prompt       = "{prompt $[.15]itemname}";
+    prompt = "{prompt $[.15]itemname}";
     prompt_empty = "{prompt $winname}";
 
-    topic       = " $topic";
+    topic = " $topic";
     topic_empty = " Irssi v$J - http://www.irssi.org";
 
   };
@@ -68,85 +72,82 @@ statusbar = {
 
       # General settings for this statusbar
 
-      disabled  = "no";
-      type      = "window";
+      disabled = "no";
+      type = "window";
       placement = "bottom";
-      position  = "1";
-      visible   = "active";
+      position = "1";
+      visible = "active";
 
       # The items visible on the bar, in order from left to right.
 
       items = {
-        barstart     = { priority = "100"; };
-        time         = { };
-        window       = { };
+        barstart = { priority = "100"; };
+        time = { };
+        window = { };
         window_empty = { };
-        usercount    = { };
-        barend       = { priority = "100"; alignment = "right"; };
+        usercount = { };
+        barend = { priority = "100"; alignment = "right"; };
       };
 
-    }
+    };
 
     window_inact = {
 
-      type      = "window";
+      type = "window";
       placement = "bottom";
-      position  = "1";
-      visible   = "inactive";
+      position = "1";
+      visible = "inactive";
 
       items = {
-        barstart     = { priority = "100"; };
-        window       = { };
+        barstart = { priority = "100"; };
+        window = { };
         window_empty = { };
-        usercount    = { };
-        barend       = { priority = "100"; alignment = "right"; };
+        usercount = { };
+        barend = { priority = "100"; alignment = "right"; };
       };
 
-    }
+    };
 
-    topic = { 
+    topic = {
 
-      type      = "window";
+      type = "window";
       placement = "top";
-      position  = "1";
-      visible   = "always";
+      position = "1";
+      visible = "always";
 
       items = {
         topicbarstart = { priority = "100"; };
-        topic         = { };
-        topic_empty   = { };
-        topicbarend   = { priority = "100"; alignment = "right"; };
+        topic = { };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
       };
 
     };
 
     prompt = {
 
-      type      = "root";
+      type = "root";
       placement = "bottom";
-      position  = "100";
-      visible   = "always";
+      position = "100";
+      visible = "always";
 
       items = {
-        prompt       = { priority = "-1"; };
+        prompt = { priority = "-1"; };
         prompt_empty = { priority = "-1"; };
-        input        = { priority = "10"; };
+        input = { priority = "10"; };
       };
 
     };
+
 
 
     awl_0 = {
-
       items = {
-        barstart  = { priority = "100"; };
-        awl_0     = { };
-        barend    = { priority = "100"; alignment = "right"; };
-        usercount = { };
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
       };
-
     };
-
   };
 };
 
