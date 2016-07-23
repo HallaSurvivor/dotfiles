@@ -69,7 +69,8 @@ Plugin 'reedes/vim-textobj-sentence' "Better sentence recognition in vim
 
 "Misc
 Plugin 'Shougo/vimproc.vim'        "Asynchronous execution in vim, a dependency for other plugins
-Plugin 'vimperator/vimperator.vim' "Vimperator syntax highlighting
+Plugin 'vimperator/vimperator.vim' "Vimperator config syntax highlighting
+Plugin 'keith/tmux.vim'            "Tmux config syntax highlighting
 
 if vundleInstalled == 0
   echo "Installing vim plugins..."
