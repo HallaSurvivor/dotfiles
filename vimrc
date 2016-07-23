@@ -35,10 +35,11 @@ Plugin 'VundleVim/Vundle.vim'
 
 "General layout, visuals, etc.
 Plugin 'jeffkreeftmeijer/vim-numbertoggle' "Relative line numbers in Normal mode only
-Plugin 'bling/vim-airline'      "Status bar that interacts with other plugins
-Plugin 'airblade/vim-gitgutter' "Show git status to the left of line numbers
-Plugin 'luochen1990/rainbow'    "Change color of parentheses based on nesting level
-Plugin 'Yggdroot/indentLine'    "Show vertical lines indicating the indentation level
+Plugin 'bling/vim-airline'         "Status bar that interacts with other plugins
+Plugin 'airblade/vim-gitgutter'    "Show git status to the left of line numbers
+Plugin 'luochen1990/rainbow'       "Change color of parentheses based on nesting level
+Plugin 'Yggdroot/indentLine'       "Show vertical lines indicating the indentation level
+Plugin 'vim-scripts/IndexedSearch' "Show which result of how many after searching
 
 "General Programming
 Plugin 'scrooloose/syntastic'   "Check program syntax on saving file
