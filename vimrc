@@ -116,9 +116,6 @@ let g:indentLine_concealcursor = "in"  "show even when inserting text
 let g:indentLine_char          = "|"   "use a | as the indicator
 let g:indentLine_first_char    = "|"   "use a | even if it's the first one
 
-"AutoClose
-let g:AutoClosePairs_del = "{}" "Don't close {} pairs. (see bind below)
-
 "airline
 "Use shorthand names in powerline
 "i.e. I for insert, N for normal
@@ -199,7 +196,7 @@ nnoremap <silent> <leader>u :GundoToggle<CR>
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 
 "Automatically create {} brace pairs with a newline between them
-inoremap { {<cr><bs>}<esc>O
+inoremap {<tab> {<cr>}<esc>O
 
 "Tabularize
 "automatically align on the folowing symbols:  = , | <other>
