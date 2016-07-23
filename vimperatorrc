@@ -84,6 +84,7 @@ nnoremap <C-l> :tabmove!<space>+1<cr>
 
 "I abuse tabgroups. Here's a way to make that easier
 map <leader>g :tabgroups switch 
+abbreviate tg tabgroups
 
 "Make youtube keyboard shortcuts work
 ignorekeys add -except=;,:,d,H,t,h www.youtube.com/watch*
