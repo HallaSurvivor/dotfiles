@@ -1,5 +1,13 @@
 # Christopher Grossack's irssi config
 #
+# I'm sorry about the horrible formatting,
+# but irssi automatically changes it on startup.
+# I've gotten too lazy to go in and change it
+# back every time I start irssi just to staisfy 
+# the love of whitespace Haskell programming gave me.
+#
+# Hopefully it doesn't bother you as much as it bothers me :P
+#
 # See the rest of my dotfiles here:
 # https://github.com/HallaSurvivor/dotfiles
 
