@@ -433,9 +433,9 @@ formats = {
     ctcp_requested_unknown = "%w-%c-%C- %nGot unknown %C$2%n request from %c$0 %n($1) to %n$4: $3";
     own_ctcp = "%w-%c-%C- %nSending %WCTCP %C$1 %nto %c$0: $2";
     own_action = "$nickalign{ownaction $0$nicktrunc}$1";
-    action_private = "$nickalign{pvtaction $0$nicktrunc}$2";
-    action_private_query = "$nickalign{pvtaction_query $0$nicktrunc}$2";
-    action_public = "$nickalign{pubaction $0$nicktrunc}$1";
+    action_private = "$nickalign{pvtaction $[.14]0$nicktrunc}$2";
+    action_private_query = "$nickalign{pvtaction_query $[.14]0$nicktrunc}$2";
+    action_public = "$nickalign{pubaction $[.14]0$nicktrunc}$1";
   };
   "fe-common/perl" = {
     script_not_found = "%w-%c-%C- %rScript: %W{hilight $0} %nnot found";
