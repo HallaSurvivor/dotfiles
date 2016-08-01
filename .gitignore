@@ -23,10 +23,6 @@ irssi/saved_colors
 irssi/_windowlist
 irssi/config.autosave
 
-# All my irssi plugins run automatically. 
-# There's no reason to commit them twice.
-irssi/scripts/autorun
-
 # Nobody wants to see all my undos for vim.
 vim/undodir
 
