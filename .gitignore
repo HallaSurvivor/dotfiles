@@ -13,11 +13,6 @@
 *.p7b
 *.crl
 
-# Anything tagged as .private is private and not meant to be uploaded.
-# This includes settings specific to one computer, such as the path
-# as well as potentially dangerous information.
-*.private
-
 # Nobody wants to see what irssi automatically assigns things
 irssi/saved_colors
 irssi/_windowlist
