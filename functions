@@ -18,7 +18,7 @@ function cdD { cd ~/Documents; }
 function .. { cd ..; }
 function dl { cd ~/Downloads; }
 function la { ls -a; } #show hidden files
-function reload { source ~/.bashrc; } #reload bashrc
+function reload { cd; source ~/.bashrc; cd -; } #reload bashrc
 function update { git add -u; git status; } #update a git repo
 function gs { git status; }
 
