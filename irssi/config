@@ -12,15 +12,15 @@ servers = (
     chatnet     = "Freenode";
     port        = "7000";
     use_ssl     = "yes";
-    ssl_cert    = "~/.irssi/irssi.pem";
+    ssl_cert    = "~/dotfiles.private/irssi.pem";
     ssl_verify  = "yes";
     ssl_capath  = "/etc/ssl/certs";
     autoconnect = "yes";
   }
 );
 
-chatnets      = {
-  Freenode    = {
+chatnets = {
+  Freenode = {
     type      = "IRC";
     max_kicks = "1";
     max_msgs  = "4";
@@ -139,7 +139,7 @@ statusbar = {
     };
 
     awl_0 = {
-      items      = {
+      items = {
         barstart = { priority = "100"; };
         awl_0    = { };
         barend   = { priority = "100"; alignment = "right"; };
