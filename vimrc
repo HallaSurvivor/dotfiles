@@ -151,10 +151,8 @@ filetype indent on
 "=====================
 
 "Close insert/visual mode with jk
-"Don't press shift when saving/quitting
 inoremap jk <esc>
 vnoremap jk <esc>
-nnoremap ; :
 let mapleader=',' "Explicitly set leader
 
 "\ev and \sv open and source .vimrc
