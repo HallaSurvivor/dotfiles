@@ -73,6 +73,7 @@ Plugin 'Shougo/vimproc.vim'        "Asynchronous execution in vim, a dependency 
 Plugin 'vimperator/vimperator.vim' "Vimperator config syntax highlighting
 Plugin 'keith/tmux.vim'            "Tmux config syntax highlighting
 Plugin 'tpope/vim-repeat'          "Repeat plugin commands with .
+Plugin 'Konfekt/FastFold'          "Make folds update only when necessary
 
 if vundleInstalled == 0
   echo "Installing vim plugins..."
@@ -155,7 +156,7 @@ inoremap jk <esc>
 vnoremap jk <esc>
 let mapleader=',' "Explicitly set leader
 
-"\ev and \sv open and source .vimrc
+",ev and ,sv open and source .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
