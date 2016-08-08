@@ -61,15 +61,9 @@ Plugin 'bitc/vim-hdevtools'        "Typecheck on file write (uses syntastic)
 Plugin 'michaeljsmith/vim-indent-object' "New vim motions based on indentation
 Plugin 'tmhedberg/Simpylfold'            "Fold python code properly
 
-"Writing Prose
-Plugin 'junegunn/goyo.vim'           "Center text and remove distractions such as airline
-Plugin 'plasticboy/vim-markdown'     "Better markdown syntax highlighting
-Plugin 'reedes/vim-pencil'           "Better controls inside vim for prose writing
-Plugin 'reedes/vim-wordy'            "Proofreading and suggestions
-Plugin 'reedes/vim-textobj-sentence' "Better sentence recognition in vim
-
 "Misc
 Plugin 'Shougo/vimproc.vim'        "Asynchronous execution in vim, a dependency for other plugins
+Plugin 'plasticboy/vim-markdown'   "Better markdown syntax highlighting
 Plugin 'vimperator/vimperator.vim' "Vimperator config syntax highlighting
 Plugin 'keith/tmux.vim'            "Tmux config syntax highlighting
 Plugin 'tpope/vim-repeat'          "Repeat plugin commands with .
