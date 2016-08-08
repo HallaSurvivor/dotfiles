@@ -78,13 +78,13 @@ PROMPT_COMMAND=_prompt_command
 # Source Additional Files #
 ###########################
 
-if [ -e ".functions" ]
+if [ -e "$HOME/.functions" ]
 then
-  source .functions
+  source $HOME/.functions
 fi
 
-if [ -e ".bashrc.private" ]
+if [ -e "$HOME/.bashrc.private" ]
 then
-  source .bashrc.private
+  source $HOME/.bashrc.private
 fi
 
