@@ -5,9 +5,9 @@
 # See the rest of my dotfiles here:
 # https://github.com/HallaSurvivor/dotfiles
 
-if [ -e ".bashrc" ]
+if [ -e "$HOME/.bashrc" ]
 then
-  source .bashrc
+  source $HOME/.bashrc
 fi
 
-eval `dircolors ~/.dircolors`
+eval `dircolors $HOME/.dircolors`
