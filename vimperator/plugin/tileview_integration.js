@@ -23,8 +23,16 @@ version 0.3:
 version 0.4:
   * Removed info section as it caused an unfixable bug.
 
-version 0.5
+version 0.5:
   * Added tf alias for tileFocus
+
+version 0.6:
+  * Added q[uit] function that overrides the default q[uit] behavior.
+    It will remove a tile if a tile exists, but will function
+    as default if no tile exists. This mimics vim's :q to close
+    a split.
+
+  * Fixed a bug where a list was populating wrong on startup
 */
 
 function TileviewIntegration()
@@ -83,11 +91,21 @@ function TileviewIntegration()
     );
 
     commands.addUserCommand(
-      ["tileR[emove]"], // :q is already used by vimperator
-      "Remove a pane from the tiling",
+      ["tileR[emove]"],
+      "Remove the current pane from the tiling",
       function() { TV.menuActions("remove"); }
     );
 
+    commands.addUserCommand(
+      ["q[uit]"],
+      "Remove open pane if tiled, close tab otherwise (just like vim)",
+      function(args) 
+      { 
+        if (TV.panelCount) TV.menuActions("remove");
+        else tabs.remove(config.browser.mCurrentTab, 1, false, 1);
+      }
+    );
+    
     commands.addUserCommand(
       ["tileEq[ualize]"],
       "Equalize the sizes of the panes in the tiling",
@@ -281,7 +299,7 @@ function TileviewIntegration()
     };
 
     commands.addUserCommand(
-      ["tileF[ocus]", "tf"],
+      ["tileF[ocus]"],
       "Focus on the panel with the tab in tabnumber n open. usage: tabNumber",
       //TODO - make this work with panels with tabs from other tabgroups.
       function(n)
