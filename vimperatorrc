@@ -65,9 +65,6 @@ set hlsearch
 "make searches ignore case
 set ignorecase
 
-"<leader>h will toggle search highlighting
-map <silent> <leader>h :set hlsearch!<cr>
-
 
 "" Misc Binds
 "Who scrolls horizontally? make h/l change tabs
