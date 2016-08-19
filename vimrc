@@ -169,8 +169,6 @@ nnoremap { {zz
 nnoremap } }zz
 nnoremap n nzz
 nnoremap N Nzz
-nnoremap J <C-D>zz
-nnoremap K <C-U>zz 
 
 vnoremap j jzz
 vnoremap k kzz
@@ -186,7 +184,7 @@ if has("spell")
 endif
 
 "Open G-undo and NERDTree
-nnoremap <silent> <leader>u :GundoToggle<CR>
+nnoremap <silent> <leader>u :MundoToggle<CR>
 nnoremap <silent> <leader>n :NERDTreeToggle<CR>
 
 "Automatically create {} brace pairs with a newline between them
@@ -197,6 +195,7 @@ inoremap {<tab> {<cr>}<esc>O
 nnoremap <leader>a=     :Tabularize /=<CR>
 nnoremap <leader>a,     :Tabularize /,<CR>
 nnoremap <leader>a<bar> :Tabularize /<bar><CR>
+nnoremap <leader>a-     :Tabularize /-><CR>
 nnoremap <leader>a      :Tabularize /
 
 "show type of expression under cursor (Haskell)
@@ -206,6 +205,9 @@ nnoremap <silent> <buffer> <leader>hT :GhcModTypeClear<CR>
 "Try to compile the program to get errors in advance (Haskell)
 nnoremap <silent> <buffer> <leader>hc :GhcModCheck<CR>
 nnoremap <silent> <buffer> <leader>hC :GhcModLint<CR>
+
+"Indent lines toggle
+nnoremap <leader>il :IndentLinesToggle<CR>
 
 "Tab completion for neocomplete
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
