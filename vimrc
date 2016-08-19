@@ -53,9 +53,9 @@ Plugin 'Townk/vim-autoclose'    "Automatically close braces when typing [, (, et
 
 "Haskell
 Plugin 'eagletmt/neco-ghc'         "Better autocompletion (uses neocomplete)
-Plugin 'neovimhaskell/haskell-vim' "Better syntax highlighting, etc.
 Plugin 'eagletmt/ghcmod-vim'       "Display types of expression
 Plugin 'bitc/vim-hdevtools'        "Typecheck on file write (uses syntastic)
+Plugin 'travitch/hasksyn'          "Better syntax highlighting, etc.
 
 "Python
 Plugin 'michaeljsmith/vim-indent-object' "New vim motions based on indentation
@@ -79,16 +79,6 @@ call vundle#end()
 
 "necoGhc
 let g:necoghc_enable_detailed_browse = 1 "Show types in necoghc
-
-"haskell-vim
-"Fix the random default indentations
-let g:haskell_indent_if    = 2
-let g:haskell_indent_case  = 2
-let g:haskell_indent_let   = 2
-let g:haskell_indent_where = 2
-let g:haskell_indent_do    = 2
-let g:haskell_indent_in    = 2
-let g:haskell_indent_guard = 2
 
 "neocomplete
 if has("lua")
