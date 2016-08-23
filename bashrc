@@ -68,8 +68,16 @@ function _git_prompt() {
 fi
 }
 
+# This function is inspired by the code here:
+# https://gist.github.com/miki725/9783474
+function _venv_prompt() {
+  if [ -n "$VIRTUAL_ENV" ]; then
+    echo -n "(`basename \"$VIRTUAL_ENV\"`) "
+  fi
+}
+
 function _prompt_command() {
-  PS1="`_git_prompt`"'\u@\h: \W> '
+  PS1="`_git_prompt``_venv_prompt`"'\u@\h: \W> '
 }
 
 PROMPT_COMMAND=_prompt_command
