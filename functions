@@ -12,10 +12,10 @@
 ###########
 
 # Conveniences
-function cdp { cd ~/Documents/programming; }
 function cdd { cd ~/dotfiles; }
 function cdD { cd ~/Documents; }
 function .. { cd ..; }
+function ... { cd ../..; }
 function dl { cd ~/Downloads; }
 function la { ls -a; } #show hidden files
 function reload { cd; source ~/.bashrc; cd -; } #reload bashrc
