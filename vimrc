@@ -69,6 +69,9 @@ Plugin 'keith/tmux.vim'            "Tmux config syntax highlighting
 Plugin 'tpope/vim-repeat'          "Repeat plugin commands with .
 Plugin 'Konfekt/FastFold'          "Make folds update only when necessary
 
+"Latex
+Plugin 'lervag/vimtex' "Latex rendering and keymappings
+
 if vundleInstalled == 0
   echo "Installing vim plugins..."
   echo ""
