@@ -15,7 +15,6 @@
 [github]
   user = HallaSurvivor
 
-
 # Use gh, gist, and gl as shortcuts
 # for github, github gist, and gitlab.
 [url "https://github.com/"]
@@ -67,4 +66,5 @@
   # Include a summary of merge changes in the merge commit message
   log = true
 
-
+[include]
+  path = ~/.gitconfig.private
