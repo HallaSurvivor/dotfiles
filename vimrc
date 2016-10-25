@@ -40,6 +40,7 @@ Plugin 'airblade/vim-gitgutter'    "Show git status to the left of line numbers
 Plugin 'luochen1990/rainbow'       "Change color of parentheses based on nesting level
 Plugin 'Yggdroot/indentLine'       "Show vertical lines indicating the indentation level
 Plugin 'vim-scripts/IndexedSearch' "Show which result of how many after searching
+Plugin 'sheerun/vim-polyglot'      "Add better syntax hilighting for a bunch of languages
 
 "General Programming
 Plugin 'scrooloose/syntastic'   "Check program syntax on saving file
@@ -55,11 +56,6 @@ Plugin 'Townk/vim-autoclose'    "Automatically close braces when typing [, (, et
 Plugin 'eagletmt/neco-ghc'         "Better autocompletion (uses neocomplete)
 Plugin 'eagletmt/ghcmod-vim'       "Display types of expression
 Plugin 'bitc/vim-hdevtools'        "Typecheck on file write (uses syntastic)
-Plugin 'travitch/hasksyn'          "Better syntax highlighting, etc.
-
-"Python
-Plugin 'michaeljsmith/vim-indent-object' "New vim motions based on indentation
-Plugin 'tmhedberg/Simpylfold'            "Fold python code properly
 
 "Misc
 Plugin 'Shougo/vimproc.vim'        "Asynchronous execution in vim, a dependency for other plugins
@@ -68,9 +64,6 @@ Plugin 'vimperator/vimperator.vim' "Vimperator config syntax highlighting
 Plugin 'keith/tmux.vim'            "Tmux config syntax highlighting
 Plugin 'tpope/vim-repeat'          "Repeat plugin commands with .
 Plugin 'Konfekt/FastFold'          "Make folds update only when necessary
-
-"Latex
-Plugin 'lervag/vimtex' "Latex rendering and keymappings
 
 if vundleInstalled == 0
   echo "Installing vim plugins..."
