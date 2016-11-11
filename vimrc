@@ -204,6 +204,9 @@ nnoremap <space> za
 "Y yanks to end of line instead of whole line
 nnoremap Y y$
 
+"U does a redo, instead of whatever it does by default
+nnoremap U <C-R>
+
 "pressing enter will remove hilights from search terms
 nnoremap <silent> <CR> :noh<CR><CR>
 
