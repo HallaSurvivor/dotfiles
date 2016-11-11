@@ -192,6 +192,12 @@ nnoremap <silent> <buffer> <leader>hT :GhcModTypeClear<CR>
 nnoremap <silent> <buffer> <leader>hc :GhcModCheck<CR>
 nnoremap <silent> <buffer> <leader>hC :GhcModLint<CR>
 
+"Recompile latex file
+nnoremap <leader>c :w<CR>:!rubber --pdf --warn all %<CR>
+
+"View pdf
+nnoremap <leader>v :!evince %:r.pdf &<CR><CR>
+
 "Indent lines toggle
 nnoremap <leader>il :IndentLinesToggle<CR>
 
