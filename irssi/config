@@ -35,6 +35,7 @@ channels = (
   { name = "#haskell-beginners"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#lesswrong"        ; chatnet = "Freenode"; autojoin = "yes"; },
   { name = "#bash"             ; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#neovim"           ; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = { };
@@ -233,6 +234,16 @@ windows = {
         type      = "CHANNEL";
         chat_type = "IRC";
         name      = "#bash";
+        tag       = "Freenode";
+      }
+    );
+  };
+  7 = {
+    items = (
+      {
+        type      = "CHANNEL";
+        chat_type = "IRC";
+        name      = "#neovim";
         tag       = "Freenode";
       }
     );
