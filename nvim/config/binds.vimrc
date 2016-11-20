@@ -69,7 +69,3 @@ nnoremap <leader>a,     :Tabularize /,<CR>
 nnoremap <leader>a<bar> :Tabularize /<bar><CR>
 nnoremap <leader>a-     :Tabularize /-><CR>
 nnoremap <leader>a      :Tabularize /
-
-"Haskell
-nnoremap <silent> <buffer> <leader>ht :GhcModType<CR>
-nnoremap <silent> <buffer> <leader>hT :GhcModTypeClear<CR>

@@ -25,7 +25,6 @@ call plug#begin('~/.config/nvim/plugged')
   "Haskell
   Plug 'neovimhaskell/haskell-vim'
   Plug 'eagletmt/neco-ghc'
-  Plug 'eagletmt/ghcmod-vim'
 
   "Syntax highlighting
   Plug 'plasticboy/vim-markdown'  
