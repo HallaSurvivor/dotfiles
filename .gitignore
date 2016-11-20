@@ -25,6 +25,9 @@ nvim/undodir
 # Nobody wants to see my vim dictionary for spelling
 vim/spell
 
+# Nobody wants to see my nvim history
+nvim/.netrwhist
+
 # Nobody needs my vim plugin folder. All my plugins are
 # visible at the top of my vimrc, and will automatically
 # be installed in their latest version by vundle.
