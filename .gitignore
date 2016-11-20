@@ -20,6 +20,7 @@ irssi/config.autosave
 
 # Nobody wants to see all my undos for vim.
 vim/undodir
+nvim/undodir
 
 # Nobody wants to see my vim dictionary for spelling
 vim/spell
@@ -28,6 +29,7 @@ vim/spell
 # visible at the top of my vimrc, and will automatically
 # be installed in their latest version by vundle.
 vim/bundle
+nvim/plugged
 
 # Nobody needs to see the in use vimperator info
 vimperator/info

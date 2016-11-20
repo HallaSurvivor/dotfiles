@@ -75,4 +75,4 @@ let g:rainbow_active = 1
 let g:vim_markdown_conceal = 0
 
 "neco-ghc
-g:necoghc_enable_detailed_browse = 1
+let g:necoghc_enable_detailed_browse = 1
