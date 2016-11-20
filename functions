@@ -35,6 +35,9 @@ function checkHistory { history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{prin
 # Functions #
 #############
 
+#open something with its default program
+function gO { gnomeOpen $1; }
+
 #mkdir then cd immediately
 function mcd
 {
