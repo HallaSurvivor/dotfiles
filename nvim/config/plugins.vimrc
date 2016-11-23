@@ -41,6 +41,9 @@ call plug#end()
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#max_menu_width = 0  "No max menu width
 
+"make tab scroll through deoplete
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 "neomake
 autocmd! BufWritePost * Neomake
 
