@@ -39,6 +39,7 @@ call plug#end()
 
 "deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#max_menu_width = 0  "No max menu width
 
 "neomake
 autocmd! BufWritePost * Neomake
