@@ -44,14 +44,6 @@ nnoremap U <C-R>
 "pressing enter will remove hilights from search terms
 nnoremap <silent> <CR> :noh<CR><CR>
 
-"Better navigation
-
-"panes
-nnoremap <silent> <c-j> <c-w>j
-nnoremap <silent> <c-k> <c-w>k
-nnoremap <silent> <c-h> <c-w>h
-nnoremap <silent> <c-l> <c-w>l
-
 "buffers
 nnoremap <silent> <leader>bc :enew<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
@@ -69,3 +61,16 @@ nnoremap <leader>a,     :Tabularize /,<CR>
 nnoremap <leader>a<bar> :Tabularize /<bar><CR>
 nnoremap <leader>a-     :Tabularize /-><CR>
 nnoremap <leader>a      :Tabularize /
+
+"make tab scroll through deoplete
+imap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+"make vim work with tmux
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <M-h> :TmuxNavigateLeft<CR>
+nnoremap <silent> <M-j> :TmuxNavigateDown<CR>
+nnoremap <silent> <M-k> :TmuxNavigateUp<CR>
+nnoremap <silent> <M-l> :TmuxNavigateRight<CR>
+nnoremap <silent> <M-\> :TmuxNavigatePrevious<CR>

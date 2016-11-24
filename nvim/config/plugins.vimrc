@@ -18,6 +18,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
+  Plug 'christoomey/vim-tmux-navigator'
   Plug 'godlygeek/tabular'
   Plug 'Townk/vim-autoclose'
   Plug 'neomake/neomake'
@@ -39,10 +40,6 @@ call plug#end()
 "deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#max_menu_width = 0  "No max menu width
-
-"make tab scroll through deoplete
-imap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 "neomake
 autocmd! BufWritePost * Neomake
