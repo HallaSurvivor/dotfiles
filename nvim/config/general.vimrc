@@ -22,9 +22,12 @@ set colorcolumn=80
 "We promise not to use <esc> as part of a shortcut
 set noesckeys
 
-"Require shortcut keys be pressed within .25 second
+"We're cool and don't use a mouse
+set mouse=
+
+"Require shortcut keys be pressed within .5 second
 set timeout
-set timeoutlen=250
+set timeoutlen=500
 
 "We promise to back things up by ourselves
 set nobackup
