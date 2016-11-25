@@ -1,4 +1,0 @@
-#!/bin/bash
-#make capslock function as backspace
-
-setxkbmap -option caps:backspace
