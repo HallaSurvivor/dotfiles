@@ -3,7 +3,6 @@
 call plug#begin('~/.config/nvim/plugged')
   "AutoCompletion
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'ervandew/supertab'
   Plug 'SirVer/ultisnips'
   Plug 'junegunn/fzf.vim'
 
