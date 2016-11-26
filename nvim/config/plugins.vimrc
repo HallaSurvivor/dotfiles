@@ -4,7 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
   "AutoCompletion
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'SirVer/ultisnips'
-  Plug 'junegunn/fzf.vim'
 
   "General layout
   Plug 'jeffkreeftmeijer/vim-numbertoggle'

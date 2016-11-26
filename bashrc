@@ -95,8 +95,3 @@ if [ -e "$HOME/.bashrc.private" ]
 then
   source $HOME/.bashrc.private
 fi
-
-if [ -e "$HOME/.fzfComplete" ]
-then
-  source $HOME/.fzfComplete
-fi
