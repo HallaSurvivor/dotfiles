@@ -22,7 +22,7 @@ for ({4:int} ${2:i} = 0; $2 < ${1:count}; ${3:++$2})
 }
 endsnippet
 
-snippet st "struct"
+snippet st "struct" b
 struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`}
 {
 	${0:/* data */}
