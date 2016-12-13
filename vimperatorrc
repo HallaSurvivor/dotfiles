@@ -61,6 +61,14 @@ set ignorecase
 
 
 "" Misc Binds
+"Who scrolls horizontally? make h/l change tabs
+nnoremap h :tabprevious<cr>
+nnoremap l :tabnext<cr>
+
+"Scroll faster with J and K
+nnoremap J <C-f>
+nnoremap K <C-b>
+
 "Use <C-h> and <C-l> to move tabs left and right
 nnoremap <C-h> :tabmove!<space>-1<cr>
 nnoremap <C-l> :tabmove!<space>+1<cr>
