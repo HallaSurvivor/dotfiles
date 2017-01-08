@@ -69,6 +69,9 @@ imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 "make <c-j> select snippets
 let g:UltiSnipsExpandTrigger="<c-j>"
 
+"show a the snippets for your current filetype
+nnoremap <leader>es :UltiSnipsEdit<CR>
+
 "make vim work with tmux
 let g:tmux_navigator_no_mappings = 1
 

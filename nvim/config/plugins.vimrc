@@ -76,3 +76,6 @@ let g:vim_markdown_conceal = 0
 
 "neco-ghc
 let g:necoghc_enable_detailed_browse = 1
+
+"Ultisnips
+let g:UltiSnipsEditSplit="vertical"
