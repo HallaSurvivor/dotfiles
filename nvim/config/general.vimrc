@@ -77,6 +77,9 @@ set foldmethod=indent
 "fold as far down as you can go
 set foldlevel=99
 
+"don't use any concealing
+set cole=0
+
 "Save a file with all the undos we've done.
 "But don't clutter the current folder. Put them in undodir
 set undofile

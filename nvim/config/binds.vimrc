@@ -66,6 +66,11 @@ nnoremap <leader>a      :Tabularize /
 imap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
+"make <c-k> complete neosnippets
+imap <C-k> <plug>(neosnippet_expand_or_jump)
+smap <C-k> <plug>(neosnippet_expand_or_jump)
+xmap <C-k> <plug>(neosnippet_expand_target)
+
 "make vim work with tmux
 let g:tmux_navigator_no_mappings = 1
 
