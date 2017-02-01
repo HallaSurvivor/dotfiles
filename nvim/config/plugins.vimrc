@@ -3,7 +3,8 @@
 call plug#begin('~/.config/nvim/plugged')
   "AutoCompletion
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'SirVer/ultisnips'
+  Plug 'Shuogo/neosnippet'
+  Plug 'Shuogo/neosnippet-snippets'
 
   "General layout
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -38,6 +39,11 @@ call plug#end()
 
 "deoplete
 let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+
+let g:min_pattern_length = 1
 let g:deoplete#max_menu_width = 0  "No max menu width
 
 "neomake
