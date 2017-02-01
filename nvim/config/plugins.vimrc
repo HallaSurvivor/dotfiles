@@ -3,8 +3,8 @@
 call plug#begin('~/.config/nvim/plugged')
   "AutoCompletion
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shuogo/neosnippet'
-  Plug 'Shuogo/neosnippet-snippets'
+  Plug 'Shougo/neosnippet.vim'
+  Plug 'Shougo/neosnippet-snippets'
 
   "General layout
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
