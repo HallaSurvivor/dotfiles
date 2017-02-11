@@ -66,10 +66,13 @@ nnoremap <leader>a      :Tabularize /
 imap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-"make <c-k> complete neosnippets
-imap <C-k> <plug>(neosnippet_expand_or_jump)
-smap <C-k> <plug>(neosnippet_expand_or_jump)
-xmap <C-k> <plug>(neosnippet_expand_target)
+"make <c-j> complete neosnippets
+imap <C-j> <plug>(neosnippet_expand_or_jump)
+smap <C-j> <plug>(neosnippet_expand_or_jump)
+xmap <C-j> <plug>(neosnippet_expand_target)
+
+"nerdTree
+nnoremap <leader>f :NERDTreeToggle<CR>
 
 "make vim work with tmux
 let g:tmux_navigator_no_mappings = 1
