@@ -84,3 +84,9 @@ set cole=0
 "But don't clutter the current folder. Put them in undodir
 set undofile
 set undodir=~/.config/nvim/undodir
+
+"Remember the line you were on when reopening a file
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+"Automatically compile latex docs on save
+au BufWritePost *.tex !latexmk
