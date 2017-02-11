@@ -4,7 +4,6 @@ call plug#begin('~/.config/nvim/plugged')
   "AutoCompletion
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'Shougo/neosnippet.vim'
-  Plug 'Shougo/neosnippet-snippets'
 
   "General layout
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -58,7 +57,6 @@ let g:indentLine_char          = "|"   "use a | as the indicator
 let g:indentLine_first_char    = "|"   "use a | even if it's the first one
 
 "nerdTree
-nnoremap <leader>f :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI  = 1
 let NERDTreeDirArrows  = 1
