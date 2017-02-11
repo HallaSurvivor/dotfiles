@@ -84,9 +84,3 @@ set cole=0
 "But don't clutter the current folder. Put them in undodir
 set undofile
 set undodir=~/.config/nvim/undodir
-
-"Default to tree view for netrw
-let g:netrw_liststyle = 3
-
-"Default to hiding hidden files in netrw
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
