@@ -35,6 +35,10 @@ nnoremap <silent> <leader>ss :set spell!<cr>
 "Automatically create {} brace pairs with a newline between them
 inoremap {<tab> {<cr>}<esc>O
 
+"H/L move to start and end of line
+nnoremap H ^
+nnoremap L g_
+
 "Y yanks to end of line instead of whole line
 nnoremap Y y$
 
