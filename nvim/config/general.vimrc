@@ -72,7 +72,7 @@ set autoindent
 set smartindent
 
 "Use indentation to determine what a fold is
-set foldmethod=indent
+set foldmethod=marker
 
 "fold as far down as you can go
 set foldlevel=99
