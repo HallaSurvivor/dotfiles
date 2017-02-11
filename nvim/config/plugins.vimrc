@@ -22,6 +22,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'godlygeek/tabular'
   Plug 'Townk/vim-autoclose'
   Plug 'neomake/neomake'
+  Plug 'scrooloose/nerdtree'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
 
   "Haskell
   Plug 'neovimhaskell/haskell-vim'
@@ -54,6 +56,12 @@ let g:indentLine_color_term    = 239   "indentline color
 let g:indentLine_concealcursor = "in"  "show even when inserting text
 let g:indentLine_char          = "|"   "use a | as the indicator
 let g:indentLine_first_char    = "|"   "use a | even if it's the first one
+
+"nerdTree
+nnoremap <leader>f :NERDTreeToggle<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI  = 1
+let NERDTreeDirArrows  = 1
 
 "airline
 "Use shorthand names in powerline
