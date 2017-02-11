@@ -89,4 +89,4 @@ set undodir=~/.config/nvim/undodir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "Automatically compile latex docs on save
-au BufWritePost *.tex !latexmk
+au BufWritePost *.tex :silent !latexmk
