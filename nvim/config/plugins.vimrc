@@ -16,7 +16,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-vinegar'
   Plug 'tpope/vim-fugitive'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'godlygeek/tabular'
