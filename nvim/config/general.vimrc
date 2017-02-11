@@ -89,4 +89,5 @@ set undodir=~/.config/nvim/undodir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "Automatically compile latex docs on save
+"TODO - there's a way to do this with neomake...
 au BufWritePost *.tex :silent !latexmk
