@@ -48,6 +48,9 @@ nnoremap U <C-R>
 "pressing enter will remove hilights from search terms
 nnoremap <silent> <CR> :noh<CR><CR>
 
+"press space to toggle folds
+nnoremap <space> za
+
 "buffers
 nnoremap <silent> <leader>bc :enew<cr>
 nnoremap <silent> <leader>bn :bnext<cr>
