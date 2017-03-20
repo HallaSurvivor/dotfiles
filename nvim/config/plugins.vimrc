@@ -25,14 +25,16 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'Xuyuanp/nerdtree-git-plugin'
 
   "Haskell
-  Plug 'neovimhaskell/haskell-vim'
   Plug 'eagletmt/neco-ghc'
 
   "Syntax highlighting
   Plug 'plasticboy/vim-markdown'  
   Plug 'vimperator/vimperator.vim'
   Plug 'keith/tmux.vim'
-  Plug 'sheerun/vim-polyglot'
+  Plug 'vim-jp/vim-cpp'
+  Plug 'neovimhaskell/haskell-vim'
+  Plug 'LaTeX-Box-Team/LaTeX-Box'
+  Plug 'mitsuhiko/vim-python-combined'
   
 call plug#end()
 
