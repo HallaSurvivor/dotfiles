@@ -6,7 +6,7 @@
 "Close insert/visual mode with jk
 inoremap jk <esc>
 vnoremap jk <esc>
-let mapleader=',' "Explicitly set leader
+let mapleader='v' "Explicitly set leader
 
 ",ev and ,sv open and source .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -20,13 +20,8 @@ set pastetoggle=<F2>
 nnoremap j jzz
 nnoremap k kzz
 nnoremap G Gzz
-nnoremap { {zz
-nnoremap } }zz
 nnoremap n nzz
 nnoremap N Nzz
-
-vnoremap j jzz
-vnoremap k kzz
 
 "Spell check
 set spelllang=en_us
