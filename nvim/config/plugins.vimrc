@@ -10,7 +10,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'bling/vim-airline'
   Plug 'airblade/vim-gitgutter'
   Plug 'luochen1990/rainbow'
-  Plug 'Yggdroot/indentline'
 
   "Quality of life
   Plug 'tpope/vim-commentary'
@@ -51,12 +50,6 @@ let g:deoplete#max_menu_width = 0  "No max menu width
 
 "neomake
 autocmd! BufWritePost * Neomake
-
-"indentLine
-let g:indentLine_color_term    = 239   "indentline color
-let g:indentLine_concealcursor = "in"  "show even when inserting text
-let g:indentLine_char          = "|"   "use a | as the indicator
-let g:indentLine_first_char    = "|"   "use a | even if it's the first one
 
 "nerdTree
 let NERDTreeQuitOnOpen = 1
