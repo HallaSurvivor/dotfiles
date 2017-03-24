@@ -77,9 +77,6 @@ nnoremap <C-l> :tabmove!<space>+1<cr>
 map <leader>g :tabgroups switch 
 abbreviate gr tabgroups
 
-"Exit insert mode easily
-inoremap jk <C-[>
-
 "" Plugin Binds
 "tileview integration
 command tc tileClose
