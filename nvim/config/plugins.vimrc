@@ -22,6 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'neomake/neomake'
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'vim-scripts/Gundo'
 
   "Haskell
   Plug 'eagletmt/neco-ghc'
