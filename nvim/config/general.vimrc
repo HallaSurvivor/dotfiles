@@ -77,6 +77,9 @@ set foldmethod=marker
 "fold as far down as you can go
 set foldlevel=99
 
+"start folded as far as we can go
+set foldlevelstart=0
+
 "don't use any concealing
 set cole=0
 
