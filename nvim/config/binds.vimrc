@@ -46,14 +46,6 @@ nnoremap <silent> <CR> :noh<CR><CR>
 "press space to toggle folds (still autoscroll)
 nnoremap <space> zazz
 
-"buffers
-nnoremap <silent> <leader>bc :enew<cr>
-nnoremap <silent> <leader>bn :bnext<cr>
-nnoremap <silent> <leader>bm :bprev<cr>
-
-"close buffer and move to previous one
-nnoremap <leader>bq :bp <bar> bd #<cr> 
-
 "Plugins
 
 "Tabularize
@@ -63,10 +55,6 @@ nnoremap <leader>a,     :Tabularize /,<CR>
 nnoremap <leader>a<bar> :Tabularize /<bar><CR>
 nnoremap <leader>a-     :Tabularize /-><CR>
 nnoremap <leader>a      :Tabularize /
-
-"make tab scroll through deoplete
-imap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 "make <c-j> complete neosnippets
 imap <C-j> <plug>(neosnippet_expand_or_jump)
