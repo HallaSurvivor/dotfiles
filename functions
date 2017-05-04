@@ -28,6 +28,9 @@ function lear { sl; }
 function clea { sl; }
 function starWars { telnet towel.blinkenlights.nl; }
 
+# Turn off fancy PS1 if it's taking too long to load
+function ps1_off { export PROMPT_COMMAND=""; export PS1="\u@\h: \W> "; }
+
 #Interesting command to see top 10 called commands
 function checkHistory { history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail | sort -nr; }
 
