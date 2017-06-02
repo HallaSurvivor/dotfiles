@@ -21,6 +21,7 @@ function la { ls -a; } #show hidden files
 function reload { cd; source ~/.bashrc; cd -; } #reload bashrc
 function update { git add -u; git status; } #update a git repo
 function gs { git status; }
+function gl { git log --oneline --graph --color --all --decorate; }
 
 # Jokes
 function clera { sl; }
