@@ -32,26 +32,39 @@
 #This function is shamelessly taken almost directly from:
 #http://www.opinionatedprogrammer.com
 #  /2011/01/colorful-bash-prompt-reflecting-git-status/
+#I've made a few edits to make it more customizable,
+#as well as (imo) more legible.
 function git_prompt() {
+
+  #ansi codes for which color to use when
+  local up_to_date=46
+  local untracked=43
+  local modified=45
+  local text_color=30
+
   local git_status="`git status -unormal 2>&1`"
   if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
+
+    #choose background color
     if [[ "$git_status" =~ nothing\ to\ commit ]]; then
-      local ansi=46
+      local background="$up_to_date"
     elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
-      local ansi=43
+      local background="$untracked"
     else
-      local ansi=45
+      local background="$modified"
     fi
+
+    #see if we're on master or not
     if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
       branch=${BASH_REMATCH[1]}
       test "$branch" != master || branch=' '
     else
-      # Detached HEAD.  (branch=HEAD is a faster alternative.)
-      branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null ||
-        echo HEAD`)"
+      #if we have a detached head, just say HEAD
+      branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null || echo HEAD`)"
     fi
-    echo -n '\[\e[0;37;'"$ansi"';1m\]'"$branch"'\[\e[0m\] '
-fi
+
+    echo -n '\[\e[0;'"$text_color"';'"$background"'m\]'"$branch"'\[\e[0m\] '
+  fi
 }
 
 # This function is inspired by the code here:
