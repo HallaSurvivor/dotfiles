@@ -53,3 +53,27 @@
 # More personal settings are stored in gitconfig.private
 [include]
   path = ~/.gitconfig.private
+
+# Aliases and conveniences
+# Many of these are shamelessly stolen from 
+# http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+# but some are my own, or have been modified by me.
+[alias]
+  # basic aliases
+  s  = status
+  br = branch
+  cm = commit
+  co = checkout
+
+  # Show a graph of the commit history, shown as follows:
+  # commit_hash (branches,tags) commit_message [author] (relative time since commit)
+  #   yellow          red            white       blue              green
+  #
+  # I often modify this by typing either
+  # git ls --numstat
+  # or
+  # git ls --all
+  #
+  # numstat will show which files were changed
+  # all will show this information for ALL branches, not just the current one
+  ls = log --graph --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cr)" --decorate

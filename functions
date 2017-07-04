@@ -28,10 +28,5 @@ function ...... { cd ../../../../..; }
 function reload { cd; source ~/.bashrc; cd -; } #reload bashrc
 function cmu { ssh cgrossac@unix.andrew.cmu.edu; }
 
-#TODO - move to gitconfig
-function update { git add -u; git status; } #update a git repo
-function gs { git status; }
-function gl { git log --oneline --graph --color --all --decorate; }
-
 #open something with its default program
 function gO { gnome-open $1; }
