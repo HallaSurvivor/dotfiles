@@ -29,7 +29,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   "Syntax highlighting
   Plug 'plasticboy/vim-markdown'  
-  Plug 'vimperator/vimperator.vim'
   Plug 'keith/tmux.vim'
   Plug 'vim-jp/vim-cpp'
   Plug 'neovimhaskell/haskell-vim'
