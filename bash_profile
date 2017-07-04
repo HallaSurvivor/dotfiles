@@ -9,5 +9,3 @@ if [ -e "$HOME/.bashrc" ]
 then
   source $HOME/.bashrc
 fi
-
-eval `dircolors $HOME/.dircolors`

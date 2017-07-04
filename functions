@@ -14,26 +14,17 @@
 # Conveniences
 function cdd { cd ~/dotfiles; }
 function cdD { cd ~/Documents; }
-function .. { cd ..; }
-function ... { cd ../..; }
-function dl { cd ~/Downloads; }
-function la { ls -a; } #show hidden files
+function ..     { cd ..; }
+function ...    { cd ../..; }
+function ....   { cd ../../..; }
+function .....  { cd ../../../..; }
+function ...... { cd ../../../../..; }
 function reload { cd; source ~/.bashrc; cd -; } #reload bashrc
+
+#TODO - move to gitconfig
 function update { git add -u; git status; } #update a git repo
 function gs { git status; }
 function gl { git log --oneline --graph --color --all --decorate; }
-
-# Jokes
-function clera { sl; }
-function lear { sl; }
-function clea { sl; }
-function starWars { telnet towel.blinkenlights.nl; }
-
-# Turn off fancy PS1 if it's taking too long to load
-function ps1_off { export PROMPT_COMMAND=""; export PS1="\u@\h: \W> "; }
-
-#Interesting command to see top 10 called commands
-function checkHistory { history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail | sort -nr; }
 
 #############
 # Functions #
@@ -41,64 +32,3 @@ function checkHistory { history | awk '{print \$2}' | awk 'BEGIN {FS=\"|\"}{prin
 
 #open something with its default program
 function gO { gnome-open $1; }
-
-#mkdir then cd immediately
-function mcd
-{
-  mkdir -p $1;
-  cd $1;
-}
-
-#mv then cd immediately
-function vcd
-{
-  if (($# != 2)); then
-    echo "Usage: vcd <current path> <destination>";
-  elif [[ -f $2 ]]; then
-    echo "Destination must be a directory, not a file.";
-  else
-    mv $1 $2;
-    cd $2;
-  fi
-}
-
-#mv to programming folder.
-function mvp
-{
-  programming=~/Documents/programming
-
-  if [[ -z $1 ]]; then
-    echo "Usage: mvp <file to move> [subdirectory]";
-  elif [[ -z $2 ]]; then
-    mv $1 $programming;
-  else
-    if [[ -d "$programming/$2" ]]; then
-      mv $1 $programming/$2;
-    else
-      mv $1 $programming;
-    fi
-  fi
-}
-
-# Determine filesize or directory size.
-# Again, shamelessly taken from:
-# https://github.com/mathiasbynens/dotfiles/blob/master/.functions
-function fs() 
-{
-	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
-	else
-		local arg=-sh;
-	fi
-	if [[ -n "$@" ]]; then
-		du $arg -- "$@";
-	else
-		du $arg .[^.]* ./*;
-	fi;
-}
-
-# Automatically symlink something in dotfiles.
-function dot()
-{
-  ln -s ~/dotfiles/"$1" ~/."$1";
-}

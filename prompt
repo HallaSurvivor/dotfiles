@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# Christopher Grossack's ps1 config
+#
+# [branchname] (venvname) dir >
+#
+# branchname is colored:
+#   Green  - clean working copy
+#   Yellow - untracked files
+#   Red    - uncommitted changes (doesn't care about staging)
+#
+#   If branch is master, the name is omitted, 
+#   leaving only a colored square.
+#
+#
+# venvname is the python venv currently sourced.
+#
+#
+# NOTE: I also export two functions, `ps1_off` and `ps1_on`
+#
+#     These behave in the intuitive way, turning off
+#     the fancy parts of the prompt, because with large
+#     repos, parsing the git status output can be slow.
+# 
+#
+# See the rest of my dotfiles here:
+# https://github.com/HallaSurvivor/dotfiles
+
+#############
+# Build PS1 #
+#############
+
+#This function is shamelessly taken almost directly from:
+#http://www.opinionatedprogrammer.com
+#  /2011/01/colorful-bash-prompt-reflecting-git-status/
+function git_prompt() {
+  local git_status="`git status -unormal 2>&1`"
+  if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
+    if [[ "$git_status" =~ nothing\ to\ commit ]]; then
+      local ansi=46
+    elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
+      local ansi=43
+    else
+      local ansi=45
+    fi
+    if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
+      branch=${BASH_REMATCH[1]}
+      test "$branch" != master || branch=' '
+    else
+      # Detached HEAD.  (branch=HEAD is a faster alternative.)
+      branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null ||
+        echo HEAD`)"
+    fi
+    echo -n '\[\e[0;37;'"$ansi"';1m\]'"$branch"'\[\e[0m\] '
+fi
+}
+
+# This function is inspired by the code here:
+# https://gist.github.com/miki725/9783474
+function venv_prompt() {
+  if [ -n "$VIRTUAL_ENV" ]; then
+    echo -n "(`basename \"$VIRTUAL_ENV\"`) "
+  fi
+}
+
+PROMPT='\u@\h: \W> '
+
+function prompt_command() {
+  PS1="`_git_prompt``_venv_prompt`"$PROMPT
+}
+
+##############
+# Toggle PS1 #
+##############
+
+function ps1_on { export PROMPT_COMMAND=prompt_command; }
+function ps1_off { export PROMPT_COMMAND=""; export PS1=$PROMPT; }
+
+# Turn it on by default
+ps1_on();

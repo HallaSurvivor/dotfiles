@@ -39,49 +39,6 @@ function _path_add()
 
 # The path is actually updated in bashrc.private, since it isn't universal.
 
-#############
-# Build PS1 #
-#############
-
-#This function is shamelessly taken almost directly from:
-#http://www.opinionatedprogrammer.com
-#  /2011/01/colorful-bash-prompt-reflecting-git-status/
-function _git_prompt() {
-  local git_status="`git status -unormal 2>&1`"
-  if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
-    if [[ "$git_status" =~ nothing\ to\ commit ]]; then
-      local ansi=46
-    elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
-      local ansi=43
-    else
-      local ansi=45
-    fi
-    if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
-      branch=${BASH_REMATCH[1]}
-      test "$branch" != master || branch=' '
-    else
-      # Detached HEAD.  (branch=HEAD is a faster alternative.)
-      branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null ||
-        echo HEAD`)"
-    fi
-    echo -n '\[\e[0;37;'"$ansi"';1m\]'"$branch"'\[\e[0m\] '
-fi
-}
-
-# This function is inspired by the code here:
-# https://gist.github.com/miki725/9783474
-function _venv_prompt() {
-  if [ -n "$VIRTUAL_ENV" ]; then
-    echo -n "(`basename \"$VIRTUAL_ENV\"`) "
-  fi
-}
-
-function _prompt_command() {
-  PS1="`_git_prompt``_venv_prompt`"'\u@\h: \W> '
-}
-
-PROMPT_COMMAND=_prompt_command
-
 ###########################
 # Source Additional Files #
 ###########################
@@ -89,6 +46,11 @@ PROMPT_COMMAND=_prompt_command
 if [ -e "$HOME/.functions" ]
 then
   source $HOME/.functions
+fi
+
+if [ -e "$HOME/.prompt" ]
+then
+  source $HOME/.prompt
 fi
 
 if [ -e "$HOME/.bashrc.private" ]

@@ -3,10 +3,6 @@
 # See the rest of my dotfiles here:
 # https://github.com/HallaSurvivor/dotfiles
 
-# More personal settings are stored in gitconfig.private
-[include]
-  path = ~/dotfiles/gitconfig.private
-
 # Identification
 [user]
   name  = Christopher Grossack
@@ -14,18 +10,6 @@
 
 [github]
   user = HallaSurvivor
-
-# Use gh, gist, and gl as shortcuts
-# for github, github gist, and gitlab.
-[url "https://github.com/"]
-  insteadOf = gh:
-
-[url "https://gist.github.com/"]
-  insteadOf = gist:
-
-[url "https://gitlab.com/"]
-  insteadOf = gl:
-
 
 [color]
   # Use color whenever possible
@@ -66,5 +50,6 @@
   # Include a summary of merge changes in the merge commit message
   log = true
 
+# More personal settings are stored in gitconfig.private
 [include]
   path = ~/.gitconfig.private
