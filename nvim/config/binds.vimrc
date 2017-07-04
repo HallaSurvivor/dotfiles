@@ -16,10 +16,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 "needing massive reformatting
 set pastetoggle=<F2>
 
-"Make vim autoscroll
-nnoremap j jzz
-nnoremap k kzz
-nnoremap G Gzz
+"Show the search results in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
 
