@@ -11,7 +11,7 @@
 echo ""
 echo ""
 
-if [ -e "$HOME/.bashrc" ]
+if [ -e "$HOME/.bashrc" ];
 then
   source $HOME/.bashrc
 fi
