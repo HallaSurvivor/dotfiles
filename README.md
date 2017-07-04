@@ -13,8 +13,8 @@ I try to keep everything well commented :)
 ## Installation
 
 I keep two branches active, one for my personal computer, and one
-for the andrew machines at CMU. The andrew one is substantially more
-portable, but I try to keep them both pretty dependence free.
+for the andrew machines at CMU. The andrew one is substantially smaller,
+but I try to keep them both pretty dependence free.
 
 * Clone wherever you like (intended ~/dotfiles) and change bashrc to 
 reflect this.
