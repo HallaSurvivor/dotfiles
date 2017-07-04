@@ -26,6 +26,9 @@ export LANGUAGE=en_US.UTF-8
 #Tell everyone where our dotfiles directory is
 export DOTFILES=$HOME/dotfiles
 
+#Tell cowsay where the cows are
+export COWPATH=$DOTFILES/bin/cows
+
 ##############
 # Build PATH #
 ##############
