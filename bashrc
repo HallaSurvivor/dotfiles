@@ -1,11 +1,10 @@
 # Christopher Grossack's bashrc. 
 #
-# Additional files (functions and bashrc.private) are sourced
-# at the bottom of this file. This file is responsible for:
+# Additional files are sourced at the bottom of this file. 
+# This file is responsible for:
 # 
 # * Defining global vars
-# * Exporting the PS1 (terminal prompt)
-# * Defining the function to build $PATH
+# * Building $PATH
 #
 # See the rest of my dotfiles here:
 # https://github.com/HallaSurvivor/dotfiles
@@ -24,36 +23,34 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+#Tell everyone where our dotfiles directory is
+export DOTFILES=$HOME/dotfiles
+
 ##############
 # Build PATH #
 ##############
 
 #This function is shamelessly taken from:
 #http://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
-function _path_add()
+function path_add()
 {
   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
     PATH="${PATH:+"$PATH:"}$1"
   fi
 }
 
-# The path is actually updated in bashrc.private, since it isn't universal.
+path_add "$DOTFILES/bin"
 
 ###########################
 # Source Additional Files #
 ###########################
 
-if [ -e "$HOME/.functions" ]
+if [ -e "$DOTFILES/functions" ]
 then
-  source $HOME/.functions
+  source $DOTFILES/functions
 fi
 
-if [ -e "$HOME/.prompt" ]
+if [ -e "$DOTFILES/prompt" ]
 then
-  source $HOME/.prompt
-fi
-
-if [ -e "$HOME/.bashrc.private" ]
-then
-  source $HOME/.bashrc.private
+  source $DOTFILES/prompt
 fi

@@ -4,6 +4,12 @@
 # I tend not to use aliases as functions are safer 
 # (aliases are nothing but string substitutions)
 #
+# NOTE: I export two more functions in prompt
+# `ps1_on` and `ps1_off`
+#
+# I put them there because they really belong
+# with the prompt, not with these functions.
+#
 # See the rest of my dotfiles here:
 # https://github.com/HallaSurvivor/dotfiles
 
@@ -25,10 +31,6 @@ function reload { cd; source ~/.bashrc; cd -; } #reload bashrc
 function update { git add -u; git status; } #update a git repo
 function gs { git status; }
 function gl { git log --oneline --graph --color --all --decorate; }
-
-#############
-# Functions #
-#############
 
 #open something with its default program
 function gO { gnome-open $1; }
