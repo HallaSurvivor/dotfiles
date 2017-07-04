@@ -48,12 +48,12 @@ path_add "$DOTFILES/bin"
 # Source Additional Files #
 ###########################
 
-if [ -e "$DOTFILES/functions" ]
+if [ -e "$DOTFILES/functions" ];
 then
   source $DOTFILES/functions
 fi
 
-if [ -e "$DOTFILES/prompt" ]
+if [ -e "$DOTFILES/prompt" ];
 then
   source $DOTFILES/prompt
 fi
