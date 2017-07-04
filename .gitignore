@@ -34,5 +34,5 @@ nvim/.netrwhist
 vim/bundle
 nvim/plugged
 
-# Nobody needs to see the in use vimperator info
-vimperator/info
+# Probably shouldn't go showing off our moss script
+bin/*moss
