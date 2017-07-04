@@ -61,6 +61,7 @@
 [alias]
   # basic aliases
   s  = status
+  a  = add -A
   br = branch
   cm = commit
   co = checkout
