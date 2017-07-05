@@ -25,6 +25,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'simnalamburt/vim-mundo'
 
   "Haskell
+  Plug 'Shougo/vimproc'
   Plug 'eagletmt/neco-ghc'
 
   "Syntax highlighting
