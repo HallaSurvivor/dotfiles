@@ -43,6 +43,8 @@ function path_add()
 }
 
 path_add "$DOTFILES/bin"
+path_add "$HOME/.local/bin"
+path_add "/sbin"
 
 ###########################
 # Source Additional Files #
