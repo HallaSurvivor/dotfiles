@@ -19,9 +19,6 @@ set nospell
 "Put a bar at column 80 for code style
 set colorcolumn=80 
 
-"We promise not to use <esc> as part of a shortcut
-set noesckeys
-
 "We're cool and don't use a mouse
 set mouse=
 
