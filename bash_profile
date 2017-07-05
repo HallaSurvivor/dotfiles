@@ -7,7 +7,7 @@
 
 (echo "So much time and so little to do.";
  echo "Wait a minute. Strike that. Reverse it.";
- echo "~ Willy Wonka") | pysay -n -f stegosaurus.cow
+ echo "~ Willy Wonka") | pysay -n -f turtle.cow
 echo ""
 echo ""
 
