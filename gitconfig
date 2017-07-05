@@ -63,7 +63,7 @@
   s  = status
   a  = add -A
   br = branch
-  cm = commit
+  cm = commit -m
   co = checkout
   cp = cherry-pick
 
