@@ -19,7 +19,6 @@
 
 # Conveniences
 function cdd { cd ~/dotfiles; }
-function cdD { cd ~/Documents; }
 function ..     { cd ..; }
 function ...    { cd ../..; }
 function ....   { cd ../../..; }
