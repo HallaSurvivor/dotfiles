@@ -67,7 +67,7 @@
   cp = cherry-pick
 
   # update the directories given, then show them to double check
-  a = "!git add -A $@ && git status"
+  a = "!f(){ git add -A $1; git status; }; f"
 
   # Show a graph of the commit history, shown as follows:
   # commit_hash (branches,tags) commit_message [author] (relative time since commit)
