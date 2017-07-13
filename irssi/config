@@ -8,34 +8,38 @@
 
 servers = (
   {
-    address     = "chat.freenode.net";
-    chatnet     = "Freenode";
-    port        = "7000";
-    use_ssl     = "yes";
-    ssl_cert    = "~/dotfiles.private/irssi.pem";
-    ssl_verify  = "yes";
-    ssl_capath  = "/etc/ssl/certs";
+    address = "chat.freenode.net";
+    chatnet = "Freenode";
+    port = "7000";
+    use_ssl = "yes";
+    ssl_cert = "~/dotfiles.private/irssi.pem";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs";
     autoconnect = "yes";
   }
 );
 
 chatnets = {
   Freenode = {
-    type      = "IRC";
+    type = "IRC";
     max_kicks = "1";
-    max_msgs  = "4";
+    max_msgs = "4";
     max_whois = "1";
   };
 };
 
 channels = (
-  { name = "#irssi"            ; chatnet = "Freenode"; autojoin = "No";  },
-  { name = "#suse"             ; chatnet = "Freenode"; autojoin = "No";  },
-  { name = "#haskell"          ; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#haskell-beginners"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#lesswrong"        ; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#bash"             ; chatnet = "freenode"; autojoin = "yes"; }
-  { name = "#neovim"           ; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#irssi"; chatnet = "Freenode"; autojoin = "No"; },
+  { name = "#suse"; chatnet = "Freenode"; autojoin = "No"; },
+  { name = "#haskell"; chatnet = "freenode"; autojoin = "yes"; },
+  {
+    name = "#haskell-beginners";
+    chatnet = "freenode";
+    autojoin = "yes";
+  },
+  { name = "#lesswrong"; chatnet = "Freenode"; autojoin = "yes"; },
+  { name = "#bash"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#neovim"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = { };
@@ -46,21 +50,21 @@ statusbar = {
   items = {
 
     barstart = "{sbstart}";
-    barend   = "{sbend}";
+    barend = "{sbend}";
 
     topicbarstart = "{topicsbstart}";
-    topicbarend   = "{topicsbend}";
+    topicbarend = "{topicsbend}";
 
     time = "{sb $Z}";
     user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
 
-    window       = "{sb $winref:$tag/$itemname{sbmode $M}}";
+    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
     window_empty = "{sb $winref{sbservertag $tag}}";
 
-    prompt       = "{prompt $[.15]itemname}";
+    prompt = "{prompt $[.15]itemname}";
     prompt_empty = "{prompt $winname}";
 
-    topic       = " $topic";
+    topic = " $topic";
     topic_empty = " Irssi v$J - http://www.irssi.org";
 
   };
@@ -72,69 +76,69 @@ statusbar = {
 
       # General settings for this statusbar
 
-      disabled  = "no";
-      type      = "window";
+      disabled = "no";
+      type = "window";
       placement = "bottom";
-      position  = "1";
-      visible   = "active";
+      position = "1";
+      visible = "active";
 
       # The items visible on the bar, in order from left to right.
 
       items = {
-        barstart     = { priority = "100"; };
-        time         = { };
-        window       = { };
+        barstart = { priority = "100"; };
+        time = { };
+        window = { };
         window_empty = { };
-        usercount    = { };
-        barend       = { priority = "100"; alignment = "right"; };
+        usercount = { };
+        barend = { priority = "100"; alignment = "right"; };
       };
 
     };
 
     window_inact = {
 
-      type      = "window";
+      type = "window";
       placement = "bottom";
-      position  = "1";
-      visible   = "inactive";
+      position = "1";
+      visible = "inactive";
 
       items = {
-        barstart     = { priority = "100"; };
-        window       = { };
+        barstart = { priority = "100"; };
+        window = { };
         window_empty = { };
-        usercount    = { };
-        barend       = { priority = "100"; alignment = "right"; };
+        usercount = { };
+        barend = { priority = "100"; alignment = "right"; };
       };
 
     };
 
     topic = {
 
-      type      = "window";
+      type = "window";
       placement = "top";
-      position  = "1";
-      visible   = "always";
+      position = "1";
+      visible = "always";
 
       items = {
         topicbarstart = { priority = "100"; };
-        topic         = { };
-        topic_empty   = { };
-        topicbarend   = { priority = "100"; alignment = "right"; };
+        topic = { };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
       };
 
     };
 
     prompt = {
 
-      type      = "root";
+      type = "root";
       placement = "bottom";
-      position  = "100";
-      visible   = "always";
+      position = "100";
+      visible = "always";
 
       items = {
-        prompt       = { priority = "-1"; };
+        prompt = { priority = "-1"; };
         prompt_empty = { priority = "-1"; };
-        input        = { priority = "10"; };
+        input = { priority = "10"; };
       };
 
     };
@@ -142,8 +146,8 @@ statusbar = {
     awl_0 = {
       items = {
         barstart = { priority = "100"; };
-        awl_0    = { };
-        barend   = { priority = "100"; alignment = "right"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
       };
     };
   };
@@ -152,10 +156,10 @@ statusbar = {
 
 settings = {
   core = {
-    real_name         = "Christopher Grossack";
-    user_name         = "HallaSurvivor";
-    nick              = "HallaSurvivor";
-    timestamp_format  = "%H:%M:%S";
+    real_name = "Christopher Grossack";
+    user_name = "HallaSurvivor";
+    nick = "HallaSurvivor";
+    timestamp_format = "%H:%M:%S";
     settings_autosave = "no";
   };
 
@@ -163,23 +167,22 @@ settings = {
 
   "fe-common/core" = {
     activity_hide_level = "QUITS JOINS PARTS KICKS MODES TOPIC NICKS";
-    bell_beeps          = "yes";
-    beep_msg_level      = "MSGS NOTICES DCC DCCMSGS HILIGHT";
-    theme               = "xchat2";
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
+    theme = "xchat2";
   };
 
   "perl/core/scripts" = {
-    neat_dynamic             = "yes";
-    neat_shrink              = "yes";
-    neat_staircase_shrink    = "no";
-    awl_shared_sbar          = "OFF";
-    awl_block                = "25";
-    awl_sbar_maxlength       = "yes";
-    awl_maxlines             = "5";
+    neat_dynamic = "yes";
+    neat_shrink = "yes";
+    neat_staircase_shrink = "no";
+    awl_shared_sbar = "OFF";
+    awl_block = "25";
+    awl_sbar_maxlength = "yes";
+    awl_maxlines = "5";
     awl_viewer_tmux_position = "left";
-    awl_viewer               = "no";
-    fancy_abbrev             = "fancy";
-    hilight_cmd_on_hilight   = "~/scripts/tmux-irssi-on";
+    awl_viewer = "no";
+    fancy_abbrev = "fancy";
+    hilight_cmd_on_hilight = "~/scripts/tmux-irssi-on";
     hilight_cmd_on_dehilight = "~/scripts/tmux-irssi-off";
   };
 
@@ -190,66 +193,66 @@ ignores = ( { level = "JOINS PARTS QUITS MODES NICKS"; } );
 
 hilights = (
   { text = "HallaSurvivor"; nick = "no"; word = "yes"; },
-  { text = "Halla";         nick = "no"; word = "yes"; }
+  { text = "Halla"; nick = "no"; word = "yes"; }
 );
 
 
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-  2 = { name = "hilight"; sticky = "yes";                   };
+  2 = { name = "hilight"; sticky = "yes"; };
 
   3 = {
     items = (
       {
-        type      = "CHANNEL";
+        type = "CHANNEL";
         chat_type = "IRC";
-        name      = "#haskell";
-        tag       = "Freenode";
+        name = "#haskell";
+        tag = "Freenode";
       }
     );
   };
   4 = {
     items = (
       {
-        type      = "CHANNEL";
+        type = "CHANNEL";
         chat_type = "IRC";
-        name      = "#haskell-beginners";
-        tag       = "Freenode";
+        name = "#haskell-beginners";
+        tag = "Freenode";
       }
     );
   };
   5 = {
     items = (
       {
-        type      = "CHANNEL";
+        type = "CHANNEL";
         chat_type = "IRC";
-        name      = "#lesswrong";
-        tag       = "Freenode";
+        name = "#lesswrong";
+        tag = "Freenode";
       }
     );
   };
   6 = {
     items = (
       {
-        type      = "CHANNEL";
+        type = "CHANNEL";
         chat_type = "IRC";
-        name      = "#bash";
-        tag       = "Freenode";
+        name = "#bash";
+        tag = "Freenode";
       }
     );
   };
   7 = {
     items = (
       {
-        type      = "CHANNEL";
+        type = "CHANNEL";
         chat_type = "IRC";
-        name      = "#neovim";
-        tag       = "Freenode";
+        name = "#neovim";
+        tag = "Freenode";
       }
     );
   };
 };
 mainwindows = {
   1 = { first_line = "5"; lines = "58"; };
-  2 = { first_line = "0"; lines = "5";  };
+  2 = { first_line = "0"; lines = "5"; };
 };
