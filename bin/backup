@@ -1,0 +1,98 @@
+#!/bin/sh
+# Automatic backup script.
+# coder: Christopher Grossack
+# date: Dec 26, 2015
+
+# Computer specific settings
+computerLabel="Computer Name"
+server="Server Location"
+directories=("Directories" "To" "Back" "Up") # Directories are relative to ~
+
+# Automatic generation of tarfile name
+datelabel=$(date +'%y_%m_%d')
+tar_label=$computerLabel_${datelabel}.tar.gz
+
+# Automatically derive where the server stores backups
+serverDir="$(ssh $server 'printf $backupDir' | awk 'END {print $NF}')"
+
+function log()
+{
+  cd `dirname $0`;
+  echo "$1" >> backup.log;
+}
+
+logMsg="date (Y_M_D): $datelabel :: backing up: ${directories[@]}"
+
+pushBackup=1
+while getopts 'b' flag; 
+do
+    case "${flag}" in
+        b) pushBackup=0;;
+        *) error "unexpected option ${flag}";;
+    esac
+done
+
+if [[ $pushBackup == 0 ]]
+then
+    echo "Running without backing up"
+fi
+
+#Set up the temporary file scheme
+if [ -d /tmp/$computerLabel ]
+then
+    : 
+else
+    mkdir /tmp/$computerLabel
+fi
+
+#Create the tar file in the tmp folder
+echo "Making the tar file"
+cd ~
+
+tar cPvfz /tmp/$computerLabel/$tar_label "${directories[@]}"
+if [ "$?" -ne 0 ]
+then
+  log "$logMsg :: ERROR making tarfile" 
+  echo "Failure making tar file." >&2
+  exit 1
+fi
+
+cd /tmp
+
+echo ""
+echo $(du -h $computerLabel/$tar_label)
+echo ""
+
+#Send the new backup to server
+if [[ $pushBackup == 1 ]]
+then
+  rsync -avhRP $computerLabel/$tar_label $server:$serverDir
+  if [ "$?" -ne 0 ]
+  then
+    log "$logMsg :: ERROR running rsync"
+    echo "Failure during rsync." >&2
+    exit 1
+  fi
+fi
+
+#Remove the temporary tar file
+echo "Removing the temporary tar file"
+rm -rf /tmp/$computerLabel
+if [ "$?" -ne 0 ]
+then
+  log "$logMsg :: ERROR removing tar file"
+  echo "Failure removing tar file" >&2
+  exit 1
+fi
+
+#Append the date, time, and files backed up to the logfile
+if [[ $pushBackup == 0 ]]
+then
+  log "$logMsg :: push to server: false"
+else
+  log "$logMsg :: push to server: true"
+fi
+
+#Say we finished
+echo "Backup Complete!"
+exit 0

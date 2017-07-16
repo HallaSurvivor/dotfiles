@@ -13,6 +13,9 @@
 *.p7b
 *.crl
 
+# Nobody wants to see my logfiles
+*.log
+
 # Nobody wants to see what irssi automatically assigns things
 irssi/saved_colors
 irssi/_windowlist
