@@ -7,6 +7,7 @@
 [user]
   name  = Christopher Grossack
   email = HallaSurvivor@gmail.com
+  signingkey = CE3A30F179604ACF
 
 [github]
   user = HallaSurvivor
@@ -49,10 +50,6 @@
 [merge]
   # Include a summary of merge changes in the merge commit message
   log = true
-
-# More personal settings are stored in gitconfig.private
-[include]
-  path = ~/.gitconfig.private
 
 # Aliases and conveniences
 # Many of these are shamelessly stolen from 
