@@ -176,13 +176,6 @@ syntax enable
 set background=dark
 colorscheme monokai
 
-"monokai's background doesn't quite match my terminal, here's a fix.
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
-
-"Make the comments brighter to be more visible.
-highlight Comment ctermfg=249
-
 "General
 
 "Use utf8

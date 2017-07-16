@@ -4,6 +4,13 @@ AKA my dotfiles.
 
 ---
 
+This is my master branch. It is made for my primary computer, where I do
+a lot of experimentation with my workflow, etc. For more stable counterparts,
+which reflect the things that I'm 100% sure I use all the time, see the other
+branches of this repo.
+
+---
+
 I definitely spend too much time playing with these, and this gives me
 a way to sync them between computers and keep them under version control.
 
