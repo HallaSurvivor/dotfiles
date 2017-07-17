@@ -84,3 +84,12 @@
 
   # Grep for a string inside all the files in the repo
   gr = grep -IiE
+
+  # Ignore changes to a file
+  ignore = update-index --assume-unchanged
+
+  # Stop ignoring changes to a file
+  unignore = update-index --no-assume-unchanged
+
+  # Show ignored files
+  ignored = "!git ls-files -v | grep ^h | cut -c 3-"
