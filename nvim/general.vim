@@ -1,8 +1,10 @@
-"Christopher Grossack's nvimrc
+"Christopher Grossack's nvim settings 
+"(everything but plugins)
 "
 "See the rest of my dotfiles here:
 "https://github.com/HallaSurvivor/dotfiles
 
+" General Settings {{{
 "By default, don't use system pasting
 set nopaste
 
@@ -80,3 +82,39 @@ set undodir=~/.config/nvim/undodir
 
 "Remember the line you were on when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"}}}
+
+" Binds {{{
+"Close insert/visual mode with jk
+inoremap jk <esc>
+vnoremap jk <esc>
+let mapleader=' '
+
+"Allow for right-click paste without
+"needing massive reformatting
+set pastetoggle=<F2>
+
+"Show the search results in the middle of the screen
+nnoremap n nzz
+nnoremap N Nzz
+
+"Spell check
+set spelllang=en_us
+nnoremap <silent> <leader>ss :set spell!<cr>
+
+"H/L move to start and end of line
+nnoremap H ^
+nnoremap L g_
+
+"Y yanks to end of line instead of whole line
+nnoremap Y y$
+
+"U does a redo, instead of whatever it does by default
+nnoremap U <C-R>
+
+"pressing enter will remove hilights from search terms
+nnoremap <silent> <CR> :noh<CR><CR>
+
+"toggle folds (still autoscroll)
+nnoremap <leader>f zazz
+"}}}
