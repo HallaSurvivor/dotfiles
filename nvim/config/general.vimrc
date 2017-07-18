@@ -3,13 +3,6 @@
 "See the rest of my dotfiles here:
 "https://github.com/HallaSurvivor/dotfiles
 
-"Set colorscheme
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme monokai
-set background=dark
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
-
 "By default, don't use system pasting
 set nopaste
 

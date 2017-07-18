@@ -1,44 +1,58 @@
-"Install Plugins
+"Plugins ----- {{{
+set runtimepath+=/home/chris/.cache/dein/repos/github.com/Shougo/dein.vim
 
-call plug#begin('~/.config/nvim/plugged')
-  "AutoCompletion
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/neosnippet.vim'
+if dein#load_state('/home/chris/.cache/dein')
+  call dein#begin('/home/chris/.cache/dein')
 
+  "Let dein manage dein
+  call dein#add('/home/chris/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('haya14busa/dein-command.vim') "dein has REALLY bad binds
+
+  "Autocompletion
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  
   "General layout
-  Plug 'jeffkreeftmeijer/vim-numbertoggle'
-  Plug 'bling/vim-airline'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'luochen1990/rainbow'
+  call dein#add('jeffkreeftmeijer/vim-numbertoggle')
+  call dein#add('w0rp/ale')
+  call dein#add('bling/vim-airline') 
+  call dein#add('mhinz/vim-signify')
+  call dein#add('luochen1990/rainbow')
+  call dein#add('joshdick/onedark.vim')
 
   "Quality of life
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-fugitive'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'godlygeek/tabular'
-  Plug 'Townk/vim-autoclose'
-  Plug 'neomake/neomake'
-  Plug 'scrooloose/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'simnalamburt/vim-mundo'
+  call dein#add('tpope/vim-commentary')
+  call dein#add('tpope/vim-surround')
+  call dein#add('tpope/vim-repeat')
+  call dein#add('jiangmiao/auto-pairs')
+  call dein#add('christoomey/vim-tmux-navigator')
+  call dein#add('godlygeek/tabular')
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('simnalamburt/vim-mundo')
 
   "Haskell
-  Plug 'Shougo/vimproc'
-  Plug 'eagletmt/neco-ghc'
+  call dein#add('eagletmt/neco-ghc')
 
-  "Syntax highlighting
-  Plug 'plasticboy/vim-markdown'  
-  Plug 'keith/tmux.vim'
-  Plug 'vim-jp/vim-cpp'
-  Plug 'neovimhaskell/haskell-vim'
-  Plug 'LaTeX-Box-Team/LaTeX-Box'
-  Plug 'mitsuhiko/vim-python-combined'
-  
-call plug#end()
+  call dein#end()
+  call dein#save_state()
+endif
+
+"Install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+"Plugins ----- }}}
 
 "Configure Plugins
+
+" Dein
+nnoremap pi call dein#update()
+
+"Apparently colorscheme is a plugin now...
+syntax on
+colorscheme onedark
+let g:airline_theme='onedark'
 
 "deoplete
 let g:deoplete#enable_at_startup = 1
@@ -48,9 +62,6 @@ endif
 
 let g:min_pattern_length = 1
 let g:deoplete#max_menu_width = 0  "No max menu width
-
-"neomake
-autocmd! BufWritePost * Neomake
 
 "nerdTree
 let NERDTreeQuitOnOpen = 1
@@ -76,14 +87,24 @@ let airline_mode_map = {
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+
 "Rainbow Parentheses
 let g:rainbow_active = 1
 
-"Markdown
-let g:vim_markdown_conceal = 0
+"Ale
+let g:airline#extensions#ale#enabled=1
 
 "neco-ghc
 let g:necoghc_enable_detailed_browse = 1
 
 "Ultisnips
 let g:UltiSnipsEditSplit="vertical"
+
+"AutoPairs... I really don't like their binds
+let g:AutoPairsShortcutJump=''
+let g:AutoPairsShortcutFastWrap=''
+let g:AutoPairsShortcutToggle=''
+let g:AutoPairsMapCh=0
+let g:AutoPairsCenterLine=0
+let g:AutoPairsMultilineClose=0
+let g:AutoPairsShortcutBackInsert=''

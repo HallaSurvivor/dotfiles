@@ -6,11 +6,7 @@
 "Close insert/visual mode with jk
 inoremap jk <esc>
 vnoremap jk <esc>
-let mapleader='v' "Explicitly set leader
-
-",ev and ,sv open and source .vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+let mapleader=' '
 
 "Allow for right-click paste without
 "needing massive reformatting
@@ -23,9 +19,6 @@ nnoremap N Nzz
 "Spell check
 set spelllang=en_us
 nnoremap <silent> <leader>ss :set spell!<cr>
-
-"Automatically create {} brace pairs with a newline between them
-inoremap {<tab> {<cr>}<esc>O
 
 "H/L move to start and end of line
 nnoremap H ^
@@ -40,8 +33,8 @@ nnoremap U <C-R>
 "pressing enter will remove hilights from search terms
 nnoremap <silent> <CR> :noh<CR><CR>
 
-"press space to toggle folds (still autoscroll)
-nnoremap <space> zazz
+"toggle folds (still autoscroll)
+nnoremap <leader>f zazz
 
 "Plugins
 
@@ -53,13 +46,19 @@ nnoremap <leader>a<bar> :Tabularize /<bar><CR>
 nnoremap <leader>a-     :Tabularize /-><CR>
 nnoremap <leader>a      :Tabularize /
 
-"make <c-j> complete neosnippets
-imap <C-j> <plug>(neosnippet_expand_or_jump)
-smap <C-j> <plug>(neosnippet_expand_or_jump)
-xmap <C-j> <plug>(neosnippet_expand_target)
-
 "nerdTree
-nnoremap <leader>f :NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 "Gundo
 nnoremap <leader>u :MundoToggle<CR>
+
+"deoplete + neosnippet + autopairs changes
+"Shamelessly stolen from
+"https://www.reddit.com/r/neovim/comments/5qj7a7/neosnippets_deoplete/
+let g:AutoPairsMapCR=0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+imap <expr><TAB> pumvisible() ? "\<C-n>": (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)": "\<TAB>")
+imap <expr><S-TAB> pumvisible() ? "\<C-p>": "\<S-TAB>"
+imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>AutoPairsReturn"
