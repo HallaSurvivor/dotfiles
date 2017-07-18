@@ -1,5 +1,10 @@
 "Christopher Grossack's vimrc
 "
+"I primarily use nvim now, so this is
+"primarily for very basic, quick use.
+"Therefore, it is just the core of what
+"I need to survive.
+"
 "See the rest of my dotfiles here:
 "https://github.com/HallaSurvivor/dotfiles
 
@@ -42,11 +47,7 @@ Plugin 'luochen1990/rainbow'       "Change color of parentheses based on nesting
 "General Programming
 Plugin 'tpope/vim-commentary'   "Quickly comment/uncomment lines of code
 Plugin 'tpope/vim-surround'     "Quickly surround text with quotes, braces, etc.
-Plugin 'godlygeek/tabular'      "Automatically align characters in lines of text
 Plugin 'Townk/vim-autoclose'    "Automatically close braces when typing [, (, etc.
-Plugin 'tpope/vim-repeat'       "Repeat plugin commands with .
-Plugin 'simnalamburt/vim-mundo' "Show undo tree
-Plugin 'scrooloose/nerdtree'    "Show directory tree
 
 if vundleInstalled == 0
   echo "Installing vim plugins..."
@@ -55,12 +56,6 @@ if vundleInstalled == 0
 endif
 
 call vundle#end()
-
-"indentLine
-let g:indentLine_color_term    = 239   "indentline color
-let g:indentLine_concealcursor = "in"  "show even when inserting text
-let g:indentLine_char          = "|"   "use a | as the indicator
-let g:indentLine_first_char    = "|"   "use a | even if it's the first one
 
 "airline
 "Use shorthand names in powerline
@@ -95,11 +90,7 @@ filetype indent on
 "Close insert/visual mode with jk
 inoremap jk <esc>
 vnoremap jk <esc>
-let mapleader='v' "Explicitly set leader
-
-",ev and ,sv open and source .vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+let mapleader=' ' "Explicitly set leader
 
 "Allow for right-click paste without
 "needing massive reformatting
@@ -119,23 +110,8 @@ if has("spell")
   nnoremap <silent> <leader>ss :set spell!<cr>
 endif
 
-"Open G-undo and NERDTree
-nnoremap <silent> <leader>u :MundoToggle<CR>
-nnoremap <silent> <leader>n :NERDTreeToggle<CR>
-
-"Automatically create {} brace pairs with a newline between them
-inoremap {<tab> {<cr>}<esc>O
-
-"Tabularize
-"automatically align on the folowing symbols:  = , | <other>
-nnoremap <leader>a=     :Tabularize /=<CR>
-nnoremap <leader>a,     :Tabularize /,<CR>
-nnoremap <leader>a<bar> :Tabularize /<bar><CR>
-nnoremap <leader>a-     :Tabularize /-><CR>
-nnoremap <leader>a      :Tabularize /
-
-"fold with sapce
-nnoremap <space> za
+"fold
+nnoremap <leader>f za
 
 "Y yanks to end of line instead of whole line
 nnoremap Y y$
@@ -154,27 +130,14 @@ nnoremap <silent> <c-k> <c-w>k
 nnoremap <silent> <c-h> <c-w>h
 nnoremap <silent> <c-l> <c-w>l
 
-"buffers
-nnoremap <silent> <leader>bc :enew<cr>
-nnoremap <silent> <leader>bn :bnext<cr>
-nnoremap <silent> <leader>bm :bprev<cr>
-
-"close buffer and move to previous one
-nnoremap <leader>bq :bp <bar> bd #<cr> 
-
 "========================
 "========Settings========
 "========================
 
 "Colors
-
-"Use 256 colors, since we have them
-set term=xterm-256color
-
-"Use monokai colors based on programming syntax
 syntax enable
-set background=dark
 colorscheme monokai
+set background=dark
 
 "General
 
