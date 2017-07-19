@@ -117,11 +117,11 @@ let g:AutoPairsShortcutBackInsert=''
 "Plugin Binds {{{
 "Tabularize
 "automatically align on the folowing symbols:  = , | <other>
-nnoremap <leader>a=     :Tabularize /=<CR>
-nnoremap <leader>a,     :Tabularize /,<CR>
-nnoremap <leader>a<bar> :Tabularize /<bar><CR>
-nnoremap <leader>a-     :Tabularize /-><CR>
-nnoremap <leader>a      :Tabularize /
+nnoremap <leader>ae :Tabularize /=<CR>
+nnoremap <leader>a, :Tabularize /,<CR>
+nnoremap <leader>a- :Tabularize /-><CR>
+nnoremap <leader>ac :Tabularize /&<CR>
+nnoremap <leader>a  :Tabularize /
 
 "nerdTree
 nnoremap <leader>n :NERDTreeToggle<CR>
