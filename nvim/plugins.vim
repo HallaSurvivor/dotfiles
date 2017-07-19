@@ -5,13 +5,13 @@
 "https://github.com/HallaSurvivor/dotfiles
 
 "Plugin Setup {{{
-set runtimepath+=/home/chris/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/chris/.local/share/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('/home/chris/.cache/dein')
-  call dein#begin('/home/chris/.cache/dein')
+if dein#load_state('/home/chris/.local/share/dein')
+  call dein#begin('/home/chris/.local/share/dein')
 
   "Let dein manage dein
-  call dein#add('/home/chris/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('/home/chris/.local/share/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('haya14busa/dein-command.vim') "dein has REALLY bad binds
 
   "Autocompletion
@@ -31,6 +31,7 @@ if dein#load_state('/home/chris/.cache/dein')
   call dein#add('tpope/vim-commentary')
   call dein#add('tpope/vim-surround')
   call dein#add('tpope/vim-repeat')
+  call dein#add('tpope/vim-fugitive')
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('christoomey/vim-tmux-navigator')
   call dein#add('godlygeek/tabular')
