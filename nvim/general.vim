@@ -102,10 +102,6 @@ nnoremap N Nzz
 set spelllang=en_us
 nnoremap <silent> <leader>ss :set spell!<cr>
 
-"H/L move to start and end of line
-nnoremap H ^
-nnoremap L g_
-
 "Y yanks to end of line instead of whole line
 nnoremap Y y$
 
