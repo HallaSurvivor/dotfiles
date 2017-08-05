@@ -80,6 +80,9 @@ set cole=0
 set undofile
 set undodir=~/.config/nvim/undodir
 
+"Makefiles are stupid and tab sensitive
+autocmd FileType make setlocal noexpandtab
+
 "Remember the line you were on when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "}}}
