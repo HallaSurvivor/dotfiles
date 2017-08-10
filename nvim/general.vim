@@ -5,6 +5,10 @@
 "https://github.com/HallaSurvivor/dotfiles
 
 " General Settings {{{
+
+"We don't need to be vi compatable
+filetype plugin indent on
+
 "By default, don't use system pasting
 set nopaste
 
@@ -82,6 +86,9 @@ set undodir=~/.config/nvim/undodir
 
 "Makefiles are stupid and tab sensitive
 autocmd FileType make setlocal noexpandtab
+
+"Haskell should be using hoogle for K
+au FileType haskell set kp=hoogle
 
 "Remember the line you were on when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

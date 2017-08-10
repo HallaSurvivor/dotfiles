@@ -39,7 +39,9 @@ if dein#load_state('/home/chris/.local/share/dein')
   call dein#add('simnalamburt/vim-mundo')
 
   "Haskell
+  call dein#add('Shougo/vimproc')
   call dein#add('eagletmt/neco-ghc')
+  call dein#add('eagletmt/ghcmod-vim')
 
   call dein#end()
   call dein#save_state()
@@ -100,6 +102,7 @@ let g:airline#extensions#ale#enabled=1
 
 "neco-ghc
 let g:necoghc_enable_detailed_browse = 1
+let g:necoghc_use_stack = 1
 
 "Ultisnips
 let g:UltiSnipsEditSplit="vertical"
@@ -128,6 +131,10 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 
 "Gundo
 nnoremap <leader>u :MundoToggle<CR>
+
+"Haskell
+au FileType haskell nnoremap <silent> <leader>h :GhcModType<CR>
+au FileType haskell nnoremap <silent> <leader>i :GhcModInfo<CR>
 
 "deoplete + neosnippet + autopairs changes
 "Shamelessly stolen from
