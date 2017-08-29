@@ -19,6 +19,9 @@ function ...... { cd ../../../../..; }
 
 function cdd { cd ~/dotfiles; }
 
+# smlnj's interpreter doesn't let you move the cursor
+function smlnj { rlwrap sml; }
+
 # reload bashrc
 function reload { cd; source ~/.bashrc; cd -; }
 
