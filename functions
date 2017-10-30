@@ -27,3 +27,6 @@ alias g=git
 
 # So I'm DEFINITELY too lazy to not have git still autocomplete stuff
 __git_complete g _git
+
+# Again. I'm actually this lazy
+alias v=nvim
