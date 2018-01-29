@@ -13,7 +13,7 @@
 # Define Vars #
 ###############
 #Set Editor
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 
 #Tell the world we're 256 color
 export TERM=screen-256color
