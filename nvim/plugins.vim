@@ -17,7 +17,6 @@ if dein#load_state('/home/chris/.local/share/dein')
   "Autocompletion
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('Shougo/neosnippet.vim')
-  call dein#add('Shougo/neosnippet-snippets')
   
   "General layout
   call dein#add('jeffkreeftmeijer/vim-numbertoggle')
