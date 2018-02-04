@@ -129,13 +129,25 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 "Gundo
 nnoremap <leader>u :MundoToggle<CR>
 
-"make neosnippets and autpairs share the <CR> key nicely
-"Heavily inspired by
-"https://www.reddit.com/r/neovim/comments/5qj7a7/neosnippets_deoplete/
-"and
-"https://github.com/Shougo/deoplete.nvim/issues/83
+"make neosnippets behavior more intuitive
+"use <TAB> to move forwards in the deoplete list
+imap <expr><TAB> 
+  \ pumvisible() ? 
+  \ "\<C-n>" : 
+    \ (neosnippet#expandable_or_jumpable() ? 
+    \ "\<Plug>(neosnippet_expand_or_jump)" : 
+    \ "\<TAB>")
+
+"use <S-TAB> to move backwards in the deoplete list
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+
+"use <CR> to select something from the deoplete list, or run autoPair
 let g:AutoPairsMapCR=0
-imap <expr><TAB> pumvisible() ? "\<C-n>": (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)": "\<TAB>")
-imap <expr><S-TAB> pumvisible() ? "\<C-p>": "\<S-TAB>"
-imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() . "\<CR>": "\<CR>\<Plug>AutoPairsReturn"
+imap <expr><CR> 
+  \ pumvisible() ? 
+  \ deoplete#mappings#close_popup() . 
+    \ (neosnippet#expandable_or_jumpable() ? 
+    \ "\<Plug>(neosnippet_expand_or_jump)" : 
+    \ "\<CR>") : 
+  \ "\<CR>\<Plug>AutoPairsReturn"
 "}}}
