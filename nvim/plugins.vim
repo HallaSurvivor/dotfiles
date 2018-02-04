@@ -64,7 +64,6 @@ if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
 endif
 
-let g:min_pattern_length = 1
 let g:deoplete#max_menu_width = 0  "No max menu width
 
 "nerdTree
@@ -130,14 +129,14 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 "Gundo
 nnoremap <leader>u :MundoToggle<CR>
 
-"deoplete + neosnippet + autopairs changes
-"Shamelessly stolen from
+"make neosnippets and autpairs share the <CR> key nicely
+"Heavily inspired by
 "https://www.reddit.com/r/neovim/comments/5qj7a7/neosnippets_deoplete/
+"and
+"https://github.com/Shougo/deoplete.nvim/issues/83
 let g:AutoPairsMapCR=0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
 imap <expr><TAB> pumvisible() ? "\<C-n>": (neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)": "\<TAB>")
 imap <expr><S-TAB> pumvisible() ? "\<C-p>": "\<S-TAB>"
-imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>AutoPairsReturn"
+imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() . "\<CR>": "\<CR>\<Plug>AutoPairsReturn"
+
 "}}}
