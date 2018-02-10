@@ -1,0 +1,289 @@
+# ============ PREAMBLE ============
+snippet \documentclass
+alias   documentclass
+    \documentclass[${1:12pt}]{${2:article}}${0}
+
+snippet newcommand
+alias   \newcommand
+	\newcommand{${1:cmd}}[${2:opt}]{${3:realcmd}} ${0}
+
+snippet usepackage
+alias   \usepackage 
+	\usepackage[${1:options}]{${2:package}} ${0}
+
+snippet newtheorem
+abbr    \newtheorem
+  \newtheorem{${1:thm}}{${2:Theorem}}[${3:#:Section}]
+
+
+# ========== ENVIRONMENT ==========
+snippet begin
+alias   \begin
+    \begin{${1:#:type}}
+        ${2:TARGET}
+    \end{$1}
+
+snippet list
+alias   \begin{list} \list
+    \begin{list}
+        ${1:TARGET}
+    \end{list}
+
+snippet quotation
+alias   \begin{quotation} \quotation
+    \begin{quotation}
+        ${1:TARGET}
+    \end{quotation}
+
+snippet description
+alias   \begin{description} \description desc
+    \begin{description}
+        \item[${1}] ${0}
+    \end{description}
+
+snippet itd
+alias   item[ \item[ it[
+    \item[${1}] ${0}
+
+snippet it
+alias   item \item
+    \item ${0}
+
+snippet it*
+alias   item* \item*
+abbr    endless \item (recursive)
+  \item ${1}
+  ${0:it*}
+
+snippet enumerate
+alias   \begin{enumerate} \enumerate enum
+    \begin{enumerate}
+        \item ${1:TARGET}
+    \end{enumerate}
+
+snippet itemize
+alias   \begin{itemize} \itemize
+    \begin{itemize}
+        \item ${1:TARGET}
+    \end{itemize}
+
+snippet verbatim
+alias   \begin{verbatim} \verbatim
+    \begin{verbatim}
+        ${1:TARGET}
+    \end{verbatim}
+
+snippet table
+alias   \begin{table} \table
+    \begin{table}[${1}]
+        \centering
+        \caption{${2}}
+        \label{${3}}
+        \begin{tabular}{${4}}
+            ${5}
+        \end{tabular}
+    \end{table}
+
+snippet tabular
+alias   \begin{tabular} \tabular
+    \begin{tabular}{${1}}
+        ${2:TARGET}
+    \end{tabular}
+
+snippet cases
+alias   \begin{cases} \cases
+    \begin{cases}{${1}}
+        ${2:TARGET}
+    \end{cases}
+
+snippet abstract
+alias   \begin{abstract} \abstract
+    \begin{abstract}
+        ${1:TARGET}
+    \end{abstract}
+
+snippet align
+alias   \begin{align} \align
+    \begin{align}
+        ${1:TARGET}
+    \end{align}
+
+snippet align*
+alias   \begin{align*} \align*
+    \begin{align*}
+        ${1:TARGET}
+    \end{align*}
+
+snippet equation
+alias   \begin{equation} \equation
+    \begin{equation}
+        ${1:TARGET}
+    \end{equation}
+
+snippet equation*
+alias   \begin{equation*} \equation*
+    \begin{equation*}
+        ${1:TARGET}
+    \end{equation*}
+
+snippet center
+alias   \begin{center} \center
+    \begin{center}
+        ${1:TARGET}
+    \end{center}
+
+snippet document
+alias   \begin{document} \document
+    \begin{document}
+        ${1:TARGET}
+    \end{document}
+
+snippet figure
+alias   \begin{figure} \figure
+    \begin{figure}[${1}]
+        \centering
+        \includegraphics[${2:width=${3\}}]{${4}}
+        \caption{${5}}
+        \label{${6}}
+    \end{figure}
+
+snippet quote
+alias   \begin{quote} \quote
+    \begin{quote}
+        ${1:TARGET}
+    \end{quote}
+
+snippet thm
+  \begin{thm}
+    ${1:TARGET}
+  \end{thm}
+
+snippet     proof
+abbr        \begin{proof} \proof
+options     head
+  \begin{proof}
+    ${1:TARGET}
+  \end{proof}
+
+# ========== SECTION ==========
+
+snippet \part
+alias   part \part{
+    \part{${1}}
+    ${0:TARGET}
+
+snippet \chapter
+alias   chapter \chapter{
+    \chapter{${1}}
+    ${0:TARGET}
+
+snippet \section
+alias   section \section{
+    \section{${1}}
+    ${0:TARGET}
+
+snippet \subsection
+alias   subsection \subsection{
+    \subsection{${1}}
+    ${0:TARGET}
+
+snippet \subsubsection
+alias   subsubsection \subsubsection{
+    \subsubsection{${1}}
+    ${0:TARGET}
+
+snippet \paragraph
+alias   paragraph \paragraph{
+    \paragraph{${1}}
+    ${0:TARGET}
+
+snippet \subparagraph
+alias   subparagraph \subparagraph{
+    \subparagraph{${1}}
+    ${0:TARGET}
+
+snippet \footnote
+alias   footnote \footnote{
+  \footnote
+  {%
+    ${0:TARGET}
+  }
+
+# ========== MATH ==========
+
+snippet \frac
+alias   frac \frac{
+    \frac{${1}}{${2}}${0}
+
+snippet \left
+alias   left
+abbr    \left \right
+    \left${1:(} ${3:#:body} \right${2:)}${0}
+
+snippet mathexpression
+alias   $
+abbr    $ expression $
+    $${1:#:expression}$${2}
+
+snippet \[
+alias $$
+abbr \[ ... \]
+  \[
+    ${1}
+  \]
+
+snippet \sum
+alias   sum
+  \sum_{${1:i=1}}^{${2:n}} ${0}
+
+snippet \prod
+alias   prod
+  \prod_{${1:i=1}}^{${2:n}} ${0}
+
+snippet \lim
+alias   lim
+  \lim_{${1:n} \to \infty} ${0}
+
+snippet \int
+alias   int
+  \int_{${1:a}}^{${2:b}} ${0}
+
+# ========== FONT ==========
+
+snippet \textbf
+alias   textbf \textbf{
+    \textbf{${1:TARGET}}${0}
+
+snippet \texttt
+alias   texttt \texttt{
+    \texttt{${1:TARGET}}${0}
+
+snippet \textit
+alias   textit \textit{
+    \textit{${1:TARGET}}${0}
+
+snippet \mathfrak
+alias   mathfrak \mathfrak{
+  \mathfrak{${1:TARGET}}${0}
+
+snippet \mathcal
+alias   mathcal \mathcal{
+  \mathcal{${1:TARGET}}${0}
+
+snippet \mathscr
+alias   mathscr \mathscr{
+  \mathscr{${1:TARGET}}${0}
+
+# ========== OTHERS ==========
+snippet ref
+alias   \ref
+    \ref{${1}}${0}
+
+snippet label
+alias   \label
+    \label{${1}}${0}
+
+snippet noindent
+alias   \noindent
+  \noindent
+  ${0}

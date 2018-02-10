@@ -100,8 +100,8 @@ let g:airline#extensions#ale#enabled=1
 let g:necoghc_enable_detailed_browse = 1
 let g:necoghc_use_stack = 1
 
-"Ultisnips
-let g:UltiSnipsEditSplit="vertical"
+"NeoSnippet
+let g:neosnippet#snippets_directory = '~/.config/nvim/snippets/'
 
 "AutoPairs... I really don't like their binds
 let g:AutoPairsShortcutJump=''
