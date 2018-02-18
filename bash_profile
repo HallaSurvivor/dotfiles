@@ -11,6 +11,14 @@
 echo ""
 echo ""
 
+# Allow remote ssh display
+if [[ -n $SSH_CONNECTION ]] ;
+then
+  export DISPLAY=:0
+else
+  xhost +si:localuser:chris
+fi
+
 if [ -e "$HOME/.bashrc" ];
 then
   source $HOME/.bashrc
