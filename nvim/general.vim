@@ -90,6 +90,9 @@ autocmd FileType make setlocal noexpandtab
 "Haskell should be using hoogle for K
 au FileType haskell set kp=hoogle
 
+"C should use syntax folding
+au FileType c set foldmethod=syntax
+
 "Remember the line you were on when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "}}}
