@@ -77,7 +77,7 @@
   #
   # numstat will show which files were changed
   # all will show this information for ALL branches, not just the current one
-  ls = log --graph --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cr)" --decorate
+  ls = log --graph --pretty=format:"%C(yellow)%h%C(red)%d\\ %C(reset)%s%C(cyan)\\ [%cn]\\ %C(green)(%cr)" --decorate
 
   # Grep for a string in all the filenames in the repo
   f = "!git ls-files | grep -iE"
