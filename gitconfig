@@ -5,9 +5,9 @@
 
 # Identification
 [user]
-  name  = Christopher Grossack
+  name  = Chris Grossack
   email = HallaSurvivor@gmail.com
-  signingkey = 70A97C8DE65FAEC43FC5EB80959D79FD606C0677
+  signingkey = 959D79FD606C0677
 
 [github]
   user = HallaSurvivor
