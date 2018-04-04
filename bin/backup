@@ -1,8 +1,20 @@
-#!/bin/env sh
-REPOSITORY=user@server:borg-repo
+#!/bin/sh
+REPOSITORY='your repo here -- I use rsync personally'
 
-export BORG_PASSPHRASE='passphrase'
+export BORG_PASSPHRASE='your password'
+export BORG_REMOTE_PATH=borg1 # tell rsync which version of borg we're using
 
-borg create $REPOSITORY::'{hostname}-{now:%Y-%m-%d}' dir_to_backup
+# Create the new backup (backs up the entire /home/chris folder)
+borg create --progress --stats -v          \
+  $REPOSITORY::'{hostname}-{now:%Y-%m-%d--%H:%M}' \
+  /home/chris/
+
+# Keep:
+#   Every backup for the past week
+#   One backup from each of the last 4 weeks
+#   One backup from each of the last 6 months
 borg prune -v --list $REPOSITORY --prefix '{hostname}-' \
-    --keep-daily=7 --keep-weekly=4 --kep-monthly=6
+    --keep-daily=7 --keep-weekly=4 --keep-monthly=6
+
+# Log that we've backed up
+echo "Backed up: $(date +%c)" >> /home/chris/dotfiles/bin/backup.log
