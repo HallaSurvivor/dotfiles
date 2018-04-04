@@ -7,7 +7,7 @@
 [user]
   name  = Christopher Grossack
   email = HallaSurvivor@gmail.com
-  signingkey = B437CDCC1B8F8B8CDBB1DAE0D1355AE6ED375068
+  # signingkey = B437CDCC1B8F8B8CDBB1DAE0D1355AE6ED375068
 
 [github]
   user = HallaSurvivor
@@ -45,7 +45,7 @@
 
 [commit]
   # Sign any commits as being done by me.
-  gpgsign = true
+  #gpgsign = true
 
 [merge]
   # Include a summary of merge changes in the merge commit message

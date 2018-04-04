@@ -19,6 +19,8 @@ function ...... { cd ../../../../..; }
 
 function cdd { cd ~/dotfiles; }
 
+alias ls="ls -CF --color"
+
 # reload bashrc
 function reload { cd; source ~/.bashrc; cd -; }
 
@@ -29,7 +31,9 @@ function findr { dir=$1; shift; find $dir -regextype posix-egrep $*; }
 alias g=git
 
 # So I'm DEFINITELY too lazy to not have git still autocomplete stuff
-__git_complete g _git
+if hash __git_complete 2>/dev/null; then
+  __git_complete g _git
+fi
 
 # Again. I'm actually this lazy
 alias v=nvim

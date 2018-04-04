@@ -5,6 +5,11 @@
 # See the rest of my dotfiles here:
 # https://github.com/HallaSurvivor/dotfiles
 
+if [ -e "$HOME/.bashrc" ];
+then
+  source $HOME/.bashrc
+fi
+
 (echo "So much time and so little to do.";
  echo "Wait a minute. Strike that. Reverse it.";
  echo "~ Willy Wonka") | pysay -n -f turtle.cow
@@ -16,10 +21,5 @@ if [[ -n $SSH_CONNECTION ]] ;
 then
   export DISPLAY=:0
 else
-  xhost +si:localuser:chris
-fi
-
-if [ -e "$HOME/.bashrc" ];
-then
-  source $HOME/.bashrc
+  xhost +si:localuser:chris > /dev/null
 fi

@@ -101,6 +101,7 @@ let g:necoghc_enable_detailed_browse = 1
 let g:necoghc_use_stack = 1
 
 "NeoSnippet
+let g:neosnippet#disable_runtime_snippets = { '_':1 }
 let g:neosnippet#snippets_directory = '~/.config/nvim/snippets/'
 
 "AutoPairs... I really don't like their binds
