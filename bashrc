@@ -29,6 +29,9 @@ export DOTFILES=$HOME/dotfiles
 #Tell cowsay where the cows are
 export COWPATH=$DOTFILES/bin/cows
 
+#Fix gpg
+export GPG_TTY=$(tty)
+
 ##############
 # Build PATH #
 ##############
