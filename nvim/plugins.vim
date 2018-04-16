@@ -38,6 +38,7 @@ if dein#load_state('/home/chris/.local/share/dein')
   call dein#add('simnalamburt/vim-mundo')
 
   "Haskell
+  call dein#add('neovimhaskell/haskell-vim')
   call dein#add('eagletmt/neco-ghc')
 
   call dein#end()
