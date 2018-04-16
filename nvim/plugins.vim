@@ -38,6 +38,7 @@ if dein#load_state('/home/chris/.local/share/dein')
   call dein#add('simnalamburt/vim-mundo')
 
   "Haskell
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('eagletmt/neco-ghc')
 
   call dein#end()
@@ -98,7 +99,6 @@ let g:airline#extensions#ale#enabled=1
 
 "neco-ghc
 let g:necoghc_enable_detailed_browse = 1
-let g:necoghc_use_stack = 1
 
 "NeoSnippet
 let g:neosnippet#disable_runtime_snippets = { '_':1 }
