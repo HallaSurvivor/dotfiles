@@ -34,6 +34,8 @@
 #   /2011/01/colorful-bash-prompt-reflecting-git-status/
 # I've made a few edits to make it more customizable,
 # as well as (imo) more legible.
+#
+# TODO: make this use git --porcelain
 function git_prompt() {
 
   #ansi codes for which color to use when
