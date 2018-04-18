@@ -101,6 +101,9 @@ let g:airline#extensions#ale#enabled=1
 let g:necoghc_use_stack = 1
 let g:necoghc_enable_detailed_browse = 1
 
+"haskell-vim
+let g:haskell_indent_disable = 1
+
 "NeoSnippet
 let g:neosnippet#disable_runtime_snippets = { '_':1 }
 let g:neosnippet#snippets_directory = '~/.config/nvim/snippets/'
