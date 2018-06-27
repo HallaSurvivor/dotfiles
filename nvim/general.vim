@@ -95,6 +95,10 @@ au FileType c set foldmethod=syntax
 
 "Remember the line you were on when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+"Treat sage files like python
+autocmd BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=python
+
 "}}}
 
 " Binds {{{
