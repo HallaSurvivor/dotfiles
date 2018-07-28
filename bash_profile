@@ -19,7 +19,8 @@ echo ""
 # Allow remote ssh display
 if [[ -n $SSH_CONNECTION ]] ;
 then
-  export DISPLAY=:1
+  export OLD_DISPLAY=$DISPLAY
+  export DISPLAY=:0
 else
   xhost +si:localuser:chris > /dev/null
 fi
