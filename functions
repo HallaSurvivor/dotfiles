@@ -37,3 +37,6 @@ fi
 
 # Again. I'm actually this lazy
 alias v=nvim
+
+# This one I think is less lazy. Hyphens are annoying
+alias scim=sc-im
