@@ -25,9 +25,9 @@ print_remain()
 final_print()
 {
   if battery_discharging; then
-    echo "$(print_percent) :: $(print_remain)"
+    echo "♥$(print_percent) ($(print_remain))"
   else
-    echo "$(print_percent) :: Charging"
+    echo "♥$(print_percent)"
   fi
 }
 

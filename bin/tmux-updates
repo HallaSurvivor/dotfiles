@@ -1,0 +1,17 @@
+# !/bin/bash
+# Chris Grossack, 2019
+#
+# Get the number of updates from pacman and display it
+
+num_updates()
+{
+  pacman -Qu | wc -l
+}
+
+format()
+{
+  n="$(num_updates)"
+  echo "$n🔄"
+}
+
+format
