@@ -24,4 +24,5 @@ Host shark
 # ssh into backup server
 Host backup
   HostName usw-s001.rsync.net
+  IdentityFile ~/.ssh/borg-backup-key
   User 1066

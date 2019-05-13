@@ -1,0 +1,1 @@
+echo url="https://www.duckdns.org/update?domains=hallasurvivor&token=335467ca-3cf3-47d2-ac5d-9734c9e384cf&ip=" | curl -k -o ~/dotfiles/bin/duck.log -K -
