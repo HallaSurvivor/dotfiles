@@ -32,6 +32,9 @@ export COWPATH=$DOTFILES/bin/cows
 #Fix gpg
 export GPG_TTY=$(tty)
 
+#Fix backup server's borg location
+export BORG_REMOTE_PATH='/usr/local/bin/borg1/borg1'
+
 ##############
 # Build PATH #
 ##############
