@@ -79,6 +79,12 @@ set foldlevelstart=0
 "don't use any concealing
 set cole=0
 
+"make searching case insensitive (unless it should obviously be case sensitive)
+set smartcase
+
+"make searches start while typing them (a la ctrl-f)
+set incsearch
+
 "Save a file with all the undos we've done.
 "But don't clutter the current folder. Put them in undodir
 set undofile
