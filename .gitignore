@@ -37,5 +37,6 @@ nvim/.netrwhist
 vim/bundle
 nvim/plugged
 
-# I'm afraid of commiting my backup script
+# I'm afraid of commiting my backup script, also my duckdns key
 bin/backup
+bin/duck
