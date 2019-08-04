@@ -5,13 +5,18 @@
 
 num_updates()
 {
-  pacman -Qu | wc -l
+  update-check | wc -l
 }
 
 format()
 {
   n="$(num_updates)"
-  echo "$n🔄"
+  if [ "$n" -eq "0" ];
+  then
+    echo "☺";
+  else
+    echo " $n🔄";
+  fi
 }
 
 format
