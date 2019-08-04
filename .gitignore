@@ -36,6 +36,3 @@ nvim/.netrwhist
 # be installed in their latest version by vundle.
 vim/bundle
 nvim/plugged
-
-# Probably shouldn't go showing off our moss script
-bin/*moss
