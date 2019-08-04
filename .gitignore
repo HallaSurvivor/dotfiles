@@ -36,3 +36,6 @@ nvim/.netrwhist
 # be installed in their latest version by vundle.
 vim/bundle
 nvim/plugged
+
+# I'm afraid of commiting my backup script
+bin/backup
