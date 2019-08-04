@@ -1,8 +1,8 @@
-"Christopher Grossack's nvim settings 
-"(everything but plugins)
+" Chris Grossack's nvim settings 
+" (everything but plugins)
 "
-"See the rest of my dotfiles here:
-"https://github.com/HallaSurvivor/dotfiles
+" See the rest of my dotfiles here:
+" https://github.com/HallaSurvivor/dotfiles
 
 " General Settings {{{
 

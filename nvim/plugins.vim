@@ -1,8 +1,8 @@
-"Christopher Grossack's nvim settings 
-"(just the plugins)
+" Chris Grossack's nvim settings 
+" (just the plugins)
 "
-"See the rest of my dotfiles here:
-"https://github.com/HallaSurvivor/dotfiles
+" See the rest of my dotfiles here:
+" https://github.com/HallaSurvivor/dotfiles
 
 "Plugin Setup {{{
 set runtimepath+=/home/chris/.local/share/dein/repos/github.com/Shougo/dein.vim
