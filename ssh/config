@@ -16,11 +16,6 @@ Host cmu
   HostName unix.andrew.cmu.edu
   User cgrossac
 
-# ssh into cmu's shark machines
-Host shark
-  HostName shark.ics.cs.cmu.edu
-  User cgrossac
-
 # ssh into backup server
 Host backup
   HostName usw-s001.rsync.net
