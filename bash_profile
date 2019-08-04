@@ -1,4 +1,4 @@
-# Christopher Grossack's bash_profile.
+# Chris Grossack's bash_profile.
 #
 # Most of the interesting things happen in bashrc.
 #
@@ -15,12 +15,3 @@ fi
  echo "~ Willy Wonka") | pysay -n -f turtle.cow
 echo ""
 echo ""
-
-# Allow remote ssh display
-if [[ -n $SSH_CONNECTION ]] ;
-then
-  export OLD_DISPLAY=$DISPLAY
-  export DISPLAY=:0
-else
-  xhost +si:localuser:chris > /dev/null
-fi

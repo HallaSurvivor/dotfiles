@@ -1,4 +1,4 @@
-# Christopher Grossack's bashrc. 
+# Chris Grossack's bashrc. 
 #
 # Additional files are sourced at the bottom of this file. 
 # This file is responsible for:

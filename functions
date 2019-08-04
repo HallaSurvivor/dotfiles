@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Christopher Grossack's functions
+# Chris Grossack's functions
 #
 # NOTE: I export two more functions in prompt
 # `ps1_on` and `ps1_off`
@@ -37,6 +37,3 @@ fi
 
 # Again. I'm actually this lazy
 alias v=nvim
-
-# This one I think is less lazy. Hyphens are annoying
-alias scim=sc-im
