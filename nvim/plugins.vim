@@ -133,8 +133,24 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 "Gundo
 nnoremap <leader>u :MundoToggle<CR>
 
-"make neosnippets behavior more intuitive
-"use <TAB> to move forwards in the deoplete list
+imap <TAB> <Plug>(neosnippet_expand_or_jump)
+
+
+
+"deoplete/neosnippet interaction with <TAB>
+"
+"shamelessly stolen from:
+"https://www.reddit.com/r/neovim/comments/5qj7a7/
+"  neosnippets_deoplete/dd16dqw/?context=8&depth=9
+"
+"Use <TAB> and <S-TAB> to move in the deoplete list
+"<CR> to select 
+"
+"If not in the deoplete list, <TAB> expands a snippet
+"
+"If not in the deoplete list, but are inside brackets,
+"<CR> puts the closing bracket on a new line and puts
+"your cursor between the new lines
 imap <expr><TAB> 
   \ pumvisible() ? 
   \ "\<C-n>" : 
@@ -142,10 +158,8 @@ imap <expr><TAB>
     \ "\<Plug>(neosnippet_expand_or_jump)" : 
     \ "\<TAB>")
 
-"use <S-TAB> to move backwards in the deoplete list
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-"use <CR> to select something from the deoplete list, or run autoPair
 let g:AutoPairsMapCR=0
 imap <expr><CR> 
   \ pumvisible() ? 
