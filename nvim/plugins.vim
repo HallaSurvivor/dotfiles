@@ -16,7 +16,7 @@ if dein#load_state('/home/chris/.local/share/dein')
 
   "Autocompletion
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('SirVer/ultisnips')
   
   "General layout
   call dein#add('jeffkreeftmeijer/vim-numbertoggle')
@@ -36,6 +36,7 @@ if dein#load_state('/home/chris/.local/share/dein')
   call dein#add('godlygeek/tabular')
   call dein#add('scrooloose/nerdtree')
   call dein#add('simnalamburt/vim-mundo')
+  call dein#add('ervandew/supertab')
 
   "Haskell
   call dein#add('neovimhaskell/haskell-vim')
@@ -58,18 +59,27 @@ syntax on
 colorscheme onedark
 let g:airline_theme='onedark'
 
-"deoplete
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-
-let g:deoplete#max_menu_width = 0  "No max menu width
 
 "nerdTree
 let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI  = 1
 let NERDTreeDirArrows  = 1
+
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+
+"Gundo
+nnoremap <leader>u :MundoToggle<CR>
+
+
+"Tabularize
+"automatically align on the folowing symbols:  = , | <other>
+nnoremap <leader>ae :Tabularize /=<CR>
+nnoremap <leader>a, :Tabularize /,<CR>
+nnoremap <leader>a- :Tabularize /-><CR>
+nnoremap <leader>ac :Tabularize /&<CR>
+nnoremap <leader>a  :Tabularize /
+
 
 "airline
 "Use shorthand names in powerline
@@ -94,19 +104,39 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "Rainbow Parentheses
 let g:rainbow_active = 1
 
+
 "Ale
 let g:airline#extensions#ale#enabled=1
+
 
 "neco-ghc
 let g:necoghc_use_stack = 1
 let g:necoghc_enable_detailed_browse = 1
 
+
 "haskell-vim
 let g:haskell_indent_disable = 1
 
-"NeoSnippet
-let g:neosnippet#disable_runtime_snippets = { '_':1 }
-let g:neosnippet#snippets_directory = '~/.config/nvim/snippets/'
+
+"deoplete
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+
+let g:deoplete#max_menu_width = 0  "No max menu width
+
+
+"Supertab
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+
+"UltiSnips
+let g:UltiSnipsSnippetsDir = '~/.config/nvim/UltiSnips/'
+let g:UltiSnipsExpandTrigger = '<TAB>'
+let g:UltiSnipsJumpForwardTrigger = '<TAB>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
+
 
 "AutoPairs... I really don't like their binds
 let g:AutoPairsShortcutJump=''
@@ -116,56 +146,25 @@ let g:AutoPairsMapCh=0
 let g:AutoPairsCenterLine=0
 let g:AutoPairsMultilineClose=0
 let g:AutoPairsShortcutBackInsert=''
-"}}}
-
-"Plugin Binds {{{
-"Tabularize
-"automatically align on the folowing symbols:  = , | <other>
-nnoremap <leader>ae :Tabularize /=<CR>
-nnoremap <leader>a, :Tabularize /,<CR>
-nnoremap <leader>a- :Tabularize /-><CR>
-nnoremap <leader>ac :Tabularize /&<CR>
-nnoremap <leader>a  :Tabularize /
-
-"nerdTree
-nnoremap <leader>n :NERDTreeToggle<CR>
-
-"Gundo
-nnoremap <leader>u :MundoToggle<CR>
-
-imap <TAB> <Plug>(neosnippet_expand_or_jump)
+let g:AutoPairsMapCR=1
 
 
+"Make <CR> interact with deoplete/ultisnips/autopairs properly
+function! TryToExpand()
+  call UltiSnips#ExpandSnippetOrJump()
+  return g:ulti_expand_or_jump_res
+endfunction
 
-"deoplete/neosnippet interaction with <TAB>
-"
-"shamelessly stolen from:
-"https://www.reddit.com/r/neovim/comments/5qj7a7/
-"  neosnippets_deoplete/dd16dqw/?context=8&depth=9
-"
-"Use <TAB> and <S-TAB> to move in the deoplete list
-"<CR> to select 
-"
-"If not in the deoplete list, <TAB> expands a snippet
-"
-"If not in the deoplete list, but are inside brackets,
-"<CR> puts the closing bracket on a new line and puts
-"your cursor between the new lines
-imap <expr><TAB> 
-  \ pumvisible() ? 
-  \ "\<C-n>" : 
-    \ (neosnippet#expandable_or_jumpable() ? 
-    \ "\<Plug>(neosnippet_expand_or_jump)" : 
-    \ "\<TAB>")
+function! SuperCR()
+  if (pumvisible())
+    call deoplete#close_popup()
+    if (TryToExpand() > 0)
+      return ""
+    endif
+  endif
+  return "\<CR>"
+endfunction
 
-imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+imap <silent> <CR> <C-R>=SuperCR()<CR>
 
-let g:AutoPairsMapCR=0
-imap <expr><CR> 
-  \ pumvisible() ? 
-  \ deoplete#mappings#close_popup() . 
-    \ (neosnippet#expandable_or_jumpable() ? 
-    \ "\<Plug>(neosnippet_expand_or_jump)" : 
-    \ "\<CR>") : 
-  \ "\<CR>\<Plug>AutoPairsReturn"
 "}}}
