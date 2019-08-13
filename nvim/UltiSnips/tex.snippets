@@ -1,5 +1,7 @@
 # Many of these are EXTREMELY shamelessly taken from
 # https://castel.dev/post/lecture-notes-1/
+# and
+# https://github.com/gillescastel/latex-snippets/blob/master/tex.snippets
 
 snippet beg "begin{} / end{}" bA
 \begin{$1}
@@ -20,8 +22,8 @@ snippet '([A-Za-z])(\d)' "auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
 
-snippet '([A-Za-z\\\{\}\d]*)_([A-Za-z\\\{\}\d]*)' "complex auto subscript" wr
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+snippet __ "subscript" iA
+_{$1}$0
 endsnippet
 
 snippet // "Fraction" iA
@@ -65,6 +67,22 @@ snippet emph "emph" wA
 \emph{$1} $0
 endsnippet
 
+snippet frak "mathfrak" wA
+\mathfrak{$1}$0
+endsnippet
+
+snippet cal "mathcal" wA
+\mathcal{$1}$0
+endsnippet
+
+snippet ... "ldots" iA
+\ldots
+endsnippet
+
+snippet invs "invserse" iA
+^{-1}
+endsnippet
+
 snippet template "basic template" b
 \documentclass[12pt]{article}
 
@@ -74,3 +92,10 @@ snippet template "basic template" b
 	$0
 \end{document}
 endsnippet
+
+snippet ali "align*" bA
+\begin{align*}
+	${1:${VISUAL}}
+\end{align*}
+endsnippet
+
