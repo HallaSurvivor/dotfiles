@@ -1,5 +1,38 @@
 # Contains snippets that are always defined
 
+global !p
+import vim
+
+def get_comment_format():
+    """ 
+		Returns a 4-element tuple (first_line, middle_lines, end_line, indent)
+    representing the comment format for the current file.
+    It first looks at the 'commentstring', if that ends with %s, it uses that.
+    Otherwise it parses '&comments' and prefers single character comment
+    markers if there are any.
+
+		Shamelessly stolen from
+		https://github.com/honza/vim-snippets/blob/master/pythonx/vimsnippets.py
+    """
+    commentstring = vim.eval("&commentstring")
+    if commentstring.endswith("%s"):
+        c = commentstring[:-2]
+        return (c, c, c, "")
+    comments = _parse_comments(vim.eval("&comments"))
+    for c in comments:
+        if c[0] == "SINGLE_CHAR":
+            return c[1:]
+    return comments[0][1:]
+
+commentChar = get_comment_format()[0][0]
+endglobal
+
+snippet commentBox "Box some text using the comment character" b
+`!p snip.rv = commentChar * (len(t[1]) + 4)`
+`!p snip.rv = commentChar` $1 `!p snip.rv = commentChar`
+`!p snip.rv = commentChar * (len(t[1]) + 4)`
+endsnippet
+
 #########
 # dates #
 #########
