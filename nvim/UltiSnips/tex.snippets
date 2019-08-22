@@ -3,6 +3,30 @@
 # and
 # https://github.com/gillescastel/latex-snippets/blob/master/tex.snippets
 
+global !p
+texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C',
+'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS',
+'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
+
+texIgnoreMathZones = ['texMathText']
+
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+
+ignore = texIgnoreMathZoneIds[0]
+
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(
+            i for i in reversed(synstackids)
+            if i in texIgnoreMathZoneIds or i in texMathZoneIds
+        )
+		return first != ignore
+	except StopIteration:
+		return False
+endglobal
+
 snippet beg "begin{} / end{}" bA
 \begin{$1}
 	$0
@@ -18,23 +42,28 @@ else:
 `$2
 endsnippet
 
+context "math()"
 snippet '([A-Za-z])(\d)' "auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
 
+context "math()"
 snippet __ "subscript" iA
 _{$1}$0
 endsnippet
 
+context "math()"
 snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
 
+context "math()"
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
 priority 1000
+context "math()"
 snippet '^.*\)/' "() Fraction" wrA
 `!p
 stripped = match.string[:-1]
@@ -50,11 +79,13 @@ snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
 endsnippet
 
 priority 100
+context "math()"
 snippet "([a-zA-Z])bar" "bar" riA
 \overline{`!p snip.rv=match.group(1)`}
 endsnippet
 
 priority 100
+context "math()"
 snippet "([a-zA-Z])hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
@@ -75,10 +106,12 @@ snippet cal "mathcal" wA
 \mathcal{$1}$0
 endsnippet
 
+priority 1000
 snippet ... "ldots" iA
 \ldots
 endsnippet
 
+context "math()"
 snippet invs "invserse" iA
 ^{-1}
 endsnippet
@@ -98,4 +131,3 @@ snippet ali "align*" bA
 	${1:${VISUAL}}
 \end{align*}
 endsnippet
-
