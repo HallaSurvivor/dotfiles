@@ -3,6 +3,16 @@
 # and
 # https://github.com/gillescastel/latex-snippets/blob/master/tex.snippets
 
+###################
+# Math Mode Stuff #
+###################
+
+# Global definition of math() context.
+# This makes it so that math-y definitions
+# only expand when we're in math mode.
+#
+# i.e. That should NOT autocorrect to \hat{T} in plain text,
+# even though we want it to do so in math mode.
 global !p
 texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C',
 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS',
@@ -27,40 +37,29 @@ def math():
 		return False
 endglobal
 
-snippet beg "begin{} / end{}" bA
-\begin{$1}
-	$0
-\end{$1}
-endsnippet
 
-snippet mk "Inline Math" wA
-$${1}$`!p
-if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
-    snip.rv = ' '
-else:
-    snip.rv = ''
-`$2
-endsnippet
-
-context "math()"
 snippet '([A-Za-z])(\d)' "auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
+
 
 context "math()"
 snippet __ "subscript" iA
 _{$1}$0
 endsnippet
 
+
 context "math()"
 snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
 
+
 context "math()"
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
+
 
 priority 1000
 context "math()"
@@ -78,11 +77,13 @@ snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
 `{$1}$0
 endsnippet
 
+
 priority 100
 context "math()"
 snippet "([a-zA-Z])bar" "bar" riA
 \overline{`!p snip.rv=match.group(1)`}
 endsnippet
+
 
 priority 100
 context "math()"
@@ -90,31 +91,94 @@ snippet "([a-zA-Z])hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
 
-snippet bf "textbf" wA
-\textbf{$1} $0
+
+context "math()"
+snippet inv "invserse" iA
+^{-1}
 endsnippet
 
-snippet emph "emph" wA
-\emph{$1} $0
-endsnippet
 
-snippet frak "mathfrak" wA
-\mathfrak{$1}$0
-endsnippet
-
-snippet cal "mathcal" wA
-\mathcal{$1}$0
-endsnippet
+###############################
+# Formatting and Environments #
+###############################
 
 priority 1000
 snippet ... "ldots" iA
 \ldots
 endsnippet
 
-context "math()"
-snippet invs "invserse" iA
-^{-1}
+
+snippet bf "textbf" wA
+\textbf{$1} $0
 endsnippet
+
+
+snippet emph "emph" wA
+\emph{$1} $0
+endsnippet
+
+
+context "math()"
+snippet frak "mathfrak" wA
+\mathfrak{$1}$0
+endsnippet
+
+
+context "math()"
+snippet cal "mathcal" wA
+\mathcal{$1}$0
+endsnippet
+
+
+snippet mk "Inline Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+
+snippet ali "align*" bA
+\begin{align*}
+	${1:${VISUAL}}
+\end{align*}
+endsnippet
+
+
+snippet sect "section" b
+\section{$1}
+	$0
+endsnippet
+
+
+snippet subsect "subsection" b
+\subsection{$1}
+	$0
+endsnippet
+
+
+snippet thm "theorem" b
+\begin{thm}
+	$0
+\end{thm}
+endsnippet
+
+
+snippet proof "proof" b
+\begin{proof}
+	$0
+\end{proof}
+endsnippet
+
 
 snippet template "basic template" b
 \documentclass[12pt]{article}
@@ -124,10 +188,4 @@ snippet template "basic template" b
 \begin{document}
 	$0
 \end{document}
-endsnippet
-
-snippet ali "align*" bA
-\begin{align*}
-	${1:${VISUAL}}
-\end{align*}
 endsnippet
