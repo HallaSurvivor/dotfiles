@@ -1,0 +1,23 @@
+# Chris Grossack's ssh config
+#
+# reuse the same connection when accessing 
+# the same server multiple times, and
+# leave the connection open for 30m idle
+# before closing it
+#
+# (don't forget to actually create a masters/ directory)
+Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/masters/%r@%h:%p
+  ControlPersist 30m
+
+# ssh into cmu's machines
+Host cmu
+  HostName unix.andrew.cmu.edu
+  User cgrossac
+
+# ssh into backup server
+Host backup
+  HostName usw-s001.rsync.net
+  IdentityFile ~/.ssh/borg-backup-key
+  User 1066
