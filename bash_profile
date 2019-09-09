@@ -15,3 +15,12 @@ fi
  echo "~ Willy Wonka") | pysay -n -f turtle.cow
 echo ""
 echo ""
+
+# Allow ssh connections to display things to server monitor
+if [[ -n $SSH_CONNECTION ]] ;
+then
+  export OLD_DISPLAY=$DISPLAY
+  export DISPLAY=:0
+else
+  xhost +si:localuser:chris > /dev/null
+fi
