@@ -105,6 +105,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "Treat sage files like python
 autocmd BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=python
 
+"Make .tex a latex file by default
+let g:tex_flavor = "latex"
+
 "}}}
 
 " Binds {{{
