@@ -269,10 +269,14 @@ snippet template "basic template" b
 \newcommand{\teq}{\triangleq}
 \newcommand{\del}{\partial}
 
-%% Define a "danger" symbol for use when something surprising might occur
+%% define a "danger" symbol for use when something surprising might occur
 \newcommand*{\TakeFourierOrnament}[1]{{%
 \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
 \newcommand*{\danger}{\TakeFourierOrnament{66}}
+
+
+%% project specific aliases (if they exist)
+\IfFileExists{../preamble.tex}{\input{../preamble.tex}}{}
 
 
 %% Heading
@@ -280,6 +284,10 @@ snippet template "basic template" b
 \title{}
 
 \begin{document}
+
+	\maketitle
+
 	$0
+
 \end{document}
 endsnippet
