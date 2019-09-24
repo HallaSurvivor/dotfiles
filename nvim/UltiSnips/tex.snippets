@@ -118,15 +118,31 @@ snippet emph "emph" wA
 endsnippet
 
 
+snippet sf "textsf" wA
+\textsf{$1} $0
+endsnippet
+
+
+snippet ttt "texttt" wA
+\texttt{$1} $0
+endsnippet
+
+
 context "math()"
 snippet frak "mathfrak" wA
-\mathfrak{$1}$0
+\mathfrak{$1} $0
 endsnippet
 
 
 context "math()"
 snippet cal "mathcal" wA
-\mathcal{$1}$0
+\mathcal{$1} $0
+endsnippet
+
+
+context "math()"
+snippet bb "mathbb" wA
+\mathbb{$1} $0
 endsnippet
 
 
@@ -151,6 +167,13 @@ snippet ali "align*" bA
 \begin{align*}
 	${1:${VISUAL}}
 \end{align*}
+endsnippet
+
+
+snippet enum "enumerate" bA
+\begin{enumerate}
+	\item $0
+\end{enumerate}
 endsnippet
 
 
@@ -224,13 +247,16 @@ snippet template "basic template" b
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 
+%categories
+
+
 
 % arrows
 \newcommand{\hook}{\hookrightarrow}
 \newcommand{\mono}{\rightarrowtail}
 \newcommand{\epi}{\twoheadrightarrow}
 
-\newcommand{\lhook}{\hookleftarrow}
+\renewcommand{\lhook}{\hookleftarrow}
 \newcommand{\lmono}{\leftarrowtail}
 \newcommand{\lepi}{\twoheadleftarrow}
 
@@ -240,7 +266,7 @@ snippet template "basic template" b
 \newcommand{\llim}{\varprojlim}
 
 % symbols
-\newcommand{\def}{\triangleq}
+\newcommand{\teq}{\triangleq}
 \newcommand{\del}{\partial}
 
 %% Define a "danger" symbol for use when something surprising might occur
