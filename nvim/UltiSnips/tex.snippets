@@ -108,13 +108,13 @@ snippet ... "ldots" iA
 endsnippet
 
 
-snippet bf "textbf" wA
-\textbf{$1} $0
+snippet "\*(.*)\*" "md bold" wrA
+\textbf{`!p snip.rv=match.group(1)`}
 endsnippet
 
 
-snippet emph "emph" wA
-\emph{$1} $0
+snippet "_(.*)_" "md italic" wrA
+\emph{`!p snip.rv=match.group(1)`}
 endsnippet
 
 
@@ -230,11 +230,17 @@ snippet template "basic template" b
 % obligatory math environments, symbols, and theorems
 \usepackage{amsmath, amssymb, amsthm}
 
+% moar symbols
+\usepackage{stmaryrd}
+
 % sometimes you gotta draw stuff, like _c_ommutative _d_iagrams.
 \usepackage{tikz, tikz-cd}
 
 % sometimes you gotta write code
 \usepackage{listings}
+
+% proof trees are useful
+\usepackage{proof}
 
 
 %% Environments
@@ -254,7 +260,11 @@ snippet template "basic template" b
 \newcommand{\R}{\mathbb{R}}
 
 %categories
-
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Cat}{\mathsf{Cat}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Hom}{\mathsf{Hom}}
 
 
 % arrows
@@ -274,6 +284,7 @@ snippet template "basic template" b
 % symbols
 \newcommand{\teq}{\triangleq}
 \newcommand{\del}{\partial}
+\newcommand{\fin}{\subseteq_{\text{fin}}}
 
 %% define a "danger" symbol for use when something surprising might occur
 \newcommand*{\TakeFourierOrnament}[1]{{%
