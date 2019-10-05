@@ -251,45 +251,96 @@ snippet template "basic template" b
 \newtheorem{defn}{Definition}
 
 
-%% Aliases
+%% Aliases and Commands
 
-%blackboard letters
+% blackboard letters
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 
-%categories
+% categories
 \newcommand{\Set}{\mathsf{Set}}
 \newcommand{\Top}{\mathsf{Top}}
 \newcommand{\Cat}{\mathsf{Cat}}
 \newcommand{\Grp}{\mathsf{Grp}}
-\newcommand{\Hom}{\mathsf{Hom}}
+\newcommand{\Mod}{\mathsf{Mod}}
+\newcommand{\FP}{\mathsf{FP}}
 
+% "operators" (words in math mode)
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Coker}{Ker}
 
 % arrows
 \newcommand{\hook}{\hookrightarrow}
-\newcommand{\mono}{\rightarrowtail}
-\newcommand{\epi}{\twoheadrightarrow}
-
 \renewcommand{\lhook}{\hookleftarrow}
+\newcommand{\mono}{\rightarrowtail}
 \newcommand{\lmono}{\leftarrowtail}
+\newcommand{\epi}{\twoheadrightarrow}
 \newcommand{\lepi}{\twoheadleftarrow}
-
 
 % categorical limits
 \newcommand{\rlim}{\varinjlim}
 \newcommand{\llim}{\varprojlim}
 
-% symbols
-\newcommand{\teq}{\triangleq}
+% analysis
+\DeclareMathOperator{\dif}{d \!}
+\DeclareMathOperator{\Dif}{D \!}
 \newcommand{\del}{\partial}
+\newcommand{\abs}[1]{\left \lvert $1 \right \rvert}
+\newcommand{\norm}[1]{\left \lVert $1 \right \rVert}
+\newcommand{\eval}[1]{\left . $1 \right \rvert}
+
+% misc symbols
+\newcommand{\teq}{\triangleq}
 \newcommand{\fin}{\subseteq_{\text{fin}}}
 
-%% define a "danger" symbol for use when something surprising might occur
+
+%% fancy shit
+
+% define a "danger" symbol for use when something surprising might occur
+% https://tex.stackexchange.com/questions/159669/
+% 	how-to-print-a-warning-sign-triangle-with-exclamation-point
+
 \newcommand*{\TakeFourierOrnament}[1]{{%
 \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
 \newcommand*{\danger}{\TakeFourierOrnament{66}}
+
+
+% partial derivative command (taken from commath package)
+% usage: \pd[n]{f}{x}
+\newcommand{\pd}[3][]{\ensuremath{
+\ifinner
+\tfrac{\partial{^{#1}}#2}{\partial{#3^{#1}}}
+\else
+\dfrac{\partial{^{#1}}#2}{\partial{#3^{#1}}}
+\fi
+}}
+
+% mixed partial derivative command (taken from commath package)
+% usage: \md{f}{5}{x}{3}{y}{2}
+\newcommand{\md}[6]{\ensuremath{
+\ifinner
+\tfrac{\partial{^{#2}}#1}{\partial{#3^{#4}}\partial{#5^{#6}}}
+\else
+\dfrac{\partial{^{#2}}#1}{\partial{#3^{#4}}\partial{#5^{#6}}}
+\fi
+}}
+
+% ordinary derivative command (taken from commath package)
+% usage: \od[n]{f}{x}
+\newcommand{\od}[3][]{\ensuremath{
+\ifinner
+\tfrac{\dif{^{#1}}#2}{\dif{#3^{#1}}}
+\else
+\dfrac{\dif{^{#1}}#2}{\dif{#3^{#1}}}
+\fi
+}}
+
 
 
 %% project specific aliases (if they exist)
