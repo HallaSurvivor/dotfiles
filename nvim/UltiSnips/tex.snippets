@@ -12,7 +12,9 @@ extends tex-template
 # Math Mode Stuff #
 ###################
 
-# Global definition of math() context.
+# {{{
+
+# Global definition of math() context. {{{
 # This makes it so that math-y definitions
 # only expand when we're in math mode.
 #
@@ -43,7 +45,8 @@ def math():
 
 def notmath():
 	return not math()
-endglobal
+endglobal 
+# }}}
 
 
 snippet '([A-Za-z])(\d)' "auto subscript" wrA
@@ -105,6 +108,8 @@ snippet inv "invserse" iA
 ^{-1}
 endsnippet
 
+#}}}
+
 
 ###############################
 # Formatting and Environments #
@@ -115,6 +120,16 @@ snippet ... "ldots" iA
 \ldots
 endsnippet
 
+snippet mk "Inline Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+#fonts {{{
 
 context "notmath()"
 snippet "\*(..*)\*" "md bold" wrA
@@ -155,16 +170,9 @@ snippet bb "mathbb" wA
 \mathbb{$1} $0
 endsnippet
 
+#}}}
 
-snippet mk "Inline Math" wA
-$${1}$`!p
-if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
-    snip.rv = ' '
-else:
-    snip.rv = ''
-`$2
-endsnippet
-
+#environments {{{
 
 snippet beg "begin{} / end{}" bA
 \begin{$1}
@@ -218,3 +226,5 @@ snippet proof "proof" b
 	$0
 \end{proof}
 endsnippet
+
+#}}}

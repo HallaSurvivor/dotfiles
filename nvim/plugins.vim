@@ -136,6 +136,7 @@ let g:UltiSnipsSnippetsDir = '~/.config/nvim/UltiSnips/'
 let g:UltiSnipsExpandTrigger = '<TAB>'
 let g:UltiSnipsJumpForwardTrigger = '<TAB>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
+let g:ultisnips_python_style = 'doxygen'
 
 
 "AutoPairs... I really don't like their binds
