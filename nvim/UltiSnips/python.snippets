@@ -281,8 +281,9 @@ snippet def "function with docstrings" b
 def ${1:function}(`!p
 if snip.indent:
 	snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
-	`!p snip.rv = triple_quotes(snip)`${4:TODO: Docstring for $1.}`!p
-write_function_docstring(t, snip) `
+	`!p snip.rv = triple_quotes(snip)`
+	${4:TODO: Docstring for $1.}
+	`!p write_function_docstring(t, snip) `
 	${5:${VISUAL:pass}}
 endsnippet
 
@@ -292,8 +293,9 @@ snippet defc "class method with docstrings" b
 def ${1:function}(`!p
 if snip.indent:
 	snip.rv = 'cls' + (", " if len(t[2]) else "")`${2:arg1}):
-	`!p snip.rv = triple_quotes(snip)`${4:TODO: Docstring for $1.}`!p
-write_function_docstring(t, snip) `
+	`!p snip.rv = triple_quotes(snip)`
+	${4:TODO: Docstring for $1.}
+	`!p write_function_docstring(t, snip) `
 	${5:${VISUAL:pass}}
 endsnippet
 
@@ -301,8 +303,9 @@ endsnippet
 snippet defs "static method with docstrings" b
 @staticmethod
 def ${1:function}(${2:arg1}):
-	`!p snip.rv = triple_quotes(snip)`${4:TODO: Docstring for $1.}`!p
-write_function_docstring(t, snip) `
+	`!p snip.rv = triple_quotes(snip)`
+	${4:TODO: Docstring for $1.}
+	`!p write_function_docstring(t, snip) `
 	${5:${VISUAL:pass}}
 endsnippet
 
