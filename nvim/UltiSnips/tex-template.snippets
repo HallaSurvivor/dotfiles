@@ -7,7 +7,8 @@ snippet template "basic template" b
 
 %Preamble {{{
 
-%% Packages
+%%%%%%%%%%% Packages
+%%%%%%%%%%%%%%%%%%%%
 
 % the default margins have always felt big to me
 \usepackage[margin=1in]{geometry}
@@ -31,11 +32,12 @@ snippet template "basic template" b
 % proof trees are useful
 \usepackage{proof}
 
-% Allow \mathbb numerals, at the cost of stupid looking letters
-\usepackage{bbold}
+% use \mathbbm for numerals.
+\usepackage{bbm}
 
 
-%% Environments
+%%%%%%%%%%% Environments
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtheorem{thm}{Theorem}
 
@@ -44,6 +46,7 @@ snippet template "basic template" b
 
 
 %% Aliases and Commands
+%%%%%%%%%%%%%%%%%%%%%%%
 
 % blackboard letters
 \newcommand{\N}{\mathbb{N}}
@@ -53,14 +56,26 @@ snippet template "basic template" b
 \newcommand{\C}{\mathbb{C}}
 
 % categories
-\newcommand{\cat}[1]{\mathsf{#1}} 
+\newcommand*{\catFont}[1]{\mathsf{#1}} 
+\newcommand*{\catVarFont}[1]{\mathcal{#1}}
 
-\newcommand{\Set}{\cat{Set}}
-\newcommand{\Top}{\cat{Top}}
-\newcommand{\Cat}{\cat{Cat}}
-\newcommand{\Grp}{\cat{Grp}}
-\newcommand{\Mod}{\cat{Mod}}
-\newcommand{\FP}{\cat{FP}}
+\newcommand{\Set}{\catFont{Set}}
+\newcommand{\Top}{\catFont{Top}}
+\newcommand{\Cat}{\catFont{Cat}}
+\newcommand{\Grp}{\catFont{Grp}}
+\newcommand{\Mod}{\catFont{Mod}}
+\newcommand{\Sub}{\catFont{Sub}}
+\newcommand{\FP}{\catFont{FP}}
+\newcommand{\Pos}{\catFont{Pos}}
+\newcommand{\FinSet}{\catFont{FinSet}}
+
+\newcommand{\cata}{\catVarFont{A}}
+\newcommand{\catb}{\catVarFont{B}}
+\newcommand{\catc}{\catVarFont{C}}
+\newcommand{\catd}{\catVarFont{D}}
+\newcommand{\catx}{\catVarFont{X}}
+\newcommand{\caty}{\catVarFont{Y}}
+\newcommand{\catZ}{\catVarFont{Z}}
 
 % "operators" (words in math mode)
 \DeclareMathOperator{\Hom}{Hom}
@@ -87,35 +102,13 @@ snippet template "basic template" b
 \DeclareMathOperator{\dif}{d \!}
 \DeclareMathOperator{\Dif}{D \!}
 \newcommand{\del}{\partial}
-\newcommand{\abs}[1]{\left \lvert #1 \right \rvert}
-\newcommand{\norm}[1]{\left \lVert #1 \right \rVert}
-\newcommand{\eval}[1]{\left . #1 \right \rvert}
-
-% algebra
-\newcommand{\meet}{\wedge}
-\newcommand{\join}{\vee}
-
-% misc symbols
-\newcommand{\teq}{\triangleq}
-\newcommand{\fin}{\subseteq_{\text{fin}}}
-\newcommand{\lleft}{\llbracket}
-\newcommand{\rright}{\rrbracket}
-
-
-%% fancy shit
-
-% define a "danger" symbol for use when something surprising might occur
-% https://tex.stackexchange.com/questions/159669/
-% 	how-to-print-a-warning-sign-triangle-with-exclamation-point
-
-\newcommand*{\TakeFourierOrnament}[1]{{%
-\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
-\newcommand*{\danger}{\TakeFourierOrnament{66}}
-
+\newcommand*{\abs}[1]{\left \lvert #1 \right \rvert}
+\newcommand*{\norm}[1]{\left \lVert #1 \right \rVert}
+\newcommand*{\eval}[1]{\left . #1 \right \rvert}
 
 % partial derivative command (taken from commath package)
 % usage: \pd[n]{f}{x}
-\newcommand{\pd}[3][]{\ensuremath{
+\newcommand*{\pd}[3][]{\ensuremath{
 \ifinner
 \tfrac{\partial{^{#1}}#2}{\partial{#3^{#1}}}
 \else
@@ -125,7 +118,7 @@ snippet template "basic template" b
 
 % mixed partial derivative command (taken from commath package)
 % usage: \md{f}{5}{x}{3}{y}{2}
-\newcommand{\md}[6]{\ensuremath{
+\newcommand*{\md}[6]{\ensuremath{
 \ifinner
 \tfrac{\partial{^{#2}}#1}{\partial{#3^{#4}}\partial{#5^{#6}}}
 \else
@@ -135,13 +128,32 @@ snippet template "basic template" b
 
 % ordinary derivative command (taken from commath package)
 % usage: \od[n]{f}{x}
-\newcommand{\od}[3][]{\ensuremath{
+\newcommand*{\od}[3][]{\ensuremath{
 \ifinner
 \tfrac{\dif{^{#1}}#2}{\dif{#3^{#1}}}
 \else
 \dfrac{\dif{^{#1}}#2}{\dif{#3^{#1}}}
 \fi
 }}
+
+% algebra
+\newcommand{\meet}{\wedge}
+\newcommand{\join}{\vee}
+\newcommand{\id}{\mathrm{id}}
+
+% misc symbols
+\newcommand{\teq}{\triangleq}
+\newcommand{\fin}{\subseteq_{\text{fin}}}
+\newcommand{\lleft}{\llbracket}
+\newcommand{\rright}{\rrbracket}
+
+% define a "danger" symbol for use when something surprising might occur
+% https://tex.stackexchange.com/questions/159669/
+% 	how-to-print-a-warning-sign-triangle-with-exclamation-point
+
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\newcommand*{\danger}{\TakeFourierOrnament{66}}
 
 %}}}
 
