@@ -49,12 +49,14 @@ snippet template "basic template" b
 \newcommand{\C}{\mathbb{C}}
 
 % categories
-\newcommand{\Set}{\mathsf{Set}}
-\newcommand{\Top}{\mathsf{Top}}
-\newcommand{\Cat}{\mathsf{Cat}}
-\newcommand{\Grp}{\mathsf{Grp}}
-\newcommand{\Mod}{\mathsf{Mod}}
-\newcommand{\FP}{\mathsf{FP}}
+\newcommand{\cat}[1]{\mathsf{#1}} 
+
+\newcommand{\Set}{\cat{Set}}
+\newcommand{\Top}{\cat{Top}}
+\newcommand{\Cat}{\cat{Cat}}
+\newcommand{\Grp}{\cat{Grp}}
+\newcommand{\Mod}{\cat{Mod}}
+\newcommand{\FP}{\cat{FP}}
 
 % "operators" (words in math mode)
 \DeclareMathOperator{\Hom}{Hom}
