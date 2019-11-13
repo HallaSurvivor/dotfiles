@@ -14,6 +14,7 @@ snippet template "basic template" b
 
 % we aren't animals - we might use more than ASCII
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 % obligatory math environments, symbols, and theorems
 \usepackage{amsmath, amssymb, amsthm}
@@ -29,6 +30,9 @@ snippet template "basic template" b
 
 % proof trees are useful
 \usepackage{proof}
+
+% Allow \mathbb numerals, at the cost of stupid looking letters
+\usepackage{bbold}
 
 
 %% Environments
