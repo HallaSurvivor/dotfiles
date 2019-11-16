@@ -5,9 +5,9 @@
 snippet template "basic template" b
 \documentclass[12pt]{article}
 
-%Preamble {{{
+%{{{ Preamble
 
-%%%%%%%%%%% Packages
+%%%%%%%%{{{ Packages
 %%%%%%%%%%%%%%%%%%%%
 
 % the default margins have always felt big to me
@@ -23,6 +23,9 @@ snippet template "basic template" b
 % moar symbols
 \usepackage{stmaryrd}
 
+% obligatory citation library
+\usepackage{natbib}
+
 % sometimes you gotta draw stuff, like _c_ommutative _d_iagrams.
 \usepackage{tikz, tikz-cd}
 
@@ -32,11 +35,23 @@ snippet template "basic template" b
 % proof trees are useful
 \usepackage{proof}
 
-% use \mathbbm for numerals.
-\usepackage{bbm}
+% use \mathbbm for bb-numerals, use \bm for bold math symbols.
+\usepackage{bbm, bm}
 
+% I like clickable links in pdfs
+\usepackage{hyperref}
 
-%%%%%%%%%%% Environments
+% Convenient todo-notes and missing figure boxes
+\usepackage{todonotes}
+
+%}}}
+
+%%%%%%%%{{{ Formatting
+%%%%%%%%%%%%%%%%%%%%%%
+
+%}}}
+
+%%%%%%%%{{{ Environments
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtheorem{thm}{Theorem}
@@ -44,18 +59,20 @@ snippet template "basic template" b
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}
 
+%}}}
 
-%% Aliases and Commands
-%%%%%%%%%%%%%%%%%%%%%%%
+%%{{{ Aliases and Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% blackboard letters
+%{{{ blackboard letters
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+%}}}
 
-% categories
+%{{{ categories
 \newcommand*{\catFont}[1]{\mathsf{#1}} 
 \newcommand*{\catVarFont}[1]{\mathcal{#1}}
 
@@ -76,15 +93,17 @@ snippet template "basic template" b
 \newcommand{\catx}{\catVarFont{X}}
 \newcommand{\caty}{\catVarFont{Y}}
 \newcommand{\catZ}{\catVarFont{Z}}
+%}}}
 
-% "operators" (words in math mode)
+%{{{ "operators" (words in math mode)
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\coker}{coker}
+%}}}
 
-% arrows
+%{{{ arrows
 \newcommand{\hookr}{\hookrightarrow}
 \newcommand{\hookl}{\hookleftarrow}
 \newcommand{\monor}{\rightarrowtail}
@@ -93,12 +112,14 @@ snippet template "basic template" b
 \newcommand{\epil}{\twoheadleftarrow}
 \newcommand{\regepir}{\rightarrowtriangle}
 \newcommand{\regepil}{\leftarrowtriangle}
+%}}}
 
-% categorical limits
+%{{{ categorical limits
 \newcommand{\limr}{\varinjlim}
 \newcommand{\liml}{\varprojlim}
+%}}}
 
-% analysis
+%{{{ analysis
 \DeclareMathOperator{\dif}{d \!}
 \DeclareMathOperator{\Dif}{D \!}
 \newcommand{\del}{\partial}
@@ -110,9 +131,9 @@ snippet template "basic template" b
 % usage: \pd[n]{f}{x}
 \newcommand*{\pd}[3][]{\ensuremath{
 \ifinner
-\tfrac{\partial{^{#1}}#2}{\partial{#3^{#1}}}
+\tfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
 \else
-\dfrac{\partial{^{#1}}#2}{\partial{#3^{#1}}}
+\dfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
 \fi
 }}
 
@@ -120,23 +141,32 @@ snippet template "basic template" b
 % usage: \od[n]{f}{x}
 \newcommand*{\od}[3][]{\ensuremath{
 \ifinner
-\tfrac{\dif{^{#1}}#2}{\dif{#3^{#1}}}
+\tfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
 \else
-\dfrac{\dif{^{#1}}#2}{\dif{#3^{#1}}}
+\dfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
 \fi
 }}
 
-% algebra
+%}}}
+
+%{{{ algebra
 \newcommand{\meet}{\wedge}
 \newcommand{\join}{\vee}
 \newcommand{\id}{\mathrm{id}}
+%}}}
 
-% topology
-\newcommand*{\int}[1]{{\kern0pt#1}^{\mathrm{0}}}
+%{{{ topology
+\newcommand*{\int}[1]{ {\kern0pt#1}^{\mathrm{o}} }
+%}}}
 
-% misc symbols
+%{{{ logic
+\newcommand{\diamond}{\lozenge}
+\newcommand*{\denote}[1]{\llbracket #1 \rrbracket}
+%}}}
+
+%{{{ misc symbols
 \newcommand{\teq}{\triangleq}
-\newcommand{\fin}{\subseteq_{\text{fin}}}
+\newcommand{\fin}{ \subseteq_{\text{fin}} }
 \newcommand{\lleft}{\llbracket}
 \newcommand{\rright}{\rrbracket}
 
@@ -147,23 +177,23 @@ snippet template "basic template" b
 \newcommand*{\TakeFourierOrnament}[1]{{%
 \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
 \newcommand*{\danger}{\TakeFourierOrnament{66}}
-
 %}}}
 
+%}}}
 
 %% project specific aliases (if they exist)
 \IfFileExists{../preamble.tex}{\input{../preamble.tex}}{}
 
+%}}}
 
 %% Heading
 \author{Chris Grossack}
 \title{}
 
 \begin{document}
+\maketitle
 
-	\maketitle
-
-	$0
+$0
 
 \end{document}
 endsnippet
