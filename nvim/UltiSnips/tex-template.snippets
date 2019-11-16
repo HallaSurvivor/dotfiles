@@ -156,11 +156,11 @@ snippet template "basic template" b
 %}}}
 
 %{{{ topology
-\newcommand*{\int}[1]{ {\kern0pt#1}^{\mathrm{o}} }
+\newcommand*{\interior}[1]{ {\kern0pt#1}^{\mathrm{o}} }
 %}}}
 
 %{{{ logic
-\newcommand{\diamond}{\lozenge}
+\renewcommand{\diamond}{\lozenge}
 \newcommand*{\denote}[1]{\llbracket #1 \rrbracket}
 %}}}
 
@@ -173,6 +173,7 @@ snippet template "basic template" b
 % define a "danger" symbol for use when something surprising might occur
 % https://tex.stackexchange.com/questions/159669/
 % 	how-to-print-a-warning-sign-triangle-with-exclamation-point
+% use outside of math mode!
 
 \newcommand*{\TakeFourierOrnament}[1]{{%
 \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
