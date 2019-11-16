@@ -29,6 +29,9 @@ snippet template "basic template" b
 % sometimes you gotta draw stuff, like _c_ommutative _d_iagrams.
 \usepackage{tikz, tikz-cd}
 
+% sometimes you gotta put in pretty pictures
+\usepackage{graphicx}
+
 % sometimes you gotta write code
 \usepackage{listings}
 
@@ -44,10 +47,20 @@ snippet template "basic template" b
 % Convenient todo-notes and missing figure boxes
 \usepackage{todonotes}
 
+% remove paragraph indentation
+\usepackage{parskip}
+
+% allow fancy stuff
+\usepackage{fancyhdr}
+
 %}}}
 
 %%%%%%%%{{{ Formatting
 %%%%%%%%%%%%%%%%%%%%%%
+
+% prevent orphans/widows
+\clubpenalty = 10000
+\widowpenalty = 10000
 
 %}}}
 
