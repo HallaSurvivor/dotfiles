@@ -21,3 +21,8 @@ Host backup
   HostName usw-s001.rsync.net
   IdentityFile ~/.ssh/borg-backup-key
   User 1066
+
+# ssh into raspberry-pi
+Host darkrai
+  HostName darkrai
+  User pi
