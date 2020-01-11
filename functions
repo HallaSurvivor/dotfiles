@@ -19,6 +19,7 @@ function ...... { cd ../../../../..; }
 
 function cdd { cd ~/dotfiles; }
 function cds { cd ~/Documents/sandbox; }
+function cdr { cd ~/Documents/research; }
 
 alias ls="ls -CF --color"
 
