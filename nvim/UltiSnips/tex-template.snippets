@@ -184,8 +184,12 @@ snippet template "basic template" b
 %{{{ misc symbols
 \newcommand{\teq}{\triangleq}
 \newcommand{\fin}{ \subseteq_{\text{fin}} }
-\newcommand{\lleft}{\llbracket}
-\newcommand{\rright}{\rrbracket}
+
+% characteristic function
+% some alternates:
+% \chi_{#1}
+% \bm{1}_{#1} 
+\newcommand{\char}[1]{[#1]}
 
 % define a "danger" symbol for use when something surprising might occur
 % https://tex.stackexchange.com/questions/159669/
