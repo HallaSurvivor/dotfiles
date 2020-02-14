@@ -179,6 +179,26 @@ snippet template "basic template" b
 %{{{ logic
 \renewcommand{\diamond}{\lozenge}
 \newcommand*{\denote}[1]{\llbracket #1 \rrbracket}
+
+% \godelnum command, stolen from 
+% https://www.logicmatters.net/
+% 	latex-for-logicians/symbols/corner-quotes-for-godel-numbers/
+\newbox\gnBoxA
+\newdimen\gnCornerHgt
+\setbox\gnBoxA=\hbox{$\ulcorner$}
+\global\gnCornerHgt=\ht\gnBoxA
+\newdimen\gnArgHgt
+\def\godelnum #1{%
+\setbox\gnBoxA=\hbox{$#1$}%
+\gnArgHgt=\ht\gnBoxA%
+\ifnum     \gnArgHgt<\gnCornerHgt \gnArgHgt=0pt%
+\else \advance \gnArgHgt by -\gnCornerHgt%
+\fi \raise\gnArgHgt\hbox{$\ulcorner$} \box\gnBoxA %
+\raise\gnArgHgt\hbox{$\urcorner$}}
+
+% coding function
+\newcommand*{\code}[1]{\langle #1 \rangle}
+
 %}}}
 
 %{{{ misc symbols
