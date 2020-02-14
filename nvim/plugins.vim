@@ -130,7 +130,7 @@ let g:deoplete#max_menu_width = 0  "No max menu width
 
 let g:deoplete#sources#biblatex#bibfile = '~/.bib.bib'
 call deoplete#custom#source('biblatex', 'filetypes', ['tex'])
-
+let g:deoplete#sources#biblatex#startpattern = '\\cite{(?:[\w,]+:)?'
 
 "Supertab
 let g:SuperTabDefaultCompletionType = "<c-n>"
