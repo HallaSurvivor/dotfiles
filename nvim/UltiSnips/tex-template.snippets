@@ -29,6 +29,9 @@ snippet template "basic template" b
 % sometimes you gotta draw stuff, like _c_ommutative _d_iagrams.
 \usepackage{tikz, tikz-cd}
 
+% we're gay, we like colors
+\usepackage{xcolor}
+
 % sometimes you gotta put in pretty pictures
 \usepackage{graphicx}
 
@@ -50,8 +53,11 @@ snippet template "basic template" b
 % remove paragraph indentation
 \usepackage{parskip}
 
-% allow fancy stuff
+% allow fancy stuff (custom headers and footers)
 \usepackage{fancyhdr}
+
+% pretty boxes are pretty
+\usepackage[framemethod=TikZ]{mdframed}
 
 %}}}
 
@@ -211,7 +217,10 @@ snippet template "basic template" b
 % some alternates:
 % \chi_{#1}
 % \bm{1}_{#1} 
-\newcommand{\char}[1]{[#1]}
+\newcommand*{\char}[1]{[#1]}
+
+% important words
+\newcommand*{\important}[1]{\textcolor{Cerulean}{#1}}
 
 % define a "danger" symbol for use when something surprising might occur
 % https://tex.stackexchange.com/questions/159669/
