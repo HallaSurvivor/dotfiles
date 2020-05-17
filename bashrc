@@ -15,9 +15,6 @@
 #Set Editor
 export EDITOR=/usr/bin/nvim
 
-#Tell the world we're 256 color
-export TERM=screen-256color
-
 #One day we'll get with the times, but for now we use bash
 export SHELL=/bin/bash
 

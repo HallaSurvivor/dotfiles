@@ -1,6 +1,16 @@
 ! Chris Grossack's xterm config
 ! 2020
 
+! Announce our terminal
+XTerm.termName: xterm-256color
+
+! Fix the backspace issue (so C-H is usable)
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+
+! Let xterm interface properly with system clipboard
+xterm*selectToClipboard: true
+
 ! Aesthetics:
 ! Colorscheme is "navy and ivory" from terminal.sexy
 
@@ -44,5 +54,3 @@
 *.color7:       #f2f1b9
 *.color15:      #f6f6c9
 
-! Let xterm interface properly with system clipboard
-xterm*selectToClipboard: true
