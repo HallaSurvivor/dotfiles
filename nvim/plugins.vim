@@ -17,7 +17,8 @@ if dein#load_state('/home/chris/.local/share/dein')
   "Autocompletion
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('SirVer/ultisnips')
-  call dein#add('lionawurscht/deoplete-biblatex')
+  " we'll look into this another day
+  "call dein#add('lionawurscht/deoplete-biblatex')
   
   "General layout
   call dein#add('jeffkreeftmeijer/vim-numbertoggle')
@@ -41,8 +42,8 @@ if dein#load_state('/home/chris/.local/share/dein')
   call dein#add('ervandew/supertab')
 
   "Haskell
-  call dein#add('neovimhaskell/haskell-vim')
-  call dein#add('eagletmt/neco-ghc')
+  "call dein#add('neovimhaskell/haskell-vim')
+  "call dein#add('eagletmt/neco-ghc')
 
   call dein#end()
   call dein#save_state()
@@ -112,12 +113,12 @@ let g:airline#extensions#ale#enabled=1
 
 
 "neco-ghc
-let g:necoghc_use_stack = 1
-let g:necoghc_enable_detailed_browse = 1
+"let g:necoghc_use_stack = 1
+"let g:necoghc_enable_detailed_browse = 1
 
 
 "haskell-vim
-let g:haskell_indent_disable = 1
+"let g:haskell_indent_disable = 1
 
 
 "deoplete

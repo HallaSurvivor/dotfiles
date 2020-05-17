@@ -47,14 +47,6 @@ function path_add()
 
 path_add "$DOTFILES/bin"
 path_add "$HOME/.local/bin"
-path_add "/sbin"
-
-#################
-# Set Dircolors #
-#################
-
-eval $( dircolors -b $DOTFILES/dir_colors )
-
 
 ###########################
 # Source Additional Files #

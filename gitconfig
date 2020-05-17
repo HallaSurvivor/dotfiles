@@ -45,7 +45,7 @@
 
 [commit]
   # Sign any commits as being done by me.
-  gpgsign = true
+  # gpgsign = true
 
 [merge]
   # Include a summary of merge changes in the merge commit message
