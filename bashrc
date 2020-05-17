@@ -18,6 +18,9 @@ export EDITOR=/usr/bin/nvim
 #Tell the world we're 256 color
 export TERM=screen-256color
 
+#One day we'll get with the times, but for now we use bash
+export SHELL=/bin/bash
+
 #Tell the world that we use UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
