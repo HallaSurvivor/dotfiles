@@ -42,8 +42,8 @@ if dein#load_state('/home/chris/.local/share/dein')
   call dein#add('ervandew/supertab')
 
   "Haskell
-  "call dein#add('neovimhaskell/haskell-vim')
-  "call dein#add('eagletmt/neco-ghc')
+  call dein#add('parsonsmatt/intero-neovim')
+  call dein#add('eagletmt/neco-ghc')
 
   call dein#end()
   call dein#save_state()
