@@ -157,6 +157,17 @@ local bat = lain.widget.bat({
     end
 })
 
+-- ALSA volume
+local volicon = wibox.widget.imagebox(theme.widget_vol)
+theme.volume = lain.widget.alsa({
+    settings = function()
+        if volume_now.status == "off" then
+            volume_now.level = volume_now.level .. "M"
+        end
+
+        widget:set_markup(markup.fontfg(theme.font, "#7493d2", volume_now.level .. "% "))
+    end
+})
 
 -- Net
 local netdownicon = wibox.widget.imagebox(theme.widget_netdown)
@@ -266,10 +277,8 @@ function theme.at_screen_connect(s)
             netdowninfo,
             netupicon,
             netupinfo.widget,
-            --volicon,
-	    --volumewidget,
-            --volume.widget,
-	    --volume,
+            volicon,
+            theme.volume.widget,
             memicon,
             memory.widget,
             cpuicon,
