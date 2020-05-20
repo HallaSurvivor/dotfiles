@@ -123,9 +123,6 @@ let g:airline#extensions#ale#enabled=1
 
 "deoplete
 let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
 
 let g:deoplete#max_menu_width = 0  "No max menu width
 
