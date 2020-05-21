@@ -61,3 +61,8 @@ if [ -e "$DOTFILES/prompt" ];
 then
   source $DOTFILES/prompt
 fi
+
+if [ -e "$HOME/.bashrc.private" ];
+then
+  source $HOME/.bashrc.private
+fi
