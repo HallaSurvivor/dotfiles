@@ -21,6 +21,7 @@ function cdd { cd ~/dotfiles; }
 function cds { cd ~/Documents/sandbox; }
 function cdr { cd ~/Documents/research; }
 function cdw { cd ~/Documents/work; }
+function cdp { cd ~/Documents/programming; }
 
 alias ls="ls -CF --color"
 
