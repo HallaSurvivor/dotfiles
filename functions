@@ -40,3 +40,6 @@ fi
 
 # Again. I'm actually this lazy
 alias v=nvim
+
+# I think this is cute
+alias pls='sudo $(history -p !!)'
