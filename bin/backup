@@ -1,0 +1,54 @@
+#!/bin/sh
+# Chris Grossack backup script.
+# I backup to a server hosted by rsync 
+# (the company, not the command)
+# and my password, etc. are stored in
+# environment vars created elsewhere.
+#
+# this script is shamelessly stolen from here:
+# https://borgbackup.readthedocs.io/en/stable/quickstart.html#automating-backups
+
+# cron doesn't have the relevant environment variables
+source /home/chris/.bashrc.private
+
+info() {  printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
+trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
+
+info "Starting backup"
+
+# Create the new backup
+borg create --progress --stats -v              \
+  ::'{hostname}-{now:%Y-%m-%d--%H:%M}'         \
+  /home/chris/Documents/                       \
+  /home/chris/Downloads/                       \
+  /home/chris/.config/                         \
+  /home/chris/.ssh/                            \
+  /home/chris/.bashrc.private                  \
+ --exclude '/home/chris/Downloads/torrents/*'
+
+backup_exit=$?
+
+# Keep:
+#   Every backup for the past week
+#   One backup from each of the last 4 weeks
+#   One backup from each of the last 6 months
+borg prune -v --list --prefix '{hostname}-' --show-rc \
+    --keep-daily=7 --keep-weekly=4 --keep-monthly=6
+
+prune_exit=$?
+
+# use highest exit code as the global exit code
+global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
+
+if [ ${global_exit} -eq 0 ]; then
+  info "Backup and Prune finished successfully";
+  echo "Backed up: $(date +%c)" >> /home/chris/dotfiles/bin/backup.log
+elif [ ${global_exit} -eq 1 ]; then
+  info "Backup and/or Prune finished with warnings";
+  echo "Backup or Prune had warnings: $(date +%c)" >> /home/chris/dotfiles/bin/backup.log
+else
+  info "Backup and/or Prune finished with errors";
+  echo "Backup or Prune failed: $(date +%c)" >> /home/chris/dotfiles/bin/backup.log
+fi
+
+exit ${global_exit}
