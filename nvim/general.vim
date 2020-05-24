@@ -114,6 +114,8 @@ let g:tex_flavor = "latex"
 "Close insert/visual mode with jk
 inoremap jk <esc>
 vnoremap jk <esc>
+tnoremap <esc> <C-\><C-n>
+tnoremap jk <C-\><C-n>
 let mapleader=' '
 
 "Allow for right-click paste without
