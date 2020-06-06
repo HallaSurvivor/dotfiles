@@ -47,6 +47,7 @@ function path_add()
 
 path_add "$DOTFILES/bin"
 path_add "$HOME/.local/bin"
+path_add "$HOME/.gem/ruby/2.7.0/bin"
 
 ###########################
 # Source Additional Files #
