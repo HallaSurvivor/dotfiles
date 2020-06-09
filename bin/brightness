@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Bash script to control monitor brightness. 
+# Shamelessly modified from here:
+# https://askubuntu.com/questions/1150339/increment-brightness-by-value-using-xrandr
+# and here:
+# http://sandipbgt.com/2015/10/01/control-screen-brightness-from-commandline-in-ubuntu/
+
+STEP=5 # Step up/down brightness by 5=.05, 10=.1, etc.
+
+# TODO - modify this to allow multi-monitor setups.
+# default to modifying all monitors, but allow it to 
+# optionally accept a monitor as input
+ScreenName=$(xrandr | grep " connected" | cut -f1 -d" ") 
+
+CurrBright=$( xrandr --verbose --current | grep ^"$ScreenName" -A5 | tail -n1 )
+CurrBright="${CurrBright##* }"  # Get brightness level with decimal place
+
+Left=${CurrBright%%"."*}        # Extract left of decimal point
+Right=${CurrBright#*"."}        # Extract right of decimal point
+
+MathBright="0"
+[[ "$Left" != 0 && "$STEP" -lt 10 ]] && STEP=10     # > 1.0, only .1 works
+[[ "$Left" != 0 ]] && MathBright="$Left"00          # 1.0 becomes "100"
+[[ "${#Right}" -eq 1 ]] && Right="$Right"0          # 0.5 becomes "50"
+MathBright=$(( MathBright + Right ))
+
+[[ "$1" == "up" || "$1" == "+" ]] && MathBright=$(( MathBright + STEP ))
+[[ "$1" == "down" || "$1" == "-" ]] && MathBright=$(( MathBright - STEP ))
+[[ $1 =~ [0-9]+$ ]] && MathBright=$1
+[[ "${MathBright:0:1}" == "-" ]] && MathBright=0    # Negative not allowed
+[[ "$MathBright" -gt 999  ]] && MathBright=999      # Can't go over 9.99
+
+if [[ "${#MathBright}" -eq 3 ]] ; then
+    MathBright="$MathBright"000         # Pad with lots of zeros
+    CurrBright="${MathBright:0:1}.${MathBright:1:2}"
+else
+    MathBright="$MathBright"000         # Pad with lots of zeros
+    CurrBright=".${MathBright:0:2}"
+fi
+
+xrandr --output "$ScreenName" --brightness "$CurrBright"   # Set new brightness
+
+# Display current brightness
+printf "Monitor $ScreenName "
+echo $( xrandr --verbose --current | grep ^"$ScreenName" -A5 | tail -n1 )
