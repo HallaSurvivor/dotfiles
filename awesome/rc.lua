@@ -58,7 +58,7 @@ local function run_once(cmd_arr)
 end
 
 -- things to run on startup
-run_once({ "unclutter -root", "mullvad-vpn", "xscreensaver -nosplash", "dropbox" })
+run_once({ "unclutter -root", "mullvad-vpn", "xscreensaver -nosplash", "dropbox", "transmission-gtk" })
 -- }}}
 
 -- {{{ Variable definitions
@@ -564,7 +564,11 @@ do
     "VBoxClient-all",
     -- dirty hack to swap capslock and ctrl. 
     -- there's definitely a better way to do this.
-    "setxkbmap -option ctrl:swapcaps"
+    "setxkbmap -option ctrl:swapcaps",
+    -- dirty hack to swap the left and right monitors.
+    -- there's definitely a better way to do this.
+    "xrandr --output HDMI-0 --left-of DVI-D-0"
+
   }
 
   for _,i in pairs(cmds) do
