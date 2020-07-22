@@ -567,8 +567,11 @@ do
     "setxkbmap -option ctrl:swapcaps",
     -- dirty hack to swap the left and right monitors.
     -- there's definitely a better way to do this.
-    "xrandr --output HDMI-0 --left-of DVI-D-0"
-
+    "xrandr --output HDMI-0 --left-of DVI-D-0",
+    -- dirty hack to lower sensitivity and disable mouse acceleration.
+    -- there's definitely a better way to do this.
+    "xinput --set-prop 8 'libinput Accel Profile Enabled' 0, 1",
+    "xinput --set-prop 8 'libinput Accel Speed' -0.75"
   }
 
   for _,i in pairs(cmds) do
