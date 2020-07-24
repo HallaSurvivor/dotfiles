@@ -1,0 +1,46 @@
+#!/usr/bin/python3
+# Add a table of contents to a djvu file
+# Requires djvulibre (obviously)
+#
+# shamelessly based off of https://ebooks.stackexchange.com/questions/
+#   7866/how-insert-the-outline-the-bookmarks-into-djvu
+#
+# Chris Grossack, 2020
+
+import sys
+import os
+
+help = \
+"""
+Usage: add-toc djvu-path toc-path
+
+be sure the toc encoding is UTF8
+
+here's a sample toc file:
+(bookmarks
+    ("TOC" "#3")
+    ("Chapter 1 - Blabla" "#7"
+        ("Subchapter 1.1 - Blabla" "#11")
+    )
+    ("Chapter 2 - Blabla" "#15"
+        ("Subchapter 2.1 - Blabla" "#17"
+            ("Subchapter 2.1.1 - Blabla" "#20")
+        )
+    )
+    ("Chapter 3 - Blabla" "#25")
+)
+"""
+
+if len(sys.argv) != 3:
+    print(help)
+    exit(1)
+
+djvuLibreDoesntExist = os.system("command -v djvused &> /dev/null")
+if djvuLibreDoesntExist:
+    print("Install djvulibre to use this script")
+    exit(1)
+
+cmd = "djvused {djvu} -e \"set-outline {toc}\" -s".format(djvu=sys.argv[1], toc=sys.argv[2])
+
+os.system(cmd)
+exit(0)
