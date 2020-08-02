@@ -219,6 +219,8 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey }, "l", function() os.execute("xscreensaver-command -lock") end,
               {description = "lock the screen", group = "hotkeys"}),
 
+    awful.key({ }, "Print", function () awful.util.spawn("gnome-screenshot") end),
+
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "hotkeys"}),
 
