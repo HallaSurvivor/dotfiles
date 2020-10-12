@@ -1,0 +1,13 @@
+#!/bin/bash
+
+HEADER="---\nlayout: post\ntitle: \ntags: \n---\n"
+TODAY="$(date +"%Y-%m-%d")"
+
+cat > $TODAY-$1.md <<- EOM
+---
+layout: post
+title: 
+tags:
+  - 
+---
+EOM
