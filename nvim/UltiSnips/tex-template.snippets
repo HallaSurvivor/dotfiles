@@ -78,9 +78,37 @@ snippet template "basic template" b
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtheorem{thm}{Theorem}
+\newtheorem*{thm*}{Theorem}
+
+\newtheorem*{rmk}{Remark}
+
+% add some slashes to mark the end of a definition. 
+% shamelessly stolen from 
+% https://tex.stackexchange.com/
+% questions/291346/marking-the-end-of-a-definition
 
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}
+\newtheorem{defn/}{Definition}
+\newtheorem*{defn*/}{Definition}
+
+\newcommand{\defnendsymbol}{\mathbin{\rotatebox[origin=c]{-45}{$\parallel$}}}
+
+\newenvironment{defn}
+  {\renewcommand{\qedsymbol}{$\defnendsymbol$}%
+   \pushQED{\qed}\begin{defn/}}
+  {\popQED\end{defn/}}
+
+\newenvironment{defn*}
+  {\renewcommand{\qedsymbol}{$\defnendsymbol$}%
+   \pushQED{\qed}\begin{defn*/}}
+  {\popQED\end{defn*/}}
+
+% stuff for submitting homeworks
+\theoremstyle{theorem}
+
+\newtheorem*{problem}{Problem}
+
+\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
 
 %}}}
 
@@ -232,7 +260,7 @@ snippet template "basic template" b
 %}}}
 
 %% Heading
-\author{Chris Grossack}
+\author{Chris Grossack\\(they/them)}
 \title{}
 
 \begin{document}
