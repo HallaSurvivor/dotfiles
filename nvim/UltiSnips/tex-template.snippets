@@ -91,7 +91,10 @@ snippet template "basic template" b
 \newtheorem{defn/}{Definition}
 \newtheorem*{defn*/}{Definition}
 
-\newcommand{\defnendsymbol}{\mathbin{\rotatebox[origin=c]{-45}{$\parallel$}}}
+\newcommand{\defnendsymbol}%
+{%
+	\mathbin{\rotatebox[origin=c]{-45}{$\parallel$}}%
+}
 
 \newenvironment{defn}
   {\renewcommand{\qedsymbol}{$\defnendsymbol$}%
