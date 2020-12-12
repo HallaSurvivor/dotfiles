@@ -67,3 +67,6 @@ if [ -e "$HOME/.bashrc.private" ];
 then
   source $HOME/.bashrc.private
 fi
+
+# The next line updates PATH for Netlify's Git Credential Helper.
+if [ -f '/home/chris/.netlify/helper/path.bash.inc' ]; then source '/home/chris/.netlify/helper/path.bash.inc'; fi
