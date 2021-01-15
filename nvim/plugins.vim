@@ -5,13 +5,13 @@
 " https://github.com/HallaSurvivor/dotfiles
 
 "Plugin Setup {{{
-set runtimepath+=/home/chris/.local/share/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('/home/chris/.local/share/dein')
-  call dein#begin('/home/chris/.local/share/dein')
+if dein#load_state('~/.local/share/dein')
+  call dein#begin('~/.local/share/dein')
 
   "Let dein manage dein
-  call dein#add('/home/chris/.local/share/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
   call dein#add('haya14busa/dein-command.vim') "dein has REALLY bad binds
 
   "Autocompletion
