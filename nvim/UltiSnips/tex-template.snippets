@@ -17,6 +17,9 @@ snippet template "basic template" b
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+% we're gay, we like colors
+\usepackage[dvipsnames]{xcolor}
+
 % obligatory math environments, symbols, and theorems
 \usepackage{amsmath, amssymb, amsthm}
 
@@ -28,9 +31,6 @@ snippet template "basic template" b
 
 % sometimes you gotta draw stuff, like _c_ommutative _d_iagrams.
 \usepackage{tikz, tikz-cd}
-
-% we're gay, we like colors
-\usepackage{xcolor}
 
 % sometimes you gotta put in pretty pictures
 \usepackage{graphicx}
@@ -78,9 +78,40 @@ snippet template "basic template" b
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtheorem{thm}{Theorem}
+\newtheorem*{thm*}{Theorem}
+
+\newtheorem*{rmk}{Remark}
+
+% add some slashes to mark the end of a definition. 
+% shamelessly stolen from 
+% https://tex.stackexchange.com/
+% questions/291346/marking-the-end-of-a-definition
 
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}
+\newtheorem{defn/}{Definition}
+\newtheorem*{defn*/}{Definition}
+
+\newcommand{\defnendsymbol}%
+{%
+	\mathbin{\rotatebox[origin=c]{-45}{$\parallel$}}%
+}
+
+\newenvironment{defn}
+  {\renewcommand{\qedsymbol}{$\defnendsymbol$}%
+   \pushQED{\qed}\begin{defn/}}
+  {\popQED\end{defn/}}
+
+\newenvironment{defn*}
+  {\renewcommand{\qedsymbol}{$\defnendsymbol$}%
+   \pushQED{\qed}\begin{defn*/}}
+  {\popQED\end{defn*/}}
+
+% stuff for submitting homeworks
+\theoremstyle{theorem}
+
+\newtheorem*{problem}{Problem}
+
+\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
 
 %}}}
 
@@ -170,12 +201,19 @@ snippet template "basic template" b
 \fi
 }}
 
+% restriction of a map
+\newcommand*{\restrict}{\upharpoonright}
+
+% almost everywhere
+\renewcommand*{\ae}{~\mathrm{a.e.}}
+
 %}}}
 
 %{{{ algebra
 \newcommand{\meet}{\wedge}
 \newcommand{\join}{\vee}
 \newcommand{\id}{\mathrm{id}}
+\newcommand{\normal}{\vartriangleleft}
 %}}}
 
 %{{{ topology
@@ -212,7 +250,7 @@ snippet template "basic template" b
 \newcommand{\fin}{ \subseteq_{\text{fin}} }
 
 % important words
-\newcommand*{\important}[1]{\textcolor{Cerulean}{#1}}
+\newcommand*{\important}[1]{\textcolor{MidnightBlue}{#1}}
 
 % define a "danger" symbol for use when something surprising might occur
 % https://tex.stackexchange.com/questions/159669/
@@ -232,7 +270,7 @@ snippet template "basic template" b
 %}}}
 
 %% Heading
-\author{Chris Grossack}
+\author{Chris Grossack\\\\ (they/them)}
 \title{}
 
 \begin{document}

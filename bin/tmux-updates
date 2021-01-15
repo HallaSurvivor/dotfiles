@@ -5,7 +5,7 @@
 
 num_updates()
 {
-  update-check | wc -l
+  pacman -Qu | wc -l
 }
 
 format()

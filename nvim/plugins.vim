@@ -17,8 +17,6 @@ if dein#load_state('/home/chris/.local/share/dein')
   "Autocompletion
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('SirVer/ultisnips')
-  " we'll look into this another day
-  "call dein#add('lionawurscht/deoplete-biblatex')
   
   "General layout
   call dein#add('jeffkreeftmeijer/vim-numbertoggle')

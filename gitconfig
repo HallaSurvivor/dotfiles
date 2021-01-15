@@ -93,3 +93,16 @@
 
   # Show ignored files
   ignored = "!git ls-files -v | grep ^h | cut -c 3-"
+
+
+# Allow working with large files via LFS
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+
+# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
+[include]
+  path = /home/chris/.netlify/helper/git-config
