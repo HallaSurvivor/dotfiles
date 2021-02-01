@@ -1,0 +1,16 @@
+# Some ~bonus commands~ that should only
+# be sourced on my mac, Smeargle.
+
+# give a lil welcome in each new shell
+(echo "So much time and so little to do.";
+ echo "Wait a minute. Strike that. Reverse it.";
+ echo "~ Willy Wonka") | pysay -n -f turtle.cow
+echo ""
+echo ""
+
+
+# ls has different options on a mac...
+# because of course it does
+alias ls="ls -CFG"
+
+

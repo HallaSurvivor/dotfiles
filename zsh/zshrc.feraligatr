@@ -1,0 +1,5 @@
+# Some ~bonus commands~ that should only
+# be sourced on my (manjaro) desktop Feraligatr
+
+alias ls="ls -CF --color=auto"
+

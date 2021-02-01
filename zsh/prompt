@@ -1,0 +1,46 @@
+# Chris Grossack's zsh prompt
+#
+# Much of this is stolen shamelessly from
+# https://github.com/olivierverdier/zsh-git-prompt
+# and
+# http://www.opinionatedprogrammer.com
+#   /2011/01/colorful-bash-prompt-reflecting-git-status/
+
+
+# Allow for functions in the prompt.
+setopt prompt_subst
+
+# Set up colors as variables for ease of fiddling
+GIT_UP_TO_DATE="cyan"
+GIT_UNSTAGED="magenta"
+GIT_UNTRACKED="yellow"
+
+
+# The git part of the status:
+# [branch |n]
+# bg color changes based on untracked changes
+# 
+# branch is the branchname (or a hash)
+# 
+# |n is an up or down arrow followed by n
+# where n is the number of commits ahead/behind
+# of the remote we are
+git_status()
+{
+  local git_status="`git status -unormal 2>&1`"
+  if ! [[ "$git_status" =~ not\ a\ git\ repo ]]; then
+
+    #choose background color
+    if [[ "$git_status" =~ nothing\ to\ commit ]]; then
+      local GIT_COLOR="$GIT_UP_TO_DATE"
+    elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
+      local GIT_COLOR="$GIT_UNTRACKED"
+    else
+      local GIT_COLOR="$GIT_UNSTAGED"
+    fi
+  fi
+
+  echo "%F{cyan} $GIT_COLOR %f"
+}
+
+PROMPT="$(git_status) %n: %. > "
