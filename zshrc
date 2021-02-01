@@ -93,6 +93,13 @@ path_add "$DOTFILES/bin"
 
 #}}}
 
+#{{{ Prompt stuff
+
+# Some code that lets zsh get git info
+source $DOTFILES/zsh/prompt
+
+#}}}
+
 #{{{ Some functions 
 
 # note two functions ps1_on and ps1_off are defined in zsh/prompt 
@@ -119,8 +126,6 @@ alias v=nvim
 alias pls='sudo $(history -p !!)'
 
 #}}}
-
-source $DOTFILES/zsh/prompt
 
 case $(hostname) in
   (Smeargle*)   source $DOTFILES/zsh/zshrc.smeargle;;

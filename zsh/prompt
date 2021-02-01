@@ -1,20 +1,70 @@
 # Chris Grossack's zsh prompt
-#
-# Much of this is stolen shamelessly from
-# https://github.com/olivierverdier/zsh-git-prompt
-# and
-# http://www.opinionatedprogrammer.com
-#   /2011/01/colorful-bash-prompt-reflecting-git-status/
 
-
-# Allow for functions in the prompt.
+# Let the prompt be dynamic
 setopt prompt_subst
 
-# Set up colors as variables for ease of fiddling
-GIT_UP_TO_DATE="cyan"
-GIT_UNSTAGED="magenta"
-GIT_UNTRACKED="yellow"
+#{{{ Git stuff
 
+# Much of this is shamelessly stolen from
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/git.zsh
+
+
+# The git prompt's git commands are read-only and should not interfere with
+# other processes. This environment variable is equivalent to running with `git
+# --no-optional-locks`, but falls back gracefully for older versions of git.
+# See git(1) for and git-status(1) for a description of that flag.
+#
+# We wrap in a local function instead of exporting the variable directly in
+# order to avoid interfering with manually-run git commands by the user.
+function __git_prompt_git() 
+{
+  GIT_OPTIONAL_LOCKS=0 command git "$@"
+}
+
+# Gets the current branch name
+function git_current_branch() 
+{
+  local ref
+  ref=$(__git_prompt_git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(__git_prompt_git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
+# Gets how far ahead/behind remote we are
+check_remote()
+{
+  local out=""
+
+  # check if we're ahead 
+  if __git_prompt_git rev-parse --git-dir &>/dev/null; then
+    local commits="$(__git_prompt_git rev-list --count @{upstream}..HEAD 2>/dev/null)"
+    if [[ -n "$commits" && "$commits" != 0 ]]; then
+      out=" ↑$commits"
+    fi
+  fi
+
+  # check if we're behind
+  if __git_prompt_git rev-parse --git-dir &>/dev/null; then
+    local commits="$(__git_prompt_git rev-list --count HEAD..@{upstream} 2>/dev/null)"
+    if [[ -n "$commits" && "$commits" != 0 ]]; then
+      out=" ↓$commits"
+    fi
+  fi
+
+  echo "$out"
+}
+
+#}}}
+
+
+# Set up colors as variables for ease of fiddling
+up_to_date="cyan"
+modified="magenta"
+untracked="yellow"
 
 # The git part of the status:
 # [branch |n]
@@ -27,20 +77,40 @@ GIT_UNTRACKED="yellow"
 # of the remote we are
 git_status()
 {
-  local git_status="`git status -unormal 2>&1`"
-  if ! [[ "$git_status" =~ not\ a\ git\ repo ]]; then
-
-    #choose background color
-    if [[ "$git_status" =~ nothing\ to\ commit ]]; then
-      local GIT_COLOR="$GIT_UP_TO_DATE"
-    elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
-      local GIT_COLOR="$GIT_UNTRACKED"
-    else
-      local GIT_COLOR="$GIT_UNSTAGED"
-    fi
+  # If we aren't in a git repo (or if this is disabled), exit.
+  if ! __git_prompt_git rev-parse --git-dir &> /dev/null \
+     || [ "$USE_GIT_PROMPT" -eq "0" ]; then
+    return 0
   fi
 
-  echo "%F{cyan} $GIT_COLOR %f"
+  # check if there's any modified or untracked files
+  case $(__git_prompt_git status --porcelain 2> /dev/null | tail -1) in
+    "")  bg_color=$up_to_date ;;
+    \?*) bg_color=$untracked  ;;
+    *)   bg_color=$modified   ;;
+  esac
+  
+  # for some reason %K means background color...
+  echo "%K{$bg_color}$(git_current_branch)$(check_remote)%k "
 }
 
-PROMPT="$(git_status) %n: %. > "
+
+# only show the hostname (bolded) if we're SSH'd
+ssh_status() { if [[ "$SSH_CONNECTION" != '' ]] && echo "%B%m%b " }
+
+
+# color our > red if the previous command failed
+output_status() { echo "%(?.%F{white}.%F{red})%(!.#.>)%f" }
+
+
+# Here's where the magic happens: The actual prompt command
+
+precmd() { PROMPT="$(git_status)$(ssh_status)%. $(output_status) " }
+
+
+# lets us turn off git check if it's too slow
+ps1_on()  { export USE_GIT_PROMPT=1 }
+ps1_off() { export USE_GIT_PROMPT=0 }
+
+# default to having it on, though
+ps1_on
