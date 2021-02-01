@@ -1,7 +1,0 @@
-# Chris Grossack's inputrc. 
-#
-# See the rest of my dotfiles here:
-# https://github.com/HallaSurvivor/dotfiles
-
-# Lets us use vim hotkeys while typing in the shell
-set editing-mode vi
