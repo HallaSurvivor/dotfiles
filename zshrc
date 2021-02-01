@@ -58,6 +58,13 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
+# Plugins:
+fpath=($DOTFILES/zsh $fpath)
+
+# make ... expand to ../.. etc
+autoload -Uz manydots-magic
+manydots-magic
+
 
 #}}}
 
@@ -114,6 +121,7 @@ alias v=nvim
 alias pls='sudo $(history -p !!)'
 
 #}}}
+
 
 # This is where we add important directories to our $PATH
 
