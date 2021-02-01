@@ -72,6 +72,24 @@ snippet template "basic template" b
 \hyphenpenalty 10000
 \exhyphenpenalty 10000
 
+% forcibly overlay two symbols on top of each other
+% used for the \cupdot and \bigcupdot commands
+% shamelessly taken from here:
+% https://tex.stackexchange.com/questions/3964/
+%   mathematical-symbol-for-disjoint-set-union
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+
+
 %}}}
 
 %%%%%%%%{{{ Environments
@@ -206,6 +224,11 @@ snippet template "basic template" b
 
 % almost everywhere
 \renewcommand*{\ae}{~\mathrm{a.e.}}
+
+% disjoint union
+\newcommand{\dotcup}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigdotcup}{\charfusion[\mathop]{\bigcup}{\cdot}}
+
 
 %}}}
 
