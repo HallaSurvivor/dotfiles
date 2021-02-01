@@ -104,12 +104,13 @@ function cdd { cd ~/dotfiles; }
 function cds { cd ~/Documents/sandbox; }
 function cdr { cd ~/Dropbox/research; }
 function cdw { cd ~/Dropbox/work/ucr; }
+function cdb { cd ~/Documents/Blog; }
+
+# You would not believe how often I look through my books like this
+function books { find ~/Dropbox -type f | grep $1 | sed 's/^.*Dropbox\///'; }
 
 # reload zshrc
 function reload { source ~/.zshrc; }
-
-# for some reason there's no way to set your default regextype in find...
-function findr { dir=$1; shift; find $dir -regextype posix-egrep $*; }
 
 # Yes. I'm too lazy to type those extra two letters
 alias g=git
