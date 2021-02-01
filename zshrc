@@ -47,6 +47,18 @@ setopt CORRECT_ALL
 # We're gay. Give us colors
 autoload -U colors && colors
 
+# Use up/down arrows to search through history
+# Shamelessly taken from 
+# https://superuser.com/questions/585003/
+#   searching-through-history-with-up-and-down-arrow-in-zsh
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
+
 #}}}
 
 #{{{ Autocomplete stuff
@@ -76,30 +88,6 @@ autoload -Uz compinit && compinit
 
 #}}}
 
-#{{{ $PATH stuff
-
-# This is where we add important directories to our $PATH
-
-# This function is shamelessly taken from:
-# http://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
-function path_add()
-{
-  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-    PATH="${PATH:+"$PATH:"}$1"
-  fi
-}
-
-path_add "$DOTFILES/bin"
-
-#}}}
-
-#{{{ Prompt stuff
-
-# Some code that lets zsh get git info
-source $DOTFILES/zsh/prompt
-
-#}}}
-
 #{{{ Some functions 
 
 # note two functions ps1_on and ps1_off are defined in zsh/prompt 
@@ -126,6 +114,25 @@ alias v=nvim
 alias pls='sudo $(history -p !!)'
 
 #}}}
+
+# This is where we add important directories to our $PATH
+
+# This function is shamelessly taken from:
+# http://superuser.com/questions/39751/add-directory-to-path-if-its-not-already-there
+function path_add()
+{
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="${PATH:+"$PATH:"}$1"
+  fi
+}
+
+path_add "$DOTFILES/bin"
+
+
+# Get a nice pretty prompt
+source $DOTFILES/zsh/prompt
+
+
 
 case $(hostname) in
   (Smeargle*)   source $DOTFILES/zsh/zshrc.smeargle;;
