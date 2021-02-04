@@ -13,4 +13,5 @@ echo ""
 # because of course it does
 alias ls="ls -CFG"
 
-
+# we have to add a path to jekyll
+path_add "$HOME/.gem/ruby/2.6.0/bin"
