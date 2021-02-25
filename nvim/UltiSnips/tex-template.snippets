@@ -81,7 +81,8 @@ snippet template "basic template" b
 \def\moverlay{\mathpalette\mov@rlay}
 \def\mov@rlay#1#2{\leavevmode\vtop{%
    \baselineskip\z@skip \lineskiplimit-\maxdimen
-   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}
+}}
 \newcommand{\charfusion}[3][\mathord]{
     #1{\ifx#1\mathop\vphantom{#2}\fi
         \mathpalette\mov@rlay{#2\cr#3}
@@ -229,6 +230,12 @@ snippet template "basic template" b
 \newcommand{\dotcup}{\charfusion[\mathbin]{\cup}{\cdot}}
 \newcommand{\bigdotcup}{\charfusion[\mathop]{\bigcup}{\cdot}}
 
+% indicator function
+% change to \chi, make it a subscript, etc. as necessary
+\newcommand{\ind}[1]{\mathbbm{1}[#1]}
+
+% epsilon alias... I really am this lazy
+\newcommand{\eps}{\epsilon}
 
 %}}}
 
