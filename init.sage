@@ -65,3 +65,9 @@ def rsolve(eqn, var=None, basecase=None):
     res = sympy.rsolve(eqn._sympy_(), sT(v), basecase)
 
     return res._sage_()
+
+# I really am this lazy (also I forget, 
+# because some programs use binom and 
+# some use binomial... let's not even 
+# allow the mistake)
+binom = binomial
