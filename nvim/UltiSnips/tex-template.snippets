@@ -4,6 +4,8 @@
 
 snippet template "basic template" b
 \documentclass[12pt]{article}
+% \documentclass[10pt,xcolor={dvipsnames}]{beamer}
+% \usetheme{Berlin}
 
 %{{{ Preamble
 
@@ -11,14 +13,16 @@ snippet template "basic template" b
 %%%%%%%%%%%%%%%%%%%%
 
 % the default margins have always felt big to me
+% if beamer: comment this out
 \usepackage[margin=1in]{geometry}
+
+% we're gay, we like colors
+% if beamer: comment this out
+\usepackage[dvipsnames]{xcolor}
 
 % we aren't animals - we might use more than ASCII
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
-% we're gay, we like colors
-\usepackage[dvipsnames]{xcolor}
 
 % obligatory math environments, symbols, and theorems
 \usepackage{amsmath, amssymb, amsthm}
@@ -126,6 +130,7 @@ snippet template "basic template" b
   {\popQED\end{defn*/}}
 
 % stuff for submitting homeworks
+% beamer: comment out all 3 
 \theoremstyle{theorem}
 
 \newtheorem*{problem}{Problem}
