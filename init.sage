@@ -71,3 +71,8 @@ def rsolve(eqn, var=None, basecase=None):
 # some use binomial... let's not even 
 # allow the mistake)
 binom = binomial
+
+# We occasionally want to draw simplicial complexes.
+# Let's import polymake by default so we don't have
+# to remember the whole string
+Polymake = sage.interfaces.polymake.Polymake
