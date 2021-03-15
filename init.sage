@@ -37,6 +37,10 @@ eps, phi, psi = var('eps, phi, psi')
 T = function('T')(n)
 S = function('S')(n)
 
+f = function('f')(x)
+g = function('g')(x)
+h = function('h')(x)
+
 
 # sympy will solve recurrences for us,
 # but it's kind of a hassle to convert
