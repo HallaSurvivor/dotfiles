@@ -47,6 +47,9 @@ setopt CORRECT_ALL
 # We're gay. Give us colors
 autoload -U colors && colors
 
+# Make !! call the previous command, like in bash
+unsetopt HIST_VERIFY
+
 # Use up/down arrows to search through history
 # Shamelessly taken from 
 # https://superuser.com/questions/585003/
@@ -119,7 +122,7 @@ alias g=git
 alias v=nvim
 
 # I think this is cute. Ask politely if you forget to sudo
-alias pls='sudo $(history -p !!)'
+alias pls='sudo $(fc -ln -1)'
 
 #}}}
 
