@@ -80,7 +80,7 @@ local themes = {
 local chosen_theme = themes[11]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "xterm"
+local terminal     = "gnome-terminal"
 local editor       = os.getenv("EDITOR") or "nvim"
 local gui_editor   = "nvim"
 local browser      = "firefox"
@@ -569,7 +569,7 @@ do
     "setxkbmap -option ctrl:swapcaps",
     -- dirty hack to swap the left and right monitors.
     -- there's definitely a better way to do this.
-    "xrandr --output HDMI-0 --left-of DVI-D-0",
+    "xrandr --output HDMI-1 --left-of DVI-D-1",
     -- dirty hack to lower sensitivity and disable mouse acceleration.
     -- there's definitely a better way to do this.
     "xinput --set-prop 8 'libinput Accel Profile Enabled' 0, 1",
