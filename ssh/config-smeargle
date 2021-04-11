@@ -1,0 +1,15 @@
+Host *
+  ControlMaster auto
+  ControlPath ~/.ssh/masters/%r@%h:%p
+  ControlPersist 30m
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+
+Host home
+  Hostname hallasurvivor.duckdns.org
+  Port 55000
+  User chris
+  ForwardAgent yes
+  ForwardX11 yes
+  
