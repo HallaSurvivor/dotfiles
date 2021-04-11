@@ -216,7 +216,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description = "show help", group="hotkeys"}),
 
-    awful.key({ altkey }, "l", function() os.execute("xscreensaver-command -lock") end,
+    awful.key({ altkey }, "l", function() os.execute("i3lock -c 000000") end,
               {description = "lock the screen", group = "hotkeys"}),
 
     awful.key({ }, "Print", function () awful.util.spawn("gnome-screenshot") end),
