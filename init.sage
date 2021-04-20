@@ -19,7 +19,7 @@ _ipy.define_macro('nn', '_.n()')
 # add a macro so typing aa will
 # automatically run ascii_art 
 # on the most recent output. 
-_ipy.define_macro('aa', 'ascii_art(_)')
+_ipy.define_macro('aa', 'print(ascii_art(_))')
 
 
 # define variables out of the gate
@@ -28,10 +28,18 @@ t,u,v,w,x,y,z = var('t,u,v,w,x,y,z')
 #discrete vars
 # we can use n because of the nn macro earlier
 k,m,n = var('k,m,n')
+assume(k, "integer")
+assume(k >= 0)
+assume(m, "integer")
+assume(m >= 0)
+assume(n, "integer")
+assume(n >= 0)
 
 # careful! psi is already the digamma function...
 # I suspect I won't miss that, though
 eps, phi, psi = var('eps, phi, psi')
+assume(eps > 0)
+assume(eps < 1)
 
 # define some variables to be functions
 T = function('T')(n)
@@ -41,6 +49,16 @@ f = function('f')(x)
 g = function('g')(x)
 h = function('h')(x)
 
+# I always try to do this... let's just add it
+def series(f,var=None,order=None):
+    """
+    Return the series expansion of f
+    """
+    if var == None:
+        var = f.variables()[0]
+    if order == None:
+        order = 5
+    return f.series(var,order)
 
 # sympy will solve recurrences for us,
 # but it's kind of a hassle to convert
@@ -75,8 +93,3 @@ def rsolve(eqn, var=None, basecase=None):
 # some use binomial... let's not even 
 # allow the mistake)
 binom = binomial
-
-# We occasionally want to draw simplicial complexes.
-# Let's import polymake by default so we don't have
-# to remember the whole string
-Polymake = sage.interfaces.polymake.Polymake
