@@ -50,7 +50,7 @@ g = function('g')(x)
 h = function('h')(x)
 
 # I always try to do this... let's just add it
-def series(f,var=None,order=None):
+def series(f,order=None,var=None):
     """
     Return the series expansion of f
     """
