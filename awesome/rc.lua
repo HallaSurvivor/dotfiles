@@ -570,10 +570,10 @@ do
     -- dirty hack to swap the left and right monitors.
     -- there's definitely a better way to do this.
     "xrandr --output HDMI-1 --left-of DVI-D-1",
-    -- dirty hack to lower sensitivity and disable mouse acceleration.
+    -- dirty hack to lower sensitivity
     -- there's definitely a better way to do this.
-    "xinput --set-prop 8 'libinput Accel Profile Enabled' 0, 1",
-    "xinput --set-prop 8 'libinput Accel Speed' -0.75"
+    "xinput --set-prop 13 \"libinput Accel Speed\" -0.99",
+    "xinput --set-prop 13 \"Coordinate Transformation Matrix\" 0.6 0 0 0 0.6 0 0 0 2",
   }
 
   for _,i in pairs(cmds) do
