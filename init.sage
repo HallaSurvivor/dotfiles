@@ -25,6 +25,9 @@ _ipy.define_macro('aa', 'print(ascii_art(_))')
 # define variables out of the gate
 t,u,v,w,x,y,z = var('t,u,v,w,x,y,z')
 
+# actually, let's have more variables
+a,b,c = var('a,b,c')
+
 #discrete vars
 # we can use n because of the nn macro earlier
 k,m,n = var('k,m,n')
@@ -93,3 +96,9 @@ def rsolve(eqn, var=None, basecase=None):
 # some use binomial... let's not even 
 # allow the mistake)
 binom = binomial
+
+# we don't use this often, but every time we do
+# I think to myself 
+# "gee. I sure do wish that was built in"
+def lg(x): 
+    return log(x,2)
