@@ -38,6 +38,15 @@ assume(m >= 0)
 assume(n, "integer")
 assume(n >= 0)
 
+# and upper bounds as well
+K,M,N = var('K,M,N')
+assume(k, "integer")
+assume(k >= 0)
+assume(m, "integer")
+assume(m >= 0)
+assume(n, "integer")
+assume(n >= 0)
+
 # careful! psi is already the digamma function...
 # I suspect I won't miss that, though
 eps, phi, psi = var('eps, phi, psi')
