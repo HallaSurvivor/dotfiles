@@ -235,6 +235,11 @@ snippet template "basic template" b
 \newcommand{\dotcup}{\charfusion[\mathbin]{\cup}{\cdot}}
 \newcommand{\bigdotcup}{\charfusion[\mathop]{\bigcup}{\cdot}}
 
+% I can't ever remember which one it is... 
+% So just have both so I can't be wrong
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+
 % indicator function
 % change to \chi, make it a subscript, etc. as necessary
 \newcommand{\ind}[1]{\mathbbm{1}[#1]}
@@ -295,6 +300,11 @@ snippet template "basic template" b
 \newcommand*{\TakeFourierOrnament}[1]{{%
 \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
 \newcommand*{\danger}{\TakeFourierOrnament{66}}
+
+% I always forget if this is named "danger" or "warning"...
+% So just name it both so I can't be wrong
+\newcommand*{\warning}{\danger}
+
 %}}}
 
 %}}}
