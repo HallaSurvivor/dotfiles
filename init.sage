@@ -70,7 +70,14 @@ def series(f,order=None,var=None):
         var = f.variables()[0]
     if order == None:
         order = 5
-    return f.series(var,order)
+
+    # taylor is analytic, and works in some cases where
+    # series doesn't, but series returns an object ordered
+    # from low to high degrees. We want the best of both.
+    try:
+        return f.series(var, order)
+    except ValueError as e:
+        return f.taylor(var,0,order).series(var,order)
 
 # sympy will solve recurrences for us,
 # but it's kind of a hassle to convert
@@ -98,7 +105,11 @@ def rsolve(eqn, var=None, basecase=None):
 
     res = sympy.rsolve(eqn._sympy_(), sT(v), basecase)
 
-    return res._sage_()
+    if res == None:
+        print("sympy failed to solve this recurrence")
+        return res
+    else:
+        return res._sage_()
 
 # I really am this lazy (also I forget, 
 # because some programs use binom and 
