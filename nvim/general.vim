@@ -105,6 +105,10 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "Treat sage files like python
 autocmd BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=python
 
+"Know what macaulay2 files are
+autocmd BufNewFile,BufRead *.m2 set ft=Macaulay2
+
+
 "Make .tex a latex file by default
 let g:tex_flavor = "latex"
 
@@ -117,6 +121,7 @@ vnoremap jk <esc>
 tnoremap <esc> <C-\><C-n>
 tnoremap jk <C-\><C-n>
 let mapleader=' '
+let maplocalleader='\'
 
 "Allow for right-click paste without
 "needing massive reformatting

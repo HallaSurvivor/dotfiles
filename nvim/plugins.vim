@@ -39,6 +39,9 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('simnalamburt/vim-mundo')
   call dein#add('ervandew/supertab')
 
+  "Interface with repls
+  call dein#add('jalvesaq/vimcmdline')
+  
   "Haskell
   call dein#add('parsonsmatt/intero-neovim')
   call dein#add('eagletmt/neco-ghc')
