@@ -103,7 +103,7 @@ au FileType c set foldmethod=syntax
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "Treat sage files like python
-autocmd BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=python
+autocmd BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=sage
 
 "Know what macaulay2 files are
 autocmd BufNewFile,BufRead *.m2 set ft=Macaulay2
