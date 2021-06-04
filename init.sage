@@ -49,7 +49,7 @@ assume(n >= 0)
 
 # careful! psi is already the digamma function...
 # I suspect I won't miss that, though
-eps, phi, psi = var('eps, phi, psi')
+eps, phi, psi, xi = var('eps, phi, psi, xi')
 assume(eps > 0)
 assume(eps < 1)
 
