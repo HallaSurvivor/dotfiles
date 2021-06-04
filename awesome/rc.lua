@@ -58,7 +58,7 @@ local function run_once(cmd_arr)
 end
 
 -- things to run on startup
-run_once({ "unclutter -root", "mullvad-vpn", "xscreensaver -nosplash", "dropbox", "transmission-gtk" })
+run_once({ "unclutter -root", "mullvad-vpn", "dropbox" })
 -- }}}
 
 -- {{{ Variable definitions

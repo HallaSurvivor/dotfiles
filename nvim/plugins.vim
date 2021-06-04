@@ -26,6 +26,7 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('luochen1990/rainbow')
   call dein#add('joshdick/onedark.vim')
   call dein#add('sheerun/vim-polyglot')
+  call dein#add('petRUShka/vim-sage')
 
   "Quality of life
   call dein#add('tpope/vim-commentary')
