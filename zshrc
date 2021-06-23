@@ -50,6 +50,9 @@ autoload -U colors && colors
 # Make !! call the previous command, like in bash
 unsetopt HIST_VERIFY
 
+# Use vim keybinds
+bindkey -v
+
 # Use up/down arrows to search through history
 # Shamelessly taken from 
 # https://superuser.com/questions/585003/
