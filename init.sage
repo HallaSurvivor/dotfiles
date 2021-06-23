@@ -28,6 +28,11 @@ t,u,v,w,x,y,z = var('t,u,v,w,x,y,z')
 # actually, let's have more variables
 a,b,c = var('a,b,c')
 
+# what if... more
+# by default r is an R interpreter
+# but I think I'll be fine without that
+p,q,r = var('p,q,r')
+
 #discrete vars
 # we can use n because of the nn macro earlier
 k,m,n = var('k,m,n')
@@ -40,18 +45,20 @@ assume(n >= 0)
 
 # and upper bounds as well
 K,M,N = var('K,M,N')
-assume(k, "integer")
-assume(k >= 0)
-assume(m, "integer")
-assume(m >= 0)
-assume(n, "integer")
-assume(n >= 0)
+assume(K, "integer")
+assume(K >= 0)
+assume(M, "integer")
+assume(M >= 0)
+assume(N, "integer")
+assume(N >= 0)
 
 # careful! psi is already the digamma function...
 # I suspect I won't miss that, though
-eps, phi, psi, xi = var('eps, phi, psi, xi')
+eps, phi, psi, xi, theta, tau = var('ε, φ, ψ, ξ, θ, τ')
 assume(eps > 0)
 assume(eps < 1)
+assume(theta >= 0)
+assume(theta < 2*pi)
 
 # define some variables to be functions
 T = function('T')(n)
