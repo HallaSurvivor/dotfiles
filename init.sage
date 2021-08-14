@@ -10,17 +10,20 @@ import sympy.abc
 # do black magic with our repl
 _ipy = get_ipython()
 
-
 # add a macro so typing nn will
 # automatically convert the most
 # recent output to a numeric.
-_ipy.define_macro('nn', '_.n()')
+# the _oh nonsense is to make this
+# robust in case the _ variable is
+# accidentally overwritten
+_ipy.define_macro('nn', '_oh[max(_oh.keys())].n()')
 
 # add a macro so typing aa will
 # automatically run ascii_art 
 # on the most recent output. 
-_ipy.define_macro('aa', 'print(ascii_art(_))')
-
+# again, the _oh nonsense is to
+# make this marginally more robust
+_ipy.define_macro('aa', 'print(ascii_art(_oh[max(_oh.keys())]))')
 
 # define variables out of the gate
 t,u,v,w,x,y,z = var('t,u,v,w,x,y,z')
