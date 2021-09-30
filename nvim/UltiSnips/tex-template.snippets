@@ -173,17 +173,6 @@ snippet template "basic template" b
 \newcommand{\catZ}{\catVarFont{Z}}
 %}}}
 
-%{{{ "operators" (words in math mode)
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\coker}{coker}
-
-\DeclareMathOperator{\Tor}{Tor}
-\DeclareMathOperator{\Ext}{Ext}
-%}}}
-
 %{{{ arrows
 \newcommand{\hookr}{\hookrightarrow}
 \newcommand{\hookl}{\hookleftarrow}
@@ -257,6 +246,19 @@ snippet template "basic template" b
 \newcommand{\join}{\vee}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\normal}{\vartriangleleft}
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+%}}}
+
+%{{{ number theory
+\DeclareMathOperator{\Li}{Li}
 %}}}
 
 %{{{ topology
