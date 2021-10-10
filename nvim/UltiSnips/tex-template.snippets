@@ -265,6 +265,30 @@ snippet template "basic template" b
 \newcommand*{\interior}[1]{ {\kern0pt#1}^{\mathrm{o}} }
 %}}}
 
+%{{{ lie theory
+
+\newcommand*{\LieGrpFont}{\mathsf}
+
+\newcommand*{\GLC}[1]{\LieGrpFont{GL}(#1,\C)}
+\newcommand*{\GLR}[1]{\LieGrpFont{GL}(#1,\R)}
+\newcommand*{\GLH}[1]{\LieGrpFont{GL}(#1,\mathbb{H})}
+
+\newcommand*{\SLC}[1]{\LieGrpFont{SL}(#1,\C)}
+\newcommand*{\SLR}[1]{\LieGrpFont{SL}(#1,\R)}
+\newcommand*{\SLH}[1]{\LieGrpFont{SL}(#1,\mathbb{H})}
+
+\newcommand*{\U}[1]{\LieGrpFont{U}(#1)}
+\renewcommand*{\O}[1]{\LieGrpFont{O}(#1)}
+
+\newcommand*{\SU}[1]{\LieGrpFont{SU}(#1)}
+\newcommand*{\SO}[1]{\LieGrpFont{SO}(#1)}
+
+\newcommand*{\Sp}[1]{\LieGrpFont{Sp}(#1)}
+
+\newcommand*{\Spin}[1]{\LieGrpFont{Spin}(#1)}
+
+%}}}
+
 %{{{ logic
 \renewcommand{\diamond}{\lozenge}
 \newcommand*{\denote}[1]{\llbracket #1 \rrbracket}
