@@ -197,6 +197,15 @@ snippet template "basic template" b
 \newcommand*{\norm}[1]{\left \lVert #1 \right \rVert}
 \newcommand*{\eval}[1]{\left . #1 \right \rvert}
 
+\newcommand*{\dx}{\ \dif x}
+\newcommand*{\dy}{\ \dif x}
+\newcommand*{\ds}{\ \dif s}
+\newcommand*{\dt}{\ \dif t}
+
+\newcommand*{\dm}{\ \dif m}
+\newcommand*{\dmu}{\ \dif \mu}
+\newcommand*{\dlambda}{\ \dif \lambda}
+
 % partial derivative command (taken from commath package)
 % usage: \pd[n]{f}{x}
 \newcommand*{\pd}[3][]{\ensuremath{
@@ -311,6 +320,10 @@ snippet template "basic template" b
 
 % coding function
 \newcommand*{\code}[1]{\langle #1 \rangle}
+
+% we have \models, but for some reason not \proves?
+\newcommand*{\proves}{\vdash}
+\newcommand*{\forces}{\Vdash}
 
 %}}}
 
