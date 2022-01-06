@@ -173,4 +173,9 @@ endfunction
 
 imap <silent> <CR> <C-R>=SuperCR()<CR>
 
+
+"vimcmdline
+let cmdline_vsplit=1
+let cmdline_term_width=80
+
 "}}}
