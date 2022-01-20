@@ -314,10 +314,28 @@ def multivar_asy(f, N=5, alpha=None, numeric=0):
 # - polynomial in log n
 # with coefficients in QQbar
 
-AsyRing.<n> = AsymptoticRing('QQ^n * n^QQ * log(n)^QQ', QQbar)
+AsyRing = AsymptoticRing('QQ^n * n^QQ * log(n)^QQ', QQ)
 
 def singlevar_asy(f, N=5, sings=None):
-  pass
+  """
+  compute the first N terms of the asymptotic expansion of f
 
+  sings is a list of dominant singularities
+  TODO: get these automatically somehow?
+  """
+  #{{{
+  return AsyRing.coefficients_of_generating_function(f, sings, precision=N)
+  #}}}
+
+
+def asy(f, *args, **kwargs):
+  try:
+    return multivar_asy(f,*args,**kwargs)
+  except:
+    # if this blows up in your face, remember that it
+    # needs a _callable_ function to work! 
+    # so you should make a function using def
+    # rather than the usual way of the symbolic ring
+    return singlevar_asy(f,*args,**kwargs)
 
 # }}}
