@@ -271,36 +271,53 @@ def multivar_asy(f, N=5, alpha=None, numeric=0):
     # p is supposed to be a minimal critical point for the denominator of part.
     # let's first find the critical points
 
-    # We start with the smooth case, because why not.
-    # I don't _really_ understand what the articles mean by 
-    # the asymptotics being dominated by smooth vs singular points...
-
+    # first we find the smooth points
     I = part.smooth_critical_ideal(alpha)
-    s = solve([SR(v) for v in I.gens()], 
-              [SR(v) for v in R_internal.gens()], 
-              solution_dict=True)
+    smoothSols = solve([SR(v) for v in I.gens()], 
+                  [SR(v) for v in R_internal.gens()], 
+                  solution_dict=True)
 
-    # ok, if the smooth case gave us no points, 
-    # then let's try the singular case. 
-    if len(s) == 0:
-      print("no smooth points")
-
-      I = part.singular_ideal()
-      s = solve([SR(v) for v in I.gens()], 
+    # next we find the singular points
+    J = part.singular_ideal()
+    singSols = solve([SR(v) for v in J.gens()], 
                 [SR(v) for v in R_internal.gens()], 
                 solution_dict=True)
 
-    # if there's still no solutions, give up
-    if len(s) == 0:
-      print("no singular points either")
-      return None
+    s = smoothSols + singSols
 
-    # if we did find points, now we need to find the _minimal_ one
-    pMin = s[0]
-    for p in s:
+    # remove any varieties of dimension > 0 from the space of solutions
+    # I don't know if this will break things or not, but in my (limited)!
+    # testing it seems fine.
+    # If I were less lazy I would probably make this take the minimum value
+    # across the whole variety? But doing it this way makes things agree with
+    # the examples.
+
+    sFiltered = []
+    for soln in s:
+      keep = True
+      for v in soln.values():
+        if not v.is_constant(): # remove any solutions involving a parameter
+          keep = False
+      if keep:
+        sFiltered += [soln]
+
+    # if we didn't find any solutions at all, give up.
+    if len(sFiltered) == 0:
+      if len(s) != 0:
+        print("We finally found something where removing the varieties caused problems")
+        return None
+      
+      else:
+        print("no critical points were found. Giving up.")
+        return None
+
+    # otherwise we get the _minimal_ singularity
+    pMin = sFiltered[0]
+    for p in sFiltered:
       if sum([xi^2 for xi in p.values()]) < sum([yi^2 for yi in pMin.values()]):
         pMin = p
 
+    # and finally get the asymptotics
     (a,_,_) = part.asymptotics(pMin, alpha, N, numerical=numeric) 
 
     result += a
