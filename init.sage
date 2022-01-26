@@ -69,6 +69,14 @@ class SubstituteNumericalApprox(ExpressionTreeWalker):
 # recent output to a numeric.
 # again, the _oh nonsense is to make this marginally more robust
 
+# TODO: this doesn't work with asymptotic expansions.
+# eg -- 
+# def cat(z): return (1 - sqrt(1-4*z))/(2*z)
+# asy(cat, sings=[1/4])
+# nn # throws an error
+#
+# Fix this!
+
 _ipy.define_macro('nn' , 'SubstituteNumericalApprox( )(_oh[max(_oh.keys())])')
 _ipy.define_macro('nn2', 'SubstituteNumericalApprox(2)(_oh[max(_oh.keys())])')
 _ipy.define_macro('nn3', 'SubstituteNumericalApprox(3)(_oh[max(_oh.keys())])')
