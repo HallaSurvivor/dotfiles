@@ -47,6 +47,12 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('parsonsmatt/intero-neovim')
   call dein#add('eagletmt/neco-ghc')
 
+  "Lean
+  call dein#add('Julian/lean.nvim')
+  call dein#add('neovim/nvim-lspconfig')
+  call dein#add('nvim-lua/plenary.nvim')
+  call dein#add('hrsh7th/nvim-compe')
+
   call dein#end()
   call dein#save_state()
 endif
