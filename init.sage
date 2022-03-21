@@ -30,6 +30,9 @@ _ipy = get_ipython()
 # accidentally overwritten
 _ipy.define_macro('aa', 'print(ascii_art(_oh[max(_oh.keys())]))')
 
+# and one for .expand()
+_ipy.define_macro('ee', '_oh[max(_oh.keys())].expand()')
+
 
 # recursively apply .n() to constants in a symbolic expression
 # while leaving the variables untouched. 
