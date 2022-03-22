@@ -5,62 +5,47 @@
 " https://github.com/HallaSurvivor/dotfiles
 
 "Plugin Setup {{{
-set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
-
-if dein#load_state('~/.local/share/dein')
-  call dein#begin('~/.local/share/dein')
-
-  "Let dein manage dein
-  call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
-  call dein#add('haya14busa/dein-command.vim') "dein has REALLY bad binds
-
+call plug#begin()
   "Autocompletion
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('SirVer/ultisnips')
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'SirVer/ultisnips'
   
   "General layout
-  call dein#add('jeffkreeftmeijer/vim-numbertoggle')
-  call dein#add('w0rp/ale')
-  call dein#add('bling/vim-airline') 
-  call dein#add('mhinz/vim-signify')
-  call dein#add('luochen1990/rainbow')
-  call dein#add('joshdick/onedark.vim')
-  call dein#add('sheerun/vim-polyglot')
-  call dein#add('petRUShka/vim-sage')
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'w0rp/ale'
+  Plug 'bling/vim-airline'
+  Plug 'mhinz/vim-signify'
+  Plug 'luochen1990/rainbow'
+  Plug 'joshdick/onedark.vim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'petRUShka/vim-sage'
 
   "Quality of life
-  call dein#add('tpope/vim-commentary')
-  call dein#add('tpope/vim-surround')
-  call dein#add('tpope/vim-repeat')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('jiangmiao/auto-pairs')
-  call dein#add('christoomey/vim-tmux-navigator')
-  call dein#add('godlygeek/tabular')
-  call dein#add('scrooloose/nerdtree')
-  call dein#add('simnalamburt/vim-mundo')
-  call dein#add('ervandew/supertab')
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-fugitive'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'christoomey/vim-tmux-navigator'
+  Plug 'godlygeek/tabular'
+  Plug 'scrooloose/nerdtree'
+  Plug 'simnalamburt/vim-mundo'
+  Plug 'ervandew/supertab'
 
   "Interface with repls
-  call dein#add('jalvesaq/vimcmdline')
+  Plug 'jalvesaq/vimcmdline'
   
   "Haskell
-  call dein#add('parsonsmatt/intero-neovim')
-  call dein#add('eagletmt/neco-ghc')
+  Plug 'parsonsmatt/intero-neovim'
+  Plug 'eagletmt/neco-ghc'
 
   "Lean
-  call dein#add('Julian/lean.nvim')
-  call dein#add('neovim/nvim-lspconfig')
-  call dein#add('nvim-lua/plenary.nvim')
-  call dein#add('hrsh7th/nvim-compe')
+  Plug 'Julian/lean.nvim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'hrsh7th/nvim-compe'
 
-  call dein#end()
-  call dein#save_state()
-endif
-
-"Install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
+call plug#end()
 "Plugin Setup ----- }}}
 
 "Configure Plugins {{{
