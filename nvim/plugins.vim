@@ -9,6 +9,7 @@ call plug#begin()
   "Autocompletion
   Plug 'Shougo/deoplete.nvim'
   Plug 'SirVer/ultisnips'
+  Plug 'lionawurscht/deoplete-biblatex'
   
   "General layout
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -35,15 +36,15 @@ call plug#begin()
   "Interface with repls
   Plug 'jalvesaq/vimcmdline'
   
-  "Haskell
-  Plug 'parsonsmatt/intero-neovim'
-  Plug 'eagletmt/neco-ghc'
-
-  "Lean
+  "Lean & Agda
   Plug 'Julian/lean.nvim'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'hrsh7th/nvim-compe'
+  Plug 'kana/vim-textobj-user'
+  Plug 'neovimhaskell/nvim-hs.vim'
+  Plug 'liuchengxu/vim-which-key'
+  Plug 'isovector/cornelis', { 'do': 'stack build' }
 
 call plug#end()
 "Plugin Setup ----- }}}
@@ -168,5 +169,8 @@ imap <silent> <CR> <C-R>=SuperCR()<CR>
 "vimcmdline
 let cmdline_vsplit=1
 let cmdline_term_width=80
+
+"bibtex integration
+let g:deoplete#sources#biblatex#bibfile = 'bib.bib'
 
 "}}}
