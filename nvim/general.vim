@@ -146,4 +146,8 @@ nnoremap <silent> <CR> :noh<CR><CR>
 
 "toggle folds (still autoscroll)
 nnoremap <leader>f zazz
+
+"leader s compiles a latex file
+autocmd FileType tex nnoremap <localleader>s :w<CR> :! latexmk -pdf %<CR>
+
 "}}}

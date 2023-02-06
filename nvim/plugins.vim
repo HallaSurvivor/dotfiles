@@ -172,5 +172,6 @@ let cmdline_term_width=80
 
 "bibtex integration
 let g:deoplete#sources#biblatex#bibfile = 'bib.bib'
+let g:deoplete#sources#biblatex#delimiter = 1
 
 "}}}
