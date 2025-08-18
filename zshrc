@@ -107,13 +107,11 @@ autoload -Uz compinit && compinit
 
 # There are some places we go often
 function cdd { cd ~/dotfiles; }
-function cds { cd ~/Documents/sandbox; }
+function cdD { cd ~/Dropbox/Documents; }
+function cds { cd ~/Dropbox/Documents/sandbox; }
 function cdr { cd ~/Dropbox/research; }
-function cdw { cd ~/Dropbox/work/ucr; }
-function cdb { cd ~/Documents/Blog; }
-
-# You would not believe how often I look through my books like this
-function books { find ~/Dropbox -type f | grep $1 | sed 's/^.*Dropbox\///'; }
+function cdw { cd ~/Dropbox/work; }
+function cdb { cd ~/Dropbox/Documents/Blog; }
 
 # reload zshrc
 function reload { source ~/.zshrc; }
