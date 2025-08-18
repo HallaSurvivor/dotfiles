@@ -60,3 +60,16 @@ Thumbs.db
 *.der
 *.p7b
 *.crl
+
+# Latex stuff #
+###############
+*.aux
+*.dfb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.bbl
+*.blg
+*.bcf
+*.run.xml
