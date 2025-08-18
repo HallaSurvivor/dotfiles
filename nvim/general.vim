@@ -21,9 +21,9 @@ set colorcolumn=80
 "We're cool and don't use a mouse
 set mouse=
 
-"Require shortcut keys be pressed within .5 second
+"Require shortcut keys be pressed within .1 second
 set timeout
-set timeoutlen=500
+set timeoutlen=100
 
 "We promise to back things up by ourselves
 set nobackup
@@ -93,12 +93,6 @@ set undodir=~/.config/nvim/undodir
 "Makefiles are stupid and tab sensitive
 autocmd FileType make setlocal noexpandtab
 
-"Haskell should be using hoogle for K
-au FileType haskell set kp=hoogle
-
-"C should use syntax folding
-au FileType c set foldmethod=syntax
-
 "Remember the line you were on when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -122,10 +116,6 @@ tnoremap <esc> <C-\><C-n>
 tnoremap jk <C-\><C-n>
 let mapleader=' '
 let maplocalleader='\'
-
-"Allow for right-click paste without
-"needing massive reformatting
-set pastetoggle=<F2>
 
 "Show the search results in the middle of the screen
 nnoremap n nzz

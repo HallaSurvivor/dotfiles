@@ -7,9 +7,9 @@
 "Plugin Setup {{{
 call plug#begin()
   "Autocompletion
-  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'SirVer/ultisnips'
-  Plug 'lionawurscht/deoplete-biblatex'
+  " Plug 'lionawurscht/deoplete-biblatex'
   
   "General layout
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -18,7 +18,7 @@ call plug#begin()
   Plug 'mhinz/vim-signify'
   Plug 'luochen1990/rainbow'
   Plug 'joshdick/onedark.vim'
-  Plug 'sheerun/vim-polyglot'
+  " Plug 'sheerun/vim-polyglot'
   Plug 'petRUShka/vim-sage'
 
   "Quality of life
@@ -26,26 +26,13 @@ call plug#begin()
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-fugitive'
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'windwp/nvim-autopairs'
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'godlygeek/tabular'
-  Plug 'scrooloose/nerdtree'
-  Plug 'simnalamburt/vim-mundo'
-  Plug 'ervandew/supertab'
 
   "Interface with repls
   Plug 'jalvesaq/vimcmdline'
   
-  "Lean & Agda
-  Plug 'Julian/lean.nvim'
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'hrsh7th/nvim-compe'
-  Plug 'kana/vim-textobj-user'
-  Plug 'neovimhaskell/nvim-hs.vim'
-  Plug 'liuchengxu/vim-which-key'
-  Plug 'isovector/cornelis', { 'do': 'stack build' }
-
 call plug#end()
 "Plugin Setup ----- }}}
 
@@ -55,18 +42,6 @@ call plug#end()
 syntax on
 colorscheme onedark
 let g:airline_theme='onedark'
-
-
-"nerdTree
-let NERDTreeQuitOnOpen = 1
-let NERDTreeMinimalUI  = 1
-let NERDTreeDirArrows  = 1
-
-nnoremap <leader>n :NERDTreeToggle<CR>
-
-
-"Gundo
-nnoremap <leader>u :MundoToggle<CR>
 
 
 "Tabularize
@@ -106,26 +81,14 @@ let g:rainbow_active = 1
 let g:airline#extensions#ale#enabled=1
 
 
-"neco-ghc
-"let g:necoghc_use_stack = 1
-"let g:necoghc_enable_detailed_browse = 1
-
-
-"haskell-vim
-"let g:haskell_indent_disable = 1
-
-
 "deoplete
 let g:deoplete#enable_at_startup = 1
 
 let g:deoplete#max_menu_width = 0  "No max menu width
 
-let g:deoplete#sources#biblatex#bibfile = '~/.bib.bib'
-call deoplete#custom#source('biblatex', 'filetypes', ['tex'])
-let g:deoplete#sources#biblatex#startpattern = '\\cite{(?:[\w,]+:)?'
-
-"Supertab
-let g:SuperTabDefaultCompletionType = "<c-n>"
+" let g:deoplete#sources#biblatex#bibfile = '~/.bib.bib'
+" call deoplete#custom#source('biblatex', 'filetypes', ['tex'])
+" let g:deoplete#sources#biblatex#startpattern = '\\cite{(?:[\w,]+:)?'
 
 
 "UltiSnips
@@ -136,42 +99,12 @@ let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
 let g:ultisnips_python_style = 'doxygen'
 
 
-"AutoPairs... I really don't like their binds
-let g:AutoPairsShortcutJump=''
-let g:AutoPairsShortcutFastWrap=''
-let g:AutoPairsShortcutToggle=''
-let g:AutoPairsMapCh=0
-let g:AutoPairsCenterLine=0
-let g:AutoPairsMultilineClose=0
-let g:AutoPairsShortcutBackInsert=''
-let g:AutoPairsMapCR=1
-
-
-"Make <CR> interact with deoplete/ultisnips/autopairs properly
-function! TryToExpand()
-  call UltiSnips#ExpandSnippetOrJump()
-  return g:ulti_expand_or_jump_res
-endfunction
-
-function! SuperCR()
-  if (pumvisible())
-    call deoplete#close_popup()
-    if (TryToExpand() > 0)
-      return ""
-    endif
-  endif
-  return "\<CR>"
-endfunction
-
-imap <silent> <CR> <C-R>=SuperCR()<CR>
-
-
 "vimcmdline
 let cmdline_vsplit=1
 let cmdline_term_width=80
 
 "bibtex integration
-let g:deoplete#sources#biblatex#bibfile = 'bib.bib'
-let g:deoplete#sources#biblatex#delimiter = 1
+"let g:deoplete#sources#biblatex#bibfile = 'bib.bib'
+"let g:deoplete#sources#biblatex#delimiter = 1
 
 "}}}
