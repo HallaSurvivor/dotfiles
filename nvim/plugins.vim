@@ -18,6 +18,8 @@ call plug#begin()
   Plug 'mhinz/vim-signify'
   Plug 'luochen1990/rainbow'
   Plug 'joshdick/onedark.vim'
+
+  "Work with stuff I do all the time
   " Plug 'sheerun/vim-polyglot'
   Plug 'petRUShka/vim-sage'
 

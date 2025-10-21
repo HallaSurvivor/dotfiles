@@ -4,6 +4,8 @@
 " See the rest of my dotfiles here:
 " https://github.com/HallaSurvivor/dotfiles
 
+let g:python3_host_prog = '/usr/bin/python3'
+
 " General Settings {{{
 
 "We don't need to be vi compatable
@@ -21,9 +23,9 @@ set colorcolumn=80
 "We're cool and don't use a mouse
 set mouse=
 
-"Require shortcut keys be pressed within .1 second
+"Require shortcut keys be pressed within .3 seconds
 set timeout
-set timeoutlen=100
+set timeoutlen=300
 
 "We promise to back things up by ourselves
 set nobackup
