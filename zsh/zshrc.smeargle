@@ -13,6 +13,6 @@ echo ""
 # because of course it does
 alias ls="ls -CFG"
 
-# we have to add a path to jekyll
-path_add "$HOME/.gem/ruby/2.6.0/bin"
-path_add "$HOME/.elan/bin"
+# use a more moden ruby for jekyll
+path_add "/usr/local/opt/ruby/bin"
+path_add "/usr/local/lib/ruby/gems/3.4.0/bin"
