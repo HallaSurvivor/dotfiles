@@ -33,7 +33,7 @@ call plug#begin()
   Plug 'godlygeek/tabular'
 
   "Interface with repls
-  Plug 'jalvesaq/vimcmdline'
+  Plug 'jalvesaq/hlterm'
   
 call plug#end()
 "Plugin Setup ----- }}}
@@ -102,8 +102,7 @@ let g:ultisnips_python_style = 'doxygen'
 
 
 "vimcmdline
-let cmdline_vsplit=1
-let cmdline_term_width=80
+lua require("hlterm").setup({ vsplit = true })
 
 "bibtex integration
 "let g:deoplete#sources#biblatex#bibfile = 'bib.bib'
