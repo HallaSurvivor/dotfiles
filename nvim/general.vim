@@ -19,6 +19,7 @@ set nospell
 
 "Put a bar at column 80 for code style
 set colorcolumn=80 
+hi ColorColumn guibg=DarkCyan
 
 "We're cool and don't use a mouse
 set mouse=
