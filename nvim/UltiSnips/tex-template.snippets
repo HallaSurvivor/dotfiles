@@ -180,6 +180,14 @@ snippet template "basic template" b
 \newcommand{\catx}{\catVarFont{X}}
 \newcommand{\caty}{\catVarFont{Y}}
 \newcommand{\catZ}{\catVarFont{Z}}
+
+% \yo for yoneda symbol
+% Taken from here:
+% https://tex.stackexchange.com/a/667473/201156
+\DeclareFontFamily{U}{min}{}
+\DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
+\newcommand\yo{\!\text{\usefont{U}{min}{m}{n}\symbol{'207}}\!}
+
 %}}}
 
 %{{{ arrows
