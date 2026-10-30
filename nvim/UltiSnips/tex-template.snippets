@@ -79,25 +79,6 @@ snippet template "basic template" b
 \hyphenpenalty 10000
 \exhyphenpenalty 10000
 
-% forcibly overlay two symbols on top of each other
-% used for the \cupdot and \bigcupdot commands
-% shamelessly taken from here:
-% https://tex.stackexchange.com/questions/3964/
-%   mathematical-symbol-for-disjoint-set-union
-\makeatletter
-\def\moverlay{\mathpalette\mov@rlay}
-\def\mov@rlay#1#2{\leavevmode\vtop{%
-   \baselineskip\z@skip \lineskiplimit-\maxdimen
-   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}
-}}
-\newcommand{\charfusion}[3][\mathord]{
-    #1{\ifx#1\mathop\vphantom{#2}\fi
-        \mathpalette\mov@rlay{#2\cr#3}
-      }
-    \ifx#1\mathop\expandafter\displaylimits\fi}
-\makeatother
-
-
 %}}}
 
 %%%%%%%%{{{ Environments
@@ -138,48 +119,10 @@ snippet template "basic template" b
    \pushQED{\qed}\begin{defn*/}}
   {\popQED\end{defn*/}}
 
-% stuff for submitting homeworks
-% beamer: comment out all 3 
-\theoremstyle{theorem}
-
-\newtheorem*{problem}{Problem}
-
-\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
-
 %}}}
 
 %%{{{ Aliases and Commands
 %%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%{{{ blackboard letters
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-%}}}
-
-%{{{ categories
-\newcommand*{\catFont}[1]{\mathsf{#1}} 
-\newcommand*{\catVarFont}[1]{\mathcal{#1}}
-
-\newcommand{\Set}{\catFont{Set}}
-\newcommand{\Top}{\catFont{Top}}
-\newcommand{\Cat}{\catFont{Cat}}
-\newcommand{\Grp}{\catFont{Grp}}
-\newcommand{\Mod}{\catFont{Mod}}
-\newcommand{\Sub}{\catFont{Sub}}
-\newcommand{\FP}{\catFont{FP}}
-\newcommand{\Pos}{\catFont{Pos}}
-\newcommand{\FinSet}{\catFont{FinSet}}
-
-\newcommand{\cata}{\catVarFont{A}}
-\newcommand{\catb}{\catVarFont{B}}
-\newcommand{\catc}{\catVarFont{C}}
-\newcommand{\catd}{\catVarFont{D}}
-\newcommand{\catx}{\catVarFont{X}}
-\newcommand{\caty}{\catVarFont{Y}}
-\newcommand{\catZ}{\catVarFont{Z}}
 
 % \yo for yoneda symbol
 % Taken from here:
@@ -188,165 +131,13 @@ snippet template "basic template" b
 \DeclareFontShape{U}{min}{m}{n}{<-> udmj30}{}
 \newcommand\yo{\!\text{\usefont{U}{min}{m}{n}\symbol{'207}}\!}
 
-%}}}
-
-%{{{ arrows
-\newcommand{\hookr}{\hookrightarrow}
-\newcommand{\hookl}{\hookleftarrow}
-\newcommand{\monor}{\rightarrowtail}
-\newcommand{\monol}{\leftarrowtail}
-\newcommand{\epir}{\twoheadrightarrow}
-\newcommand{\epil}{\twoheadleftarrow}
-\newcommand{\regepir}{\rightarrowtriangle}
-\newcommand{\regepil}{\leftarrowtriangle}
-%}}}
-
-%{{{ categorical limits
-\newcommand{\limr}{\varinjlim}
-\newcommand{\liml}{\varprojlim}
-%}}}
-
-%{{{ analysis
-\DeclareMathOperator{\dif}{d \!}
-\DeclareMathOperator{\Dif}{D \!}
-\newcommand{\del}{\partial}
-\newcommand*{\abs}[1]{\left \lvert #1 \right \rvert}
-\newcommand*{\norm}[1]{\left \lVert #1 \right \rVert}
-\newcommand*{\eval}[1]{\left . #1 \right \rvert}
-
-\newcommand*{\dx}{\ \dif x}
-\newcommand*{\dy}{\ \dif x}
-\newcommand*{\ds}{\ \dif s}
-\newcommand*{\dt}{\ \dif t}
-
-\newcommand*{\dm}{\ \dif m}
-\newcommand*{\dmu}{\ \dif \mu}
-\newcommand*{\dlambda}{\ \dif \lambda}
-
-% partial derivative command (taken from commath package)
-% usage: \pd[n]{f}{x}
-\newcommand*{\pd}[3][]{\ensuremath{
-\ifinner
-\tfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
-\else
-\dfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
-\fi
-}}
-
-% ordinary derivative command (taken from commath package)
-% usage: \od[n]{f}{x}
-\newcommand*{\od}[3][]{\ensuremath{
-\ifinner
-\tfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
-\else
-\dfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
-\fi
-}}
-
-% restriction of a map
-\newcommand*{\restrict}{\upharpoonright}
-
-% almost everywhere
-\renewcommand*{\ae}{~\mathrm{a.e.}}
-
-% disjoint union
-\newcommand{\dotcup}{\charfusion[\mathbin]{\cup}{\cdot}}
-\newcommand{\bigdotcup}{\charfusion[\mathop]{\bigcup}{\cdot}}
-
-% I can't ever remember which one it is... 
-% So just have both so I can't be wrong
-\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
-\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
-
-% indicator function
-% change to \chi, make it a subscript, etc. as necessary
-\newcommand{\ind}[1]{\mathbbm{1}[#1]}
-
 % epsilon alias... I really am this lazy
 \newcommand{\eps}{\epsilon}
 
-%}}}
-
-%{{{ algebra
 \newcommand{\meet}{\wedge}
 \newcommand{\join}{\vee}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\normal}{\vartriangleleft}
-
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\coker}{coker}
-
-\DeclareMathOperator{\Tor}{Tor}
-\DeclareMathOperator{\Ext}{Ext}
-%}}}
-
-%{{{ number theory
-\DeclareMathOperator{\Li}{Li}
-%}}}
-
-%{{{ topology
-\newcommand*{\interior}[1]{ {\kern0pt#1}^{\mathrm{o}} }
-%}}}
-
-%{{{ lie theory
-
-\newcommand*{\LieGrpFont}{\mathsf}
-
-\newcommand*{\GLC}[1]{\LieGrpFont{GL}(#1,\C)}
-\newcommand*{\GLR}[1]{\LieGrpFont{GL}(#1,\R)}
-\newcommand*{\GLH}[1]{\LieGrpFont{GL}(#1,\mathbb{H})}
-
-\newcommand*{\SLC}[1]{\LieGrpFont{SL}(#1,\C)}
-\newcommand*{\SLR}[1]{\LieGrpFont{SL}(#1,\R)}
-\newcommand*{\SLH}[1]{\LieGrpFont{SL}(#1,\mathbb{H})}
-
-\newcommand*{\U}[1]{\LieGrpFont{U}(#1)}
-\renewcommand*{\O}[1]{\LieGrpFont{O}(#1)}
-
-\newcommand*{\SU}[1]{\LieGrpFont{SU}(#1)}
-\newcommand*{\SO}[1]{\LieGrpFont{SO}(#1)}
-
-\newcommand*{\Sp}[1]{\LieGrpFont{Sp}(#1)}
-
-\newcommand*{\Spin}[1]{\LieGrpFont{Spin}(#1)}
-
-%}}}
-
-%{{{ logic
-\renewcommand{\diamond}{\lozenge}
-\newcommand*{\denote}[1]{\llbracket #1 \rrbracket}
-
-% \godelnum command, stolen from 
-% https://www.logicmatters.net/
-% 	latex-for-logicians/symbols/corner-quotes-for-godel-numbers/
-\newbox\gnBoxA
-\newdimen\gnCornerHgt
-\setbox\gnBoxA=\hbox{$\ulcorner$}
-\global\gnCornerHgt=\ht\gnBoxA
-\newdimen\gnArgHgt
-\def\godelnum #1{%
-\setbox\gnBoxA=\hbox{$#1$}%
-\gnArgHgt=\ht\gnBoxA%
-\ifnum     \gnArgHgt<\gnCornerHgt \gnArgHgt=0pt%
-\else \advance \gnArgHgt by -\gnCornerHgt%
-\fi \raise\gnArgHgt\hbox{$\ulcorner$} \box\gnBoxA %
-\raise\gnArgHgt\hbox{$\urcorner$}}
-
-% coding function
-\newcommand*{\code}[1]{\langle #1 \rangle}
-
-% we have \models, but for some reason not \proves?
-\newcommand*{\proves}{\vdash}
-\newcommand*{\forces}{\Vdash}
-
-%}}}
-
-%{{{ misc symbols
-\newcommand{\teq}{\triangleq}
-\newcommand{\fin}{ \subseteq_{\text{fin}} }
 
 % important words
 \newcommand*{\important}[1]{\textcolor{MidnightBlue}{#1}}
@@ -363,8 +154,6 @@ snippet template "basic template" b
 % I always forget if this is named "danger" or "warning"...
 % So just name it both so I can't be wrong
 \newcommand*{\warning}{\danger}
-
-%}}}
 
 %}}}
 
