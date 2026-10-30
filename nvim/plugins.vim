@@ -9,7 +9,6 @@ call plug#begin()
   "Autocompletion
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'SirVer/ultisnips'
-  " Plug 'lionawurscht/deoplete-biblatex'
   
   "General layout
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -20,8 +19,8 @@ call plug#begin()
   Plug 'joshdick/onedark.vim'
 
   "Work with stuff I do all the time
-  " Plug 'sheerun/vim-polyglot'
   Plug 'petRUShka/vim-sage'
+  Plug 'lervag/vimtex'
 
   "Quality of life
   Plug 'tpope/vim-commentary'
@@ -41,7 +40,6 @@ call plug#end()
 "Configure Plugins {{{
 
 "Apparently colorscheme is a plugin now...
-syntax on
 colorscheme onedark
 let g:airline_theme='onedark'
 
@@ -58,7 +56,7 @@ nnoremap <leader>a  :Tabularize /
 "airline
 "Use shorthand names in powerline
 "i.e. I for insert, N for normal
-let airline_mode_map = {
+let g:airline_mode_map = {
       \ '__' : '-',
       \ 'n'  : 'N',
       \ 'i'  : 'I',
@@ -74,24 +72,16 @@ let airline_mode_map = {
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-
 "Rainbow Parentheses
 let g:rainbow_active = 1
 
-
-"Ale
-let g:airline#extensions#ale#enabled=1
-
-
 "deoplete
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#source('_', 'max_menu_width', 0)
 
-let g:deoplete#max_menu_width = 0  "No max menu width
-
-" let g:deoplete#sources#biblatex#bibfile = '~/.bib.bib'
-" call deoplete#custom#source('biblatex', 'filetypes', ['tex'])
-" let g:deoplete#sources#biblatex#startpattern = '\\cite{(?:[\w,]+:)?'
-
+call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'tex': g:vimtex#re#deoplete
+        \})
 
 "UltiSnips
 let g:UltiSnipsSnippetsDir = '~/.config/nvim/UltiSnips/'
@@ -100,12 +90,51 @@ let g:UltiSnipsJumpForwardTrigger = '<TAB>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-TAB>'
 let g:ultisnips_python_style = 'doxygen'
 
+"VimTeX
+"let g:vimtex_view_method = 'zathura'          
+let g:vimtex_imaps_enabled = 0 
+let g:vimtex_quickfix_open_on_warning = 0     
+let g:vimtex_complete_bib = { 'simple': 1 }   
+let g:vimtex_format_enabled = 1
 
 "vimcmdline
 lua require("hlterm").setup({ vsplit = true })
 
-"bibtex integration
-"let g:deoplete#sources#biblatex#bibfile = 'bib.bib'
-"let g:deoplete#sources#biblatex#delimiter = 1
+"autopairs
+lua << EOF
+local npairs = require("nvim-autopairs")
+local Rule   = require("nvim-autopairs.rule")
+local cond   = require("nvim-autopairs.conds")
 
+-- we define <CR> ourselves to work with deoplete
+npairs.setup({ map_cr = false }) 
+
+vim.keymap.set('i', '<CR>', function()
+  if vim.fn.pumvisible() ~= 0 then
+    if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
+      return npairs.esc('<C-y>')              
+    else
+      return npairs.esc('<C-e>') .. npairs.autopairs_cr()  
+    end
+  end
+  return npairs.autopairs_cr() 
+end, { expr = true, replace_keycodes = false })
+
+npairs.get_rules("'")[1].not_filetypes = { "tex" }
+npairs.get_rules("`")[1].not_filetypes = { "tex" }
+
+npairs.add_rules({
+  Rule("$", "$", "tex")
+    :with_pair(cond.not_before_text("\\"))           -- \$ is a literal dollar sign
+    :with_pair(cond.not_after_regex("[%w%$]"))       -- don't pair right before a letter/digit or $
+    :with_pair(function(opts)                        -- don't open a new pair while closing one
+      if inside_inline_math(opts) then return false end
+    end)
+    :with_move(cond.done())                          -- typing $ before a closing $ steps over it
+    :with_cr(cond.none()),                           -- Enter never splits $|$ across lines
+
+  Rule("\\[", "\\]", "tex")
+    :with_pair(cond.not_before_text("\\\\")),        -- don't fire on the \\[2pt] line-break syntax
+})
+EOF
 "}}}

@@ -8,18 +8,13 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 " General Settings {{{
 
-"We don't need to be vi compatable
-filetype plugin indent on
-
-"By default, don't use system pasting
-set nopaste
-
 "By default, don't check spelling
 set nospell
 
 "Put a bar at column 80 for code style
 set colorcolumn=80 
 hi ColorColumn guibg=DarkCyan
+set textwidth=80
 
 "We're cool and don't use a mouse
 set mouse=
@@ -34,14 +29,8 @@ set nobackup
 "Don't show --insert--, etc. powerline does it for us
 set noshowmode
 
-"Lets you keep unsaved buffers hidden
-set hidden
-
 "The height of the bar where :q, etc. show up
 set cmdheight=1
-
-"Show a statusline in every window
-set laststatus=2
 
 "Wrap text longer than the window to a new line
 set wrap
@@ -64,17 +53,11 @@ set number
 "Make > and < round to a tabstop number of spaces
 set shiftround
 
-"Pressing enter while indented will preserve the indentation level
-set autoindent
-
 "Automatically indent after a line ending in {
 set smartindent
 
 "Use indentation to determine what a fold is
 set foldmethod=marker
-
-"fold as far down as you can go
-set foldlevel=99
 
 "start folded as far as we can go
 set foldlevelstart=0
@@ -83,10 +66,8 @@ set foldlevelstart=0
 set cole=0
 
 "make searching case insensitive (unless it should obviously be case sensitive)
+set ignorecase
 set smartcase
-
-"make searches start while typing them (a la ctrl-f)
-set incsearch
 
 "Save a file with all the undos we've done.
 "But don't clutter the current folder. Put them in undodir
@@ -99,26 +80,16 @@ autocmd FileType make setlocal noexpandtab
 "Remember the line you were on when reopening a file
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-"Treat sage files like python
-autocmd BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=sage
-
 "Know what macaulay2 files are
 autocmd BufNewFile,BufRead *.m2 set ft=Macaulay2
-
-
-"Make .tex a latex file by default
-let g:tex_flavor = "latex"
 
 "}}}
 
 " Binds {{{
 "Close insert/visual mode with jk
 inoremap jk <esc>
-vnoremap jk <esc>
 tnoremap <esc> <C-\><C-n>
 tnoremap jk <C-\><C-n>
-let mapleader=' '
-let maplocalleader='\'
 
 "Show the search results in the middle of the screen
 nnoremap n nzz
@@ -140,7 +111,8 @@ nnoremap <silent> <CR> :noh<CR><CR>
 "toggle folds (still autoscroll)
 nnoremap <leader>f zazz
 
-"leader s compiles a latex file
-autocmd FileType tex nnoremap <localleader>s :w<CR> :! latexmk -pdf %<CR>
+"reflow paragraphs to fit within 80 columns
+nnoremap <leader>q gwip
 
 "}}}
+
