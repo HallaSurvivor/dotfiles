@@ -83,6 +83,12 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "Know what macaulay2 files are
 autocmd BufNewFile,BufRead *.m2 set ft=Macaulay2
 
+"Automatically turn spellcheck on in tex,markdown,etc. files
+augroup SpellCheckOnOpen
+  autocmd!
+  autocmd FileType tex,markdown,text,gitcommit setlocal spell
+augroup END
+
 "}}}
 
 " Binds {{{
@@ -97,7 +103,7 @@ nnoremap N Nzz
 
 "Spell check
 set spelllang=en_us
-nnoremap <silent> <leader>ss :set spell!<cr>
+nnoremap <silent> <leader>ss :setlocal spell!<cr>
 
 "Y yanks to end of line instead of whole line
 nnoremap Y y$

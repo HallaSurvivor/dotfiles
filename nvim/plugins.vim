@@ -106,35 +106,31 @@ local npairs = require("nvim-autopairs")
 local Rule   = require("nvim-autopairs.rule")
 local cond   = require("nvim-autopairs.conds")
 
--- we define <CR> ourselves to work with deoplete
-npairs.setup({ map_cr = false }) 
+npairs.setup({ map_cr = false })   -- we define <CR> ourselves, below
 
-vim.keymap.set('i', '<CR>', function()
-  if vim.fn.pumvisible() ~= 0 then
-    if vim.fn.complete_info({ 'selected' }).selected ~= -1 then
-      return npairs.esc('<C-y>')              
-    else
-      return npairs.esc('<C-e>') .. npairs.autopairs_cr()  
-    end
-  end
-  return npairs.autopairs_cr() 
-end, { expr = true, replace_keycodes = false })
-
-npairs.get_rules("'")[1].not_filetypes = { "tex" }
+-- no tick pairing in LaTeX
 npairs.get_rules("`")[1].not_filetypes = { "tex" }
+npairs.get_rules("'")[1].not_filetypes = { "tex" }
+
+-- helper: this must come BEFORE the rules that call it
+local function inside_inline_math(opts)
+  local before = opts.line:sub(1, opts.col - 1):gsub("\\%$", "")
+  local _, n = before:gsub("%$", "")
+  return n % 2 == 1
+end
 
 npairs.add_rules({
   Rule("$", "$", "tex")
-    :with_pair(cond.not_before_text("\\"))           -- \$ is a literal dollar sign
-    :with_pair(cond.not_after_regex("[%w%$]"))       -- don't pair right before a letter/digit or $
-    :with_pair(function(opts)                        -- don't open a new pair while closing one
+    :with_pair(cond.not_before_text("\\"))
+    :with_pair(cond.not_after_regex("[%w%$]"))
+    :with_pair(function(opts)
       if inside_inline_math(opts) then return false end
     end)
-    :with_move(cond.done())                          -- typing $ before a closing $ steps over it
-    :with_cr(cond.none()),                           -- Enter never splits $|$ across lines
+    :with_move(cond.done())
+    :with_cr(cond.none()),
 
   Rule("\\[", "\\]", "tex")
-    :with_pair(cond.not_before_text("\\\\")),        -- don't fire on the \\[2pt] line-break syntax
+    :with_pair(cond.not_before_text("\\\\")),
 })
 EOF
 "}}}
