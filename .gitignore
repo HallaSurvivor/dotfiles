@@ -25,9 +25,6 @@ irssi/config.autosave
 vim/undodir
 nvim/undodir
 
-# Nobody wants to see my vim dictionary for spelling
-vim/spell
-
 # Nobody wants to see my nvim history
 nvim/.netrwhist
 
