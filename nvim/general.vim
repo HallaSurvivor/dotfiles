@@ -15,8 +15,8 @@ set nospell
 set spellfile=~/.config/nvim/spell/en.utf-8.add
 
 
-"Put a bar at column 80 for code style
-set colorcolumn=80 
+"Don't write more than 80 characters on a line
+set colorcolumn=81 
 hi ColorColumn guibg=DarkCyan
 set textwidth=80
 
