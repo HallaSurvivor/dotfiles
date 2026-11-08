@@ -8,8 +8,12 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 " General Settings {{{
 
-"By default, don't check spelling
+"By default, don't check spelling (except in tex/md/text files, see below)
 set nospell
+
+"But explicitly say where we'll save our words, so we can back them up
+set spellfile=~/.config/nvim/spell/en.utf-8.add
+
 
 "Put a bar at column 80 for code style
 set colorcolumn=80 
