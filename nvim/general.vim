@@ -4,8 +4,6 @@
 " See the rest of my dotfiles here:
 " https://github.com/HallaSurvivor/dotfiles
 
-let g:python3_host_prog = '/usr/bin/python3'
-
 " General Settings {{{
 
 "By default, don't check spelling (except in tex/md/text files, see below)
