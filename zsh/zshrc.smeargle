@@ -16,3 +16,4 @@ alias ls="ls -CFG"
 # use a more moden ruby for jekyll
 path_add "/usr/local/opt/ruby/bin"
 path_add "/usr/local/lib/ruby/gems/3.4.0/bin"
+path_add "/Users/christina/.local/bin"
