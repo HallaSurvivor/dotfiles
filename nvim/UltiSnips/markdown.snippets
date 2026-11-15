@@ -8,6 +8,10 @@ $0
 </div>
 endsnippet
 
+snippet defn "<span class=defn>" w
+<span class=defn>$1</span> $0
+endsnippet
+
 snippet img "<img src=...>" b
 <p style="text-align:center;">
 <img src="/assets/images/`!p snip.rv = snip.basename[11:]`/$0" width="50%">
@@ -41,7 +45,7 @@ $0
 endsnippet
 
 snippet ex "example environment" b
-{% example "${1:Optional Title}" label="${2:Optional Label}" %}
+{% example "${1:Title}" label="${2:`!p snip.rv = ex_slugify(t[1])`}" %}
 ${0:${VISUAL}}
 {% endexample %}
 endsnippet
@@ -74,4 +78,131 @@ ${2:${VISUAL}}
 
 </details>
 $0
+endsnippet
+
+
+
+global !p
+import re
+import vim
+ 
+FOOTNOTE_NUM = re.compile(r"\[\^(\d+)\]")                     # [^3] or [^3]:
+LINK_NUM     = re.compile(r"\]\[(\d+)\]|^\[(\d+)\]:", re.M)   # ][3]  or  [3]: at line start
+
+# ---------- used by ex ----------
+def ex_slugify(title):
+	"""'$\\mathbb{Z}[x]$ is not a PID'  ->  'zx-is-not-a-pid'"""
+	s = re.sub(r"\\[A-Za-z]+", "", title)          # drop TeX commands like \mathbb
+	s = re.sub(r"\$+([^$]*)\$+",                   # squash math: $Z[x]$ -> Zx
+	           lambda m: re.sub(r"[^A-Za-z0-9]", "", m.group(1)), s)
+	s = re.sub(r"[^A-Za-z0-9]+", "-", s.lower())    # everything else becomes a hyphen
+	return s.strip("-") or "example"
+
+# ---------- used by exr ----------
+EXAMPLE_LABEL = re.compile(
+	r"""\{%-?\s*example\b[^%]*?\blabel\s*=\s*["']?([A-Za-z0-9_:.\-]+)""")
+
+def ex_default_ref():
+	"""The label to suggest for {% exref %}: the nearest example *above* the
+	cursor (usually the one you just wrote); failing that, the first one below."""
+	buf = vim.current.buffer
+	row = vim.current.window.cursor[0]             # 1-based line of the cursor
+	above = EXAMPLE_LABEL.findall("\n".join(buf[:row]))
+	if above:
+		return above[-1]
+	below = EXAMPLE_LABEL.findall("\n".join(buf[row:]))
+	return below[0] if below else "label"
+
+def next_number(pattern):
+	"""1 + the largest number already used by `pattern` in this file."""
+	nums = [int(n) for m in pattern.findall("\n".join(vim.current.buffer))
+	        for n in (m if isinstance(m, tuple) else (m,)) if n]
+	return str(max(nums, default=0) + 1)
+ 
+def go_to_bottom_and_expand(snip, return_pos, kind, anon):
+	"""Remember where we were writing, then (once UltiSnips has completely
+	finished with the current snippet) add a definition line in the right
+	section and expand `anon` there. Ctrl-J out of it returns to `return_pos`.
+	`kind` is "fn" (footnotes: very bottom) or "link" (link section: end of the
+	[N]: lines, above any footnotes).
+
+	The deferral (a 0ms timer) matters: expanding the bottom snippet while the
+	current one is still active makes UltiSnips throw it away immediately."""
+	vim.vars["md_snip_return"] = [return_pos[0], return_pos[1]]
+	vim.vars["md_snip_kind"] = kind
+	vim.vars["md_snip_anon"] = anon
+	# The timer's Python can't see this block's names (in Neovim it even runs in
+	# a different namespace), but every module in sys.modules is shared, so we
+	# park the function in a tiny module and import it from the timer.
+	import sys, types
+	helper = sys.modules.setdefault("md_snip_helper", types.ModuleType("md_snip_helper"))
+	helper.bottom = _md_snip_bottom
+	vim.command("call timer_start(0, {_ -> py3eval('__import__(\"md_snip_helper\").bottom()')})")
+
+LINK_DEF     = re.compile(r"^\[\d+\]:")        # [3]: ...   (a link definition)
+FOOTNOTE_DEF = re.compile(r"^\[\^[^\]]+\]:")   # [^3]: ...  (a footnote definition)
+
+def _md_snip_bottom():
+	from UltiSnips.snippet_manager import UltiSnips_Manager
+	buf = vim.current.buffer          # no snippet is active now, so direct edits are fine
+	kind = vim.eval("g:md_snip_kind")
+	ret_line, ret_col = [int(x) for x in vim.eval("g:md_snip_return")]
+
+	def insert(idx, lines):
+		"""Insert `lines` before line `idx` (0-based). If that's above where
+		we were writing (e.g. a link typed inside a footnote), shift the
+		return position down to match."""
+		nonlocal ret_line
+		buf.append(lines, idx)
+		if idx <= ret_line:
+			ret_line += len(lines)
+
+	def after_last_text():
+		"""Blank line + new line after the last non-empty line; returns the new line's index."""
+		last = max((i for i, l in enumerate(buf) if l.strip()), default=-1)
+		insert(last + 1, ["", ""])
+		return last + 2
+
+	links = [i for i, l in enumerate(buf) if LINK_DEF.match(l)]
+	notes = [i for i, l in enumerate(buf) if FOOTNOTE_DEF.match(l)]
+
+	if kind == "link" and links:              # right after the last link definition
+		target = links[-1] + 1
+		insert(target, [""])
+	elif kind == "link" and notes:            # no links yet: a new section above the footnotes
+		first = notes[0]
+		if first > 0 and buf[first - 1].strip():
+			insert(first, [""])               # keep it apart from whatever is above
+			first += 1
+		insert(first, ["", ""])               # the link line, then a blank before the footnotes
+		target = first
+	else:                                     # footnotes (or the first link): at the very bottom
+		target = after_last_text()
+
+	vim.vars["md_snip_return"] = [ret_line, ret_col]
+	vim.current.window.cursor = (target + 1, 0)
+	UltiSnips_Manager.expand_anon(vim.eval("g:md_snip_anon"),
+	                              actions={"post_jump": RETURN_TO_WRITING})
+	return 0
+
+# Runs inside the bottom snippet, which can't see this file's global block,
+# so it has to be self-contained.
+# (UltiSnips ignores cursor moves made while leaving a snippet, so again we
+# defer the move with a 0ms timer until it's done.)
+RETURN_TO_WRITING = """
+import vim
+if snip.tabstop == 0:   # we just Ctrl-J'd out of the bottom snippet
+	line, col = vim.eval("g:md_snip_return")    # 0-based; cursor() is 1-based
+	vim.command("call timer_start(0, {_ -> cursor(%d, %d)})" % (int(line) + 1, int(col) + 1))
+"""
+endglobal
+
+post_expand "go_to_bottom_and_expand(snip, snip.snippet_end, 'fn', '[^' + re.findall(r'\[\^(\d+)\]', snip.buffer[snip.snippet_end[0]][:snip.snippet_end[1]])[-1] + ']:' + chr(10) + '    $1$0')"
+snippet fn "footnote: [^N] here, [^N]: at the bottom" i
+[^`!p snip.rv = snip.c or next_number(FOOTNOTE_NUM)`]
+endsnippet
+ 
+post_jump "if snip.tabstop == 0: go_to_bottom_and_expand(snip, snip.snippet_end, 'link', '[' + re.findall(r'\]\[(\d+)\]', snip.buffer[snip.snippet_end[0]][:snip.snippet_end[1]])[-1] + ']: ${1:' + snip.tabstops[1].current_text.replace('}', '\\}') + '}$0')"
+snippet link "reference link: [text][N] here, [N]: text at the end of the link section" w
+[${1:text}][`!p snip.rv = snip.c or next_number(LINK_NUM)`]$0
 endsnippet
