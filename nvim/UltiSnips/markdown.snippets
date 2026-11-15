@@ -39,3 +39,14 @@ $\ulcorner$
 $0
 <span style="float:right">$\lrcorner$</span>
 endsnippet
+
+snippet ex "example environment" b
+{% example "${1:Optional Title}" label="${2:Optional Label}" %}
+${0:${VISUAL}}
+{% endexample %}
+endsnippet
+
+snippet exr "reference to an example environment" w
+{% exref ${1:`!p snip.rv = ex_default_ref()`} %}$0
+endsnippet
+
